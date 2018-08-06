@@ -1,6 +1,8 @@
 "use strict"
 
 const Logger = require("./Logger")
+
+const Database = require("./core/Database")
 const DataHandler = require("./core/DataHandler")
 
 class Server
@@ -9,6 +11,7 @@ class Server
 	{
 		this.penguins = []
 
+		this.database = new Database()
 		this.dataHandler = new DataHandler(this)
 		this.startServer(6112)
 
