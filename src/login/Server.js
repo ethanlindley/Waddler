@@ -4,6 +4,7 @@ const Logger = require("./Logger")
 
 const Database = require("./core/Database")
 const DataHandler = require("./core/DataHandler")
+const Penguin = require("./core/Penguin")
 
 class Server
 {
@@ -46,7 +47,7 @@ class Server
 			})
 		}).listen(6112, () =>
 		{
-			Logger.info(`Login server listening on port 6112`)
+			Logger.info(`Waddler login server listening on port 6112`)
 		})
 	}
 
@@ -75,10 +76,13 @@ class Server
 	removePenguin(penguin)
 	{
 		const index = this.penguins.indexOf(penguin)
+
 		if (index > -1)
 		{
 			Logger.info("Removing client")
+
 			this.penguins.splice(index, 1)
+
 			penguin.socket.end()
 			penguin.socket.destroy()
 		}

@@ -1,11 +1,7 @@
 {
 	"name": "waddler",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "An open source in-development Club Penguin emulator, written in Node.js.",
-	"scripts":
-	{
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
 	"keywords": [
 		"club",
 		"penguin",
@@ -18,7 +14,8 @@
 		"pino": "^4.17.6",
 		"knex": "^0.15.2",
 		"mysql2": "^1.6.1",
-		"keccak": "^1.4.0"
+		"keccak": "^1.4.0",
+		"xmldoc": "^1.1.0"
 	},
 	"author": "Zaseth",
 	"license": "MIT"

@@ -18,6 +18,12 @@ class Database
 			}
 		})
 	}
+
+	getPlayer(player)
+	{
+		const type = isNaN(player) ? "username" : "id"
+		return this.knex("penguins").first("*").where(type, player)
+	}
 }
 
 module.exports = Database
