@@ -29,7 +29,7 @@ class DataHandler
 
 	handleData(data, penguin)
 	{
-		if (data.startsWith("<") && data.endsWith(">"))
+		if (data.charAt(0) == "<" && data.charAt(data.length - 1) == ">")
 		{
 			Logger.info(`INCOMING: ${data}`)
 
