@@ -17,7 +17,8 @@
 	{
 		"pino": "^4.17.6",
 		"knex": "^0.15.2",
-		"mysql2": "^1.6.1"
+		"mysql2": "^1.6.1",
+		"keccak": "^1.4.0"
 	},
 	"author": "Zaseth",
 	"license": "MIT"
