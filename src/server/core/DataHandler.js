@@ -14,7 +14,6 @@ class DataHandler
 
 	handleLogin(data, penguin)
 	{
-
 		const username = data.split("CDATA[")[1].split("]]></nick>")[0]
 		const password = data.split("CDATA[")[2].split("]]></pword>")[0]
 
@@ -25,31 +24,55 @@ class DataHandler
 				return penguin.sendError(603, true)
 			}
 
-			const hash = GameDataEncryptor.hashPassword(GameDataEncryptor.decryptZaseth(password, penguin.randomKey))
-
-			if (result.password == hash)
+			if (this.server.type == "login")
 			{
-				penguin.loginKey = GameDataEncryptor.generateRandomKey(12)
+				const hash = GameDataEncryptor.hashPassword(GameDataEncryptor.decryptZaseth(password, penguin.randomKey))
 
-				penguin.sendXt("sd", -1, "100|Waddler|127.0.0.1|6113")
-				penguin.sendXt("l", -1, penguin.id, penguin.loginKey, "", "100,1")
+				if (result.password == hash)
+				{
+					penguin.loginKey = GameDataEncryptor.generateRandomKey(12)
+
+					this.database.updateColumn(username, "loginkey", penguin.loginKey)
+
+					penguin.sendXt("sd", -1, "100|Snowy Lands|127.0.0.1|6113")
+					penguin.sendXt("l", -1, penguin.id, penguin.loginKey, "", "100,1")
+				}
+				else
+				{
+					return penguin.sendError(101, true)
+				}
 			}
 			else
 			{
-				return penguin.sendError(101, true)
+				const hash = GameDataEncryptor.hashPassword(GameDataEncryptor.decryptZaseth(password, result.loginkey))
+
+				const penguinObj = this.server.getPenguin(result.id)
+				if (penguinObj) penguinObj.disconnect()
+
+				if (result.password == hash)
+				{
+					penguin.sendXt("l", -1)
+					penguin.setPenguin(result)
+				}
+				else
+				{
+					return penguin.sendError(101, true)
+				}
+				this.database.updateColumn(result.id, "loginkey", "")
 			}
 		}).catch((err) =>
 		{
-			console.error(err)
+			Logger.error(err)
 			return penguin.sendError(100, true)
 		})
 	}
 
 	handleData(data, penguin)
 	{
+		Logger.info(`INCOMING: ${data}`)
+
 		if (data.charAt(0) == "<" && data.charAt(data.length - 1) == ">")
 		{
-			Logger.info(`INCOMING: ${data}`)
 
 			if (data == "<policy-file-request/>")
 			{
@@ -106,9 +129,9 @@ class DataHandler
 				}
 			}
 		}
-		else
+		else if (data.charAt(0) == "%" && data.charAt(data.length - 1) == "%")
 		{
-			return penguin.disconnect()
+			return this.server.gameHandler.handleGameData(data, penguin)
 		}
 	}
 }

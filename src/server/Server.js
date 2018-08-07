@@ -4,49 +4,83 @@ const Logger = require("./Logger")
 
 const Database = require("./core/Database")
 const DataHandler = require("./core/DataHandler")
+const ClubPenguin = require("./core/ClubPenguin")
 const Penguin = require("./core/Penguin")
 
 class Server
 {
-	constructor()
+	constructor(type)
 	{
+		this.type = type
+		this.port = type == "login" ? 6112 : 6113
+
 		this.penguins = []
 
 		this.database = new Database()
+		this.gameHandler = new ClubPenguin(this)
 		this.dataHandler = new DataHandler(this)
-		this.startServer(6112)
+
+		this.startServer()
 
 		process.on("SIGINT", () => this.handleShutdown())
 		process.on("SIGTERM", () => this.handleShutdown())
 	}
 
-	startServer(port)
+	startServer()
 	{
 		require("net").createServer(socket =>
 		{
 			socket.setEncoding("utf8")
 
 			const penguin = new Penguin(socket, this)
+
+			if (this.penguins.length >= 100) return penguin.sendError(103, true)
+
 			this.penguins.push(penguin)
 
 			socket.on("data", (data) =>
 			{
-				this.dataHandler.handleData(data.toString().split("\0")[0], penguin)
+				return this.dataHandler.handleData(data.toString().split("\0")[0], penguin)
 			})
 			socket.on("close", () =>
 			{
 				Logger.info(`${penguin.ipAddr} disconnected`)
-				penguin.disconnect()
+				return penguin.disconnect()
 			})
 			socket.on("error", (error) =>
 			{
 				Logger.error(error)
-				penguin.disconnect()
+				return penguin.disconnect()
 			})
-		}).listen(6112, () =>
+		}).listen(this.port, () =>
 		{
-			Logger.info(`Waddler login server listening on port 6112`)
+			Logger.info(`Waddler listening on port ${this.port}`)
 		})
+	}
+
+	getPenguin(player)
+	{
+		for (const penguin of this.penguins)
+		{
+			const type = isNaN(player) ? penguin.username : penguin.id
+			if (type === player)
+			{
+				return penguin
+			}
+		}
+	}
+
+	isPenguinOnline(player)
+	{
+		for (const penguin of this.penguins)
+		{
+			const type = isNaN(player) ? penguin.username : penguin.id
+			if (type === player)
+			{
+				return true
+			}
+		}
+		return false
 	}
 
 	handleShutdown()

@@ -196,7 +196,7 @@
     } // End of the function
     function worldLogin()
     {
-        server.login(com.clubpenguin.net.Airtower.SERVER_ZONE, username, com.clubpenguin.crypto.ZASETH.encryptZaseth(login_key, rand_key));
+        server.login(com.clubpenguin.net.Airtower.SERVER_ZONE, username, com.clubpenguin.crypto.ZASETH.encryptZaseth(password, login_key));
     } // End of the function
     function joinWorld()
     {

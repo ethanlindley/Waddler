@@ -24,6 +24,16 @@ class Database
 		const type = isNaN(player) ? "username" : "id"
 		return this.knex("penguins").first("*").where(type, player)
 	}
+
+	updateColumn(player, column, value)
+	{
+		const type = isNaN(player) ? "username" : "id"
+		return this.knex("penguins").update(column, value).where(type, player).then(() =>
+		{}).catch((err) =>
+		{
+			console.error(err)
+		})
+	}
 }
 
 module.exports = Database

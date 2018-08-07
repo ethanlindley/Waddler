@@ -1,3 +1,3 @@
 "use strict"
 
-new(require("./src/login/Server"))
+new(require("./src/server/Server"))("login")
