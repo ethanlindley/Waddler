@@ -20,9 +20,27 @@ class DataHandler
 
 		this.database.getPlayer(username).then((result) =>
 		{
+			if (result.banned >= 1)
+			{
+				return penguin.sendError(603, true)
+			}
 
-		}).catch(() =>
+			const hash = GameDataEncryptor.hashPassword(GameDataEncryptor.decryptZaseth(password, penguin.randomKey))
+
+			if (result.password == hash)
+			{
+				penguin.loginKey = GameDataEncryptor.generateRandomKey(12)
+
+				penguin.sendXt("sd", -1, "100|Waddler|127.0.0.1|6113")
+				penguin.sendXt("l", -1, penguin.id, penguin.loginKey, "", "100,1")
+			}
+			else
+			{
+				return penguin.sendError(101, true)
+			}
+		}).catch((err) =>
 		{
+			console.error(err)
 			return penguin.sendError(100, true)
 		})
 	}

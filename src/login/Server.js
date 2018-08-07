@@ -25,8 +25,6 @@ class Server
 		require("net").createServer(socket =>
 		{
 			socket.setEncoding("utf8")
-			socket.setTimeout(600000)
-			socket.setNoDelay(true)
 
 			const penguin = new Penguin(socket, this)
 			this.penguins.push(penguin)
