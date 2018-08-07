@@ -31,17 +31,6 @@ class Penguin
 		if (disconnect) this.disconnect()
 	}
 
-	sendArray(arr)
-	{
-		if (arr.constructor.name == "Array")
-		{
-			for (const packet in arr)
-			{
-				this.sendRaw(arr[packet])
-			}
-		}
-	}
-
 	disconnect()
 	{
 		this.server.removePenguin(this)

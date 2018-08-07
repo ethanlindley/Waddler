@@ -4,8 +4,6 @@ const Logger = require("../Logger")
 
 const GameDataEncryptor = require("./utils/GameDataEncryptor")
 
-const xmldoc = require("xmldoc")
-
 class DataHandler
 {
 	constructor(server)
@@ -16,10 +14,9 @@ class DataHandler
 
 	handleLogin(data, penguin)
 	{
-		const xmlPacket = new xmldoc.XmlDocument(data)
 
-		const username = xmlPacket.children[0].firstChild.firstChild.val
-		const password = xmlPacket.children[0].lastChild.lastChild.val
+		const username = data.split("CDATA[")[1].split("]]></nick>")[0]
+		const password = data.split("CDATA[")[2].split("]]></pword>")[0]
 
 		this.database.getPlayer(username).then((result) =>
 		{
@@ -42,15 +39,14 @@ class DataHandler
 			}
 			else
 			{
-				const xmlPacket = new xmldoc.XmlDocument(data)
-
-				const type = xmlPacket.children[0].attr.action
+				const type = data.split("action='")[1].split("'")[0]
 
 				if (type == "verChk")
 				{
-					const version = xmlPacket.children[0].firstChild.attr.v
+					const version = data.split("ver v='")[1].split("'")[0]
+					const room = data.split("r='")[1].split("'")[0]
 
-					if (version == 153)
+					if (version == 153 && room == 0)
 					{
 						return penguin.sendRaw(`<msg t="sys"><body action="apiOK" r="0"></body></msg>`)
 					}
@@ -61,13 +57,30 @@ class DataHandler
 				}
 				else if (type == "rndK")
 				{
-					penguin.randomKey = GameDataEncryptor.generateRandomKey(12)
+					const room = data.split("r='")[1].split("'")[0]
 
-					penguin.sendRaw(`<msg t="sys"><body action="rndK" r="-1"><k>${penguin.randomKey}</k></body></msg>`)
+					if (room == -1)
+					{
+						penguin.randomKey = GameDataEncryptor.generateRandomKey(12)
+						penguin.sendRaw(`<msg t="sys"><body action="rndK" r="-1"><k>${penguin.randomKey}</k></body></msg>`)
+					}
+					else
+					{
+						return penguin.disconnect()
+					}
 				}
 				else if (type == "login")
 				{
-					return this.handleLogin(data, penguin)
+					const room = data.split("r='")[1].split("'")[0]
+
+					if (room == 0)
+					{
+						return this.handleLogin(data, penguin)
+					}
+					else
+					{
+						return penguin.disconnect()
+					}
 				}
 				else
 				{
