@@ -2,16 +2,25 @@
 
 class GameDataEncryptor
 {
+	/*
+	 * Hashes the password to Keccak256, hex format.
+	 */
 	static hashPassword(pass)
 	{
 		return require("keccak")("keccak256").update(pass).digest("hex")
 	}
-
+	/*
+	 * Every source uses stupid for loops, I use randomBytes.
+	 * randomBytes is more random to begin with.
+	 * The length is divided by 2 as 'len' is multiplied by 2.
+	 */
 	static generateRandomKey(len)
 	{
 		return require("crypto").randomBytes(len / 2).toString("hex")
 	}
-
+	/*
+	 * I won't say anything :)
+	 */
 	static decryptZaseth(str, key)
 	{
 		let keyIndex = 0x00,

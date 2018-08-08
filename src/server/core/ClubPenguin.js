@@ -20,7 +20,11 @@ class ClubPenguin
 		this.server = server
 		this.database = server.database
 	}
-
+	/*
+	 * Handles the game data.
+	 * The incoming XT packet is parsed.
+	 * After it's parsed, the right handler is signed to it.
+	 */
 	handleGameData(data, penguin)
 	{
 		data = data.split("%")
@@ -39,7 +43,9 @@ class ClubPenguin
 			Logger.error(`Unknown handler: ${handler}`)
 		}
 	}
-
+	/*
+	 * Navigation.js
+	 */
 	handleJoinServer(data, penguin)
 	{
 		Navigation.handleJoinServer(data, penguin, this.server)

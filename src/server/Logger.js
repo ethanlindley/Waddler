@@ -1,5 +1,8 @@
 "use strict"
 
+/*
+ * Just a simple Pino logger.
+ */
 module.exports = require("pino")(
 {
 	base:

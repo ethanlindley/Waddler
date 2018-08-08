@@ -3,13 +3,12 @@
 const Logger = require("./Logger")
 
 const Database = require("./core/Database")
+const Penguin = require("./core/Penguin")
 
 const DataHandler = require("./core/DataHandler")
 const ClubPenguin = require("./core/ClubPenguin")
 
 const roomManager = require("./core/managers/roomManager")
-
-const Penguin = require("./core/Penguin")
 
 class Server
 {
@@ -34,7 +33,11 @@ class Server
 		process.on("SIGINT", () => this.handleShutdown())
 		process.on("SIGTERM", () => this.handleShutdown())
 	}
-
+	/*
+	 * An advanced createServer structure.
+	 *
+	 * Checks if the server is full and for errors.
+	 */
 	startServer()
 	{
 		require("net").createServer(socket =>
@@ -68,7 +71,9 @@ class Server
 			Logger.info(`Waddler {${this.type}} listening on port ${this.port}`)
 		})
 	}
-
+	/*
+	 * Just like in Database.js, we check if player is a username or an id.
+	 */
 	getPenguin(player)
 	{
 		for (const penguin of this.penguins)
@@ -80,7 +85,9 @@ class Server
 			}
 		}
 	}
-
+	/*
+	 * Just like in getPenguin, player does the same.
+	 */
 	isPenguinOnline(player)
 	{
 		for (const penguin of this.penguins)
@@ -93,7 +100,10 @@ class Server
 		}
 		return false
 	}
-
+	/*
+	 * Before the server is shut down, we check if there's any connections.
+	 * If there's no connections, just instantly kill the server.
+	 */
 	handleShutdown()
 	{
 		if (this.penguins.length > 0)
@@ -115,7 +125,9 @@ class Server
 			process.exit(0)
 		}
 	}
-
+	/*
+	 * Removes the player entirely from the server.
+	 */
 	removePenguin(penguin)
 	{
 		const index = this.penguins.indexOf(penguin)

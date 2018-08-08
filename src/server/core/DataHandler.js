@@ -11,7 +11,14 @@ class DataHandler
 		this.server = server
 		this.database = server.database
 	}
-
+	/*
+	 * Inputted password '123123' -> Custom encryption to server
+	 * Server decrypts it -> '123123' gets hashed to Keccak256 and then compared.
+	 *
+	 * We don't use XML libraries to parse.
+	 * Why? Because split works just fine.
+	 * This will save some resources as well.
+	 */
 	handleLogin(data, penguin)
 	{
 		const username = data.split("CDATA[")[1].split("]]></nick>")[0]
@@ -63,7 +70,13 @@ class DataHandler
 			return penguin.sendError(100, true)
 		})
 	}
-
+	/*
+	 * We check if the incoming data starts with '<' and ends with '>'.
+	 * If it doesn't start and end with that, it's a game packet.
+	 * The packet is also checked if it starts with '%' and ends with '%'.
+	 *
+	 * Same as in handleLogin, no XML parsing libraries are used.
+	 */
 	handleData(data, penguin)
 	{
 		Logger.info(`INCOMING: ${data}`)

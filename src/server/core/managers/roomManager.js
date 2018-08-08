@@ -19,7 +19,11 @@ class roomManager
 			}
 		}
 	}
-
+	/*
+	 * Creates a room.
+	 * We first check if the room doesn't exist before creating it.
+	 * Nothing will happen if the room exists, for reasons.
+	 */
 	createRoom(id)
 	{
 		if (!this.rooms[id])
@@ -27,7 +31,11 @@ class roomManager
 			return this.rooms[id] = new Room(id, this)
 		}
 	}
-
+	/*
+	 * Gets information from a room.
+	 * We first check if the room exists.
+	 * Nothing will happen if the room doesn't exist, for reasons.
+	 */
 	getRoom(id)
 	{
 		if (this.rooms[id])

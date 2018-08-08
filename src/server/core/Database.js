@@ -18,13 +18,19 @@ class Database
 			}
 		})
 	}
-
+	/*
+	 * First decide whether player is a username or an id.
+	 * After that, get the player's data.
+	 */
 	getPlayer(player)
 	{
 		const type = isNaN(player) ? "username" : "id"
 		return this.knex("penguins").first("*").where(type, player)
 	}
-
+	/*
+	 * Just like in getPlayer, check player type.
+	 * Then, update the column.
+	 */
 	updateColumn(player, column, value)
 	{
 		const type = isNaN(player) ? "username" : "id"
