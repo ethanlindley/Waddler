@@ -9,7 +9,7 @@ class Navigation
 	{
 		penguin.sendXt("js", -1, 0, 1, penguin.moderator ? 1 : 0)
 		penguin.sendXt("gps", -1, "")
-		penguin.sendXt("lp", -1, penguin.buildPlayerString(), penguin.coins, 0, 1440, Math.floor(new Date() / 1000), 100, 1000, 233, "", 7)
+		penguin.sendXt("lp", -1, penguin.buildPlayerString(), penguin.coins, 0, 1440, Math.floor(new Date() / 1000), penguin.age, 4, 1)
 		this.handleJoinRoom(
 		{
 			2: "j#jr",

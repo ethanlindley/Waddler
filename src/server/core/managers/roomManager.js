@@ -1,6 +1,6 @@
 "use strict"
 
-const Room = require("../Room")
+const Room = require("../system/Room")
 
 const Rooms = require("../../crumbs/rooms")
 

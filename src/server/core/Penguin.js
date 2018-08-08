@@ -2,6 +2,8 @@
 
 const Logger = require("../Logger")
 
+const sp = require("./utils/sp")
+
 class Penguin
 {
 	constructor(socket, server)
@@ -20,6 +22,8 @@ class Penguin
 	{
 		this.id = penguin.id
 		this.username = penguin.username
+
+		this.age = sp.dateToInt() - penguin.registrationdate
 
 		this.coins = penguin.coins
 

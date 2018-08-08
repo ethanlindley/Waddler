@@ -1,6 +1,6 @@
 {
 	"name": "waddler",
-	"version": "1.0.7",
+	"version": "1.0.8",
 	"description": "An open source in-development Club Penguin emulator, written in Node.js.",
 	"keywords": [
 		"club",
@@ -11,7 +11,7 @@
 	],
 	"dependencies":
 	{
-		"pino": "^5.0.0",
+		"pino": "^5.0.1",
 		"knex": "^0.15.2",
 		"mysql2": "^1.6.1",
 		"keccak": "^1.4.0"

@@ -2,7 +2,7 @@
 
 const Logger = require("./Logger")
 
-const Database = require("./core/Database")
+const Database = require("./core/system/Database")
 const Penguin = require("./core/Penguin")
 
 const DataHandler = require("./core/DataHandler")
