@@ -19,10 +19,7 @@ class DataHandler
 
 		this.database.getPlayer(username).then((result) =>
 		{
-			if (result.banned >= 1)
-			{
-				return penguin.sendError(603, true)
-			}
+			if (result.banned >= 1) return penguin.sendError(603, true)
 
 			if (this.server.type == "login")
 			{

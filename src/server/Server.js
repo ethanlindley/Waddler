@@ -3,8 +3,12 @@
 const Logger = require("./Logger")
 
 const Database = require("./core/Database")
+
 const DataHandler = require("./core/DataHandler")
 const ClubPenguin = require("./core/ClubPenguin")
+
+const roomManager = require("./core/managers/roomManager")
+
 const Penguin = require("./core/Penguin")
 
 class Server
@@ -20,6 +24,11 @@ class Server
 		this.gameHandler = new ClubPenguin(this)
 		this.dataHandler = new DataHandler(this)
 
+		if (this.type == "game")
+		{
+			this.roomManager = new roomManager(this)
+		}
+
 		this.startServer()
 
 		process.on("SIGINT", () => this.handleShutdown())
@@ -31,6 +40,8 @@ class Server
 		require("net").createServer(socket =>
 		{
 			socket.setEncoding("utf8")
+			socket.setTimeout(600000)
+			socket.setNoDelay(true)
 
 			const penguin = new Penguin(socket, this)
 
@@ -44,7 +55,7 @@ class Server
 			})
 			socket.on("close", () =>
 			{
-				Logger.info(`${penguin.ipAddr} disconnected`)
+				Logger.info(`Client disconnected`)
 				return penguin.disconnect()
 			})
 			socket.on("error", (error) =>
@@ -54,7 +65,7 @@ class Server
 			})
 		}).listen(this.port, () =>
 		{
-			Logger.info(`Waddler listening on port ${this.port}`)
+			Logger.info(`Waddler {${this.type}} listening on port ${this.port}`)
 		})
 	}
 

@@ -8,7 +8,8 @@ class Penguin
 	{
 		this.socket = socket
 		this.server = server
-		this.ipAddr = socket.remoteAddress.split(":").pop()
+		this.database = server.database
+		this.roomHandler = server.roomHandler
 	}
 
 	setPenguin(penguin)
@@ -36,6 +37,30 @@ class Penguin
 		this.frame = 1
 	}
 
+	buildPlayerString()
+	{
+		const playerArr = [
+			this.id,
+			this.username,
+			45,
+			this.color,
+			this.head,
+			this.face,
+			this.neck,
+			this.body,
+			this.hand,
+			this.feet,
+			this.pin,
+			this.photo,
+			this.x,
+			this.y,
+			this.frame,
+			1,
+			this.rank * 146
+		]
+		return playerArr.join("|")
+	}
+
 	sendRaw(data)
 	{
 		if (this.socket && this.socket.writable)
@@ -59,6 +84,14 @@ class Penguin
 	disconnect()
 	{
 		this.server.removePenguin(this)
+	}
+
+	updateColumn(column, value)
+	{
+		this.database.updateColumn(this.id, column, value).catch((err) =>
+		{
+			Logger.error(err)
+		})
 	}
 }
 
