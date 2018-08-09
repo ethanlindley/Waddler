@@ -66,7 +66,7 @@ class DataHandler
 
 				if (penguinObj)
 				{
-					penguinObj.disconnect()
+					return penguinObj.disconnect()
 				}
 
 				if (result.password == hash)
@@ -82,7 +82,6 @@ class DataHandler
 			}
 		}).catch((err) =>
 		{
-			console.log(err)
 			return penguin.sendError(100, true)
 		})
 	}
