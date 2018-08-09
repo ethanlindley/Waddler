@@ -24,19 +24,20 @@ class DataHandler
 		const username = data.split("CDATA[")[1].split("]]></nick>")[0]
 		const password = data.split("CDATA[")[2].split("]]></pword>")[0]
 
-		if (password.length == 0)
-		{
-			return penguin.sendError(130, true)
-		}
-		if (username.length == 0)
-		{
-			return penguin.sendError(140, true)
-		}
+		if (password.length == 0) return penguin.sendError(130, true)
+		if (username.length == 0) return penguin.sendError(140, true)
+
+		if (password.length > 32) return penguin.sendError(132, true)
+		if (username.length > 12) return penguin.sendError(142, true)
+
+		if (password.length < 4) return penguin.sendError(131, true)
+		if (username.length < 3) return penguin.sendError(141, true)
 
 		this.database.getPlayer(username).then((result) =>
 		{
 			if (result.banned >= 1)
 			{
+				Logger.warn(`${username} tried to login but is banned`)
 				return penguin.sendError(603, true)
 			}
 
@@ -94,10 +95,9 @@ class DataHandler
 	 */
 	handleData(data, penguin)
 	{
-		Logger.info(`INCOMING: ${data}`)
-
 		if (data.charAt(0) == "<" && data.charAt(data.length - 1) == ">")
 		{
+			Logger.incoming(data)
 
 			if (data == "<policy-file-request/>")
 			{
@@ -110,9 +110,8 @@ class DataHandler
 				if (type == "verChk")
 				{
 					const version = data.split("ver v='")[1].split("'")[0]
-					const room = data.split("r='")[1].split("'")[0]
 
-					if (version == 153 && room == 0)
+					if (version == 153)
 					{
 						return penguin.sendRaw(`<msg t="sys"><body action="apiOK" r="0"></body></msg>`)
 					}
@@ -123,40 +122,25 @@ class DataHandler
 				}
 				else if (type == "rndK")
 				{
-					const room = data.split("r='")[1].split("'")[0]
-
-					if (room == -1)
-					{
-						penguin.randomKey = GameDataEncryptor.generateRandomKey(12)
-						penguin.sendRaw(`<msg t="sys"><body action="rndK" r="-1"><k>${penguin.randomKey}</k></body></msg>`)
-					}
-					else
-					{
-						return penguin.disconnect()
-					}
+					penguin.randomKey = GameDataEncryptor.generateRandomKey(12)
+					penguin.sendRaw(`<msg t="sys"><body action="rndK" r="-1"><k>${penguin.randomKey}</k></body></msg>`)
 				}
 				else if (type == "login")
 				{
-					const room = data.split("r='")[1].split("'")[0]
-
-					if (room == 0)
-					{
-						return this.handleLogin(data, penguin)
-					}
-					else
-					{
-						return penguin.disconnect()
-					}
-				}
-				else
-				{
-					return penguin.disconnect()
+					return this.handleLogin(data, penguin)
 				}
 			}
 		}
 		else if (data.charAt(0) == "%" && data.charAt(data.length - 1) == "%")
 		{
+			Logger.incoming(data)
+
 			return this.server.gameHandler.handleGameData(data, penguin)
+		}
+		else
+		{
+			Logger.warn(`Unknown data received: ${data}`)
+			return penguin.disconnect()
 		}
 	}
 }

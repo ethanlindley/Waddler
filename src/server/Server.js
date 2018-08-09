@@ -19,8 +19,6 @@ class Server
 
 		this.penguins = []
 
-		this.patchedItems = [413, 444]
-
 		this.database = new Database()
 		this.gameHandler = new ClubPenguin(this)
 		this.dataHandler = new DataHandler(this)
@@ -77,11 +75,6 @@ class Server
 		}).listen(this.port, () =>
 		{
 			Logger.info(`Waddler {${this.type}} listening on port ${this.port}`)
-
-			if (this.type == "game")
-			{
-				Logger.info(`${this.patchedItems.length} patched item(s) loaded!`)
-			}
 		})
 	}
 	/*
@@ -92,6 +85,7 @@ class Server
 		for (const penguin of this.penguins)
 		{
 			const type = isNaN(player) ? penguin.username : penguin.id
+
 			if (type === player)
 			{
 				return penguin
@@ -106,6 +100,7 @@ class Server
 		for (const penguin of this.penguins)
 		{
 			const type = isNaN(player) ? penguin.username : penguin.id
+
 			if (type === player)
 			{
 				return true

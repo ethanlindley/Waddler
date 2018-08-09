@@ -53,7 +53,8 @@ class Penguin
 	 */
 	buildPlayerString()
 	{
-		if (!this.id || !this.username) return this.sendError(800, true)
+		if (!this.id || !this.username) return this.disconnect()
+
 		const playerArr = [
 			this.id,
 			this.username,
@@ -84,11 +85,21 @@ class Penguin
 
 		this.getColumn("itemid", "inventory").then((result) =>
 		{
-			result.forEach(row =>
+			if (result.length > 0)
 			{
-				inventory.push(row.itemid)
-			})
-			this.inventory = inventory
+				result.forEach(row =>
+				{
+					inventory.push(row.itemid)
+				})
+
+				this.inventory = inventory
+			}
+			else
+			{
+				Logger.cheat(`${this.username} has an empty inventory`)
+
+				this.disconnect()
+			}
 		}).catch((err) =>
 		{
 			Logger.error(err)
@@ -108,6 +119,14 @@ class Penguin
 	addCoins(coins)
 	{
 		this.coins += coins
+
+		if (coins > 9999 && !this.moderator)
+		{
+			Logger.cheat(`${this.username} tried to add a large amount of coins`)
+
+			return this.disconnect()
+		}
+
 		this.updateColumn("coins", this.coins)
 	}
 	/*
@@ -117,11 +136,6 @@ class Penguin
 	{
 		this.coins -= coins
 
-		if (this.coins < 0)
-		{
-			this.coins = 0
-		}
-
 		this.updateColumn("coins", this.coins)
 	}
 	/*
@@ -129,8 +143,10 @@ class Penguin
 	 */
 	addItem(item)
 	{
-		if (this.server.patchedItems.includes(item))
+		if (sp.getPatchedItems().includes(item) && !this.moderator)
 		{
+			Logger.cheat(`${this.username} tried to add a patched item`)
+
 			return this.sendError(410)
 		}
 
@@ -156,7 +172,7 @@ class Penguin
 	{
 		if (this.socket && this.socket.writable)
 		{
-			Logger.info(`OUTGOING: ${data}`)
+			Logger.outgoing(data)
 			this.socket.write(data + "\0")
 		}
 	}
@@ -166,16 +182,6 @@ class Penguin
 	sendXt()
 	{
 		this.sendRaw(`%xt%${Array.prototype.join.call(arguments, "%")}%`)
-	}
-	/*
-	 * Writes an array of packets (XT/raw).
-	 */
-	sendArray(arr)
-	{
-		for (const i in arr)
-		{
-			this.sendRaw(arr[i])
-		}
 	}
 	/*
 	 * Writes an error given by the error code.
