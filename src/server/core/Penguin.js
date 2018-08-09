@@ -138,7 +138,7 @@ class Penguin
 		{
 			this.inventory.push(item)
 
-			this.updateColumn("inventory", JSON.stringify(this.inventory))
+			this.database.insertItem(this.id, item)
 
 			this.sendXt("ai", -1, item, this.coins)
 		}

@@ -52,6 +52,20 @@ class Database
 
 		return this.knex(table == null ? "penguins" : table).select(column).where(type, player)
 	}
+	/*
+	 * Adds an item to the inventory table.
+	 */
+	insertItem(id, item)
+	{
+		return this.knex("inventory").insert(
+		{
+			id: id,
+			itemid: item
+		}).catch((err) =>
+		{
+			console.error(err)
+		})
+	}
 }
 
 module.exports = Database
