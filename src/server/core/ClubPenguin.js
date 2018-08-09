@@ -2,6 +2,7 @@
 
 const Logger = require("../Logger")
 
+const Clothing = require("./handlers/Clothing")
 const Navigation = require("./handlers/Navigation")
 const Player = require("./handlers/Player")
 const Toy = require("./handlers/Toy")
@@ -9,6 +10,18 @@ const Toy = require("./handlers/Toy")
 const xtHandlers = {
 	"s":
 	{
+		"s#upc": "handleUpdateClothing",
+		"s#uph": "handleUpdateClothing",
+		"s#upf": "handleUpdateClothing",
+		"s#upn": "handleUpdateClothing",
+		"s#upb": "handleUpdateClothing",
+		"s#upa": "handleUpdateClothing",
+		"s#upe": "handleUpdateClothing",
+		"s#upl": "handleUpdateClothing",
+		"s#upp": "handleUpdateClothing",
+		"i#ai": "handleAddItem",
+		"i#gi": "handleGetInventory",
+
 		"j#js": "handleJoinServer",
 		"j#jr": "handleJoinRoom",
 		"j#jp": "handleJoinPlayer",
@@ -62,6 +75,21 @@ class ClubPenguin
 		{
 			Logger.error(`Unknown handler: ${handler}`)
 		}
+	}
+	/*
+	 * Clothing.js
+	 */
+	handleUpdateClothing(data, penguin)
+	{
+		Clothing.handleUpdateClothing(data, penguin)
+	}
+	handleAddItem(data, penguin)
+	{
+		Clothing.handleAddItem(data, penguin)
+	}
+	handleGetInventory(data, penguin)
+	{
+		Clothing.handleGetInventory(data, penguin)
 	}
 	/*
 	 * Navigation.js

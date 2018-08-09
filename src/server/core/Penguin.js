@@ -43,6 +43,8 @@ class Penguin
 		this.x = 0
 		this.y = 0
 		this.frame = 1
+
+		this.getInventory()
 	}
 	/*
 	 * Builds the player string.
@@ -72,6 +74,78 @@ class Penguin
 			this.rank * 146
 		]
 		return playerArr.join("|")
+	}
+	/*
+	 * Gets the inventory from the player.
+	 */
+	getInventory()
+	{
+		let inventory = []
+
+		this.getColumn("itemid", "inventory").then((result) =>
+		{
+			result.forEach(row =>
+			{
+				inventory.push(row.itemid)
+			})
+			this.inventory = inventory
+		}).catch((err) =>
+		{
+			Logger.error(err)
+		})
+	}
+	/*
+	 * Updates the clothing for the player.
+	 */
+	updateClothing(type, item)
+	{
+		this[type] = item
+		this.updateColumn(type, item)
+	}
+	/*
+	 * Adds coins.
+	 */
+	addCoins(coins)
+	{
+		this.coins += coins
+		this.updateColumn("coins", this.coins)
+	}
+	/*
+	 * Removes coins.
+	 */
+	removeCoins(coins)
+	{
+		this.coins -= coins
+
+		if (this.coins < 0)
+		{
+			this.coins = 0
+		}
+
+		this.updateColumn("coins", this.coins)
+	}
+	/*
+	 * Adds an item.
+	 */
+	addItem(item)
+	{
+		if (this.server.patchedItems.includes(item))
+		{
+			return this.sendError(410)
+		}
+
+		if (!this.inventory.includes(item))
+		{
+			this.inventory.push(item)
+
+			this.updateColumn("inventory", JSON.stringify(this.inventory))
+
+			this.sendXt("ai", -1, item, this.coins)
+		}
+		else
+		{
+			this.sendError(400)
+		}
 	}
 	/*
 	 * Writes a raw packet to the socket.
@@ -109,7 +183,10 @@ class Penguin
 	sendError(err, disconnect)
 	{
 		this.sendXt("e", -1, err)
-		if (disconnect) this.disconnect()
+		if (disconnect)
+		{
+			this.disconnect()
+		}
 	}
 	/*
 	 * Disconnect a client.
@@ -121,12 +198,19 @@ class Penguin
 	/*
 	 * Update a column in the database.
 	 */
-	updateColumn(column, value)
+	updateColumn(column, value, table = null)
 	{
-		this.database.updateColumn(this.id, column, value).catch((err) =>
+		this.database.updateColumn(this.id, column, value, table).catch((err) =>
 		{
 			Logger.error(err)
 		})
+	}
+	/*
+	 * Gets the column from the database.
+	 */
+	getColumn(column, table = null)
+	{
+		return this.database.getColumn(this.id, column, table)
 	}
 }
 

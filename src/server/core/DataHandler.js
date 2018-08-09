@@ -24,9 +24,21 @@ class DataHandler
 		const username = data.split("CDATA[")[1].split("]]></nick>")[0]
 		const password = data.split("CDATA[")[2].split("]]></pword>")[0]
 
+		if (password.length == 0)
+		{
+			return penguin.sendError(130, true)
+		}
+		if (username.length == 0)
+		{
+			return penguin.sendError(140, true)
+		}
+
 		this.database.getPlayer(username).then((result) =>
 		{
-			if (result.banned >= 1) return penguin.sendError(603, true)
+			if (result.banned >= 1)
+			{
+				return penguin.sendError(603, true)
+			}
 
 			if (this.server.type == "login")
 			{
@@ -51,7 +63,11 @@ class DataHandler
 				const hash = GameDataEncryptor.hashPassword(GameDataEncryptor.decryptZaseth(password, result.loginkey))
 
 				const penguinObj = this.server.getPenguin(result.id)
-				if (penguinObj) penguinObj.disconnect()
+
+				if (penguinObj)
+				{
+					penguinObj.disconnect()
+				}
 
 				if (result.password == hash)
 				{
@@ -66,7 +82,7 @@ class DataHandler
 			}
 		}).catch((err) =>
 		{
-			Logger.error(err)
+			console.log(err)
 			return penguin.sendError(100, true)
 		})
 	}

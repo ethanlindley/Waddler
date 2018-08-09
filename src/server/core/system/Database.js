@@ -25,20 +25,32 @@ class Database
 	getPlayer(player)
 	{
 		const type = isNaN(player) ? "username" : "id"
+
 		return this.knex("penguins").first("*").where(type, player)
 	}
 	/*
-	 * Just like in getPlayer, check player type.
+	 * Checks if player is username or id.
 	 * Then, update the column.
 	 */
-	updateColumn(player, column, value)
+	updateColumn(player, column, value, table)
 	{
 		const type = isNaN(player) ? "username" : "id"
-		return this.knex("penguins").update(column, value).where(type, player).then(() =>
+
+		return this.knex(table == null ? "penguins" : table).update(column, value).where(type, player).then(() =>
 		{}).catch((err) =>
 		{
 			console.error(err)
 		})
+	}
+	/*
+	 * Checks if player is username or id.
+	 * Then, retrieve column value.
+	 */
+	getColumn(player, column, table)
+	{
+		const type = isNaN(player) ? "username" : "id"
+
+		return this.knex(table == null ? "penguins" : table).select(column).where(type, player)
 	}
 }
 

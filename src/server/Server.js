@@ -19,6 +19,8 @@ class Server
 
 		this.penguins = []
 
+		this.patchedItems = [413, 444]
+
 		this.database = new Database()
 		this.gameHandler = new ClubPenguin(this)
 		this.dataHandler = new DataHandler(this)
@@ -48,7 +50,10 @@ class Server
 
 			const penguin = new Penguin(socket, this)
 
-			if (this.penguins.length >= 100) return penguin.sendError(103, true)
+			if (this.penguins.length >= 100)
+			{
+				return penguin.sendError(103, true)
+			}
 
 			this.penguins.push(penguin)
 
@@ -56,19 +61,27 @@ class Server
 			{
 				return this.dataHandler.handleData(data.toString().split("\0")[0], penguin)
 			})
+
 			socket.on("close", () =>
 			{
 				Logger.info(`Client disconnected`)
 				return penguin.disconnect()
 			})
+
 			socket.on("error", (error) =>
 			{
 				Logger.error(error)
 				return penguin.disconnect()
 			})
+
 		}).listen(this.port, () =>
 		{
 			Logger.info(`Waddler {${this.type}} listening on port ${this.port}`)
+
+			if (this.type == "game")
+			{
+				Logger.info(`${this.patchedItems.length} patched item(s) loaded!`)
+			}
 		})
 	}
 	/*

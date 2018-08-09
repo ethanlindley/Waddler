@@ -30,7 +30,10 @@ class Room
 		this.penguins.push(penguin)
 		this.sendXt("ap", -1, penguin.buildPlayerString())
 
-		if (this.id > 1000) penguin.sendXt("jp", -1, this.id)
+		if (this.id > 1000)
+		{
+			penguin.sendXt("jp", -1, this.id)
+		}
 
 		if (this.penguins.length > 0)
 		{
