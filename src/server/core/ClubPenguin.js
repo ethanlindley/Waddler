@@ -2,6 +2,7 @@
 
 const Logger = require("../Logger")
 
+const Multiplayer = require("./handlers/Multiplayer")
 const Clothing = require("./handlers/Clothing")
 const Navigation = require("./handlers/Navigation")
 const Player = require("./handlers/Player")
@@ -45,6 +46,10 @@ const xtHandlers = {
 
 		"t#at": "handleOpenPlayerBook",
 		"t#rt": "handleClosePlayerBook"
+	},
+	"z":
+	{
+		"m": "handleMovePuck"
 	}
 }
 
@@ -78,6 +83,13 @@ class ClubPenguin
 			if (bannedHandlers.includes(handler)) return
 			Logger.error(`Unknown handler: ${handler}`)
 		}
+	}
+	/*
+	 * Multiplayer.js
+	 */
+	handleMovePuck(data, penguin)
+	{
+		Multiplayer.handleMovePuck(data, penguin)
 	}
 	/*
 	 * Clothing.js

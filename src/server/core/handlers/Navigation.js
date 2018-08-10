@@ -5,6 +5,8 @@ class Navigation
 	static handleJoinServer(data, penguin)
 	{
 		const randomRoom = [100, 110, 300, 400][Math.floor(Math.random() * 4)]
+		const x = Math.floor(Math.random() * 300) + 100
+		const y = Math.floor(Math.random() * 300) + 100
 
 		penguin.sendXt("js", -1, 1, Number(penguin.epf), Number(penguin.moderator), 1)
 		penguin.sendXt("gps", -1, "")
@@ -14,8 +16,8 @@ class Navigation
 		{
 			3: "j#jr",
 			4: randomRoom,
-			5: 0,
-			6: 0
+			5: x,
+			6: y
 		}, penguin)
 	}
 
