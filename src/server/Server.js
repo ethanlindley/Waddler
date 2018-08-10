@@ -6,7 +6,7 @@ const Database = require("./core/system/Database")
 const Penguin = require("./core/Penguin")
 
 const DataHandler = require("./core/DataHandler")
-const ClubPenguin = require("./core/ClubPenguin")
+const World = require("./core/World")
 
 const roomManager = require("./core/managers/roomManager")
 
@@ -20,7 +20,7 @@ class Server
 		this.penguins = []
 
 		this.database = new Database()
-		this.gameHandler = new ClubPenguin(this)
+		this.gameHandler = new World(this)
 		this.dataHandler = new DataHandler(this)
 
 		if (this.type == "game")

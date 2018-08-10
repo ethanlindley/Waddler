@@ -47,6 +47,12 @@ class Logger
 		console.log(`\x1b[46m%s\x1b[0m`, x)
 		this.saveLog("outgoing", x)
 	}
+	static unknown(msg)
+	{
+		const x = `[UNKNOWN PACKET] > ${msg}`
+		console.log(`\x1b[41m%s\x1b[0m`, x)
+		this.saveLog("unknown", x)
+	}
 }
 
 module.exports = Logger

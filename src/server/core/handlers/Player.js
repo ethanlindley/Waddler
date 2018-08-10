@@ -118,20 +118,6 @@ class Player
 		penguin.sendXt("h", -1)
 	}
 
-	static handleSendMessage(data, penguin)
-	{
-		const message = String(data[5])
-
-		if (message.length > 0 && message.length <= 48)
-		{
-			penguin.room.sendXt("sm", -1, penguin.id, message)
-		}
-		else
-		{
-			penguin.sendError(5, true)
-		}
-	}
-
 	static handleLastRevision(data, penguin)
 	{
 		penguin.sendXt("glr", -1, "Waddler")
@@ -146,17 +132,18 @@ class Player
 		penguin.sendXt("sl", -1, penguin.id, line)
 	}
 
-	static handleSendTeleport(data, penguin)
+	static handleSendMessage(data, penguin)
 	{
-		const x = parseInt(data[4]),
-			y = parseInt(data[5])
+		const message = String(data[5])
 
-		if (isNaN(x) || isNaN(y)) return penguin.disconnect()
-
-		penguin.x = x
-		penguin.y = y
-
-		penguin.sendXt("tp", -1, penguin.id, x, y)
+		if (message.length > 0 && message.length <= 48)
+		{
+			penguin.room.sendXt("sm", -1, penguin.id, message)
+		}
+		else
+		{
+			penguin.sendError(5, true)
+		}
 	}
 }
 
