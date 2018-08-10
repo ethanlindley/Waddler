@@ -36,7 +36,6 @@ class Penguin
 
 		this.rank = penguin.rank
 		this.moderator = (penguin.moderator >= 1)
-		this.epf = (penguin.epf >= 1)
 
 		this.x = 0
 		this.y = 0

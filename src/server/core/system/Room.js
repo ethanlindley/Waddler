@@ -15,8 +15,8 @@ class Room
 		let x = coords[0],
 			y = coords[1]
 
-		if (!x) x = 0
-		if (!y) y = 0
+		if (!x || isNaN(x)) x = 0
+		if (!y || isNaN(y)) y = 0
 
 		penguin.room = this
 

@@ -118,8 +118,6 @@ class DataHandler
 		}
 		else if (data.charAt(0) == "%" && data.charAt(data.length - 1) == "%")
 		{
-			Logger.incoming(data)
-
 			return this.server.gameHandler.handleGameData(data, penguin)
 		}
 		else

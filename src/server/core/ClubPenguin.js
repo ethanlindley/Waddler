@@ -7,6 +7,8 @@ const Navigation = require("./handlers/Navigation")
 const Player = require("./handlers/Player")
 const Toy = require("./handlers/Toy")
 
+const bannedHandlers = ["f#epfga", "f#epfsa", "f#epfgr", "f#epfgf", "f#epfai"]
+
 const xtHandlers = {
 	"s":
 	{
@@ -56,6 +58,8 @@ class ClubPenguin
 
 	handleGameData(data, penguin)
 	{
+		const packet = data
+
 		data = data.split("%")
 		data.shift()
 
@@ -65,10 +69,13 @@ class ClubPenguin
 
 		if (typeof this[method] == "function")
 		{
+			Logger.incoming(packet)
+
 			this[method](data, penguin)
 		}
 		else
 		{
+			if (bannedHandlers.includes(handler)) return
 			Logger.error(`Unknown handler: ${handler}`)
 		}
 	}
