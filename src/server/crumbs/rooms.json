@@ -1,1 +1,707 @@
-{"100":{"Game":"false","Internal":"1","Member":"false","MaxUsers":80},"110":{"Game":"false","Internal":"2","Member":"false","MaxUsers":80},"111":{"Game":"false","Internal":"3","Member":"false","MaxUsers":80},"112":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":800},"120":{"Game":"false","Internal":"4","Member":"false","MaxUsers":80},"121":{"Game":"false","Internal":"5","Member":"false","MaxUsers":80},"122":{"Game":"false","Internal":"6","Member":"false","MaxUsers":80},"130":{"Game":"false","Internal":"7","Member":"false","MaxUsers":80},"200":{"Game":"false","Internal":"8","Member":"false","MaxUsers":80},"210":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"211":{"Game":"false","Internal":"9","Member":"false","MaxUsers":80},"212":{"Game":"false","Internal":"10","Member":"false","MaxUsers":80},"213":{"Game":"false","Internal":"105","Member":"false","MaxUsers":80},"220":{"Game":"false","Internal":"11","Member":"false","MaxUsers":80},"221":{"Game":"false","Internal":"12","Member":"false","MaxUsers":80},"230":{"Game":"false","Internal":"13","Member":"false","MaxUsers":80},"300":{"Game":"false","Internal":"14","Member":"false","MaxUsers":80},"310":{"Game":"false","Internal":"15","Member":"false","MaxUsers":80},"320":{"Game":"false","Internal":"16","Member":"false","MaxUsers":80},"321":{"Game":"false","Internal":"17","Member":"false","MaxUsers":80},"323":{"Game":"false","Internal":"19","Member":"false","MaxUsers":80},"324":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"326":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"330":{"Game":"false","Internal":"20","Member":"false","MaxUsers":80},"340":{"Game":"false","Internal":"21","Member":"false","MaxUsers":80},"400":{"Game":"false","Internal":"22","Member":"false","MaxUsers":80},"410":{"Game":"false","Internal":"23","Member":"false","MaxUsers":80},"411":{"Game":"false","Internal":"24","Member":"false","MaxUsers":80},"420":{"Game":"false","Internal":"25","Member":"false","MaxUsers":80},"421":{"Game":"false","Internal":"26","Member":"false","MaxUsers":80},"422":{"Game":"false","Internal":"27","Member":"false","MaxUsers":80},"423":{"Game":"false","Internal":"28","Member":"false","MaxUsers":80},"430":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"431":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"432":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"433":{"Game":"false","Internal":-1,"Member":"true","MaxUsers":800},"435":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":800},"800":{"Game":"false","Internal":"29","Member":"false","MaxUsers":80},"801":{"Game":"false","Internal":"30","Member":"false","MaxUsers":80},"802":{"Game":"false","Internal":"31","Member":"false","MaxUsers":80},"803":{"Game":"false","Internal":"32","Member":"false","MaxUsers":80},"804":{"Game":"false","Internal":"33","Member":"false","MaxUsers":80},"805":{"Game":"false","Internal":"34","Member":"false","MaxUsers":80},"806":{"Game":"false","Internal":"35","Member":"false","MaxUsers":80},"807":{"Game":"false","Internal":"36","Member":"false","MaxUsers":80},"808":{"Game":"false","Internal":"37","Member":"false","MaxUsers":80},"809":{"Game":"false","Internal":"38","Member":"false","MaxUsers":80},"810":{"Game":"false","Internal":"39","Member":"false","MaxUsers":80},"811":{"Game":"false","Internal":"40","Member":"false","MaxUsers":80},"812":{"Game":"false","Internal":"41","Member":"false","MaxUsers":80},"813":{"Game":"false","Internal":"42","Member":"false","MaxUsers":80},"814":{"Game":"false","Internal":"43","Member":"false","MaxUsers":80},"815":{"Game":"false","Internal":"44","Member":"true","MaxUsers":80},"816":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"851":{"Game":"false","Internal":"45","Member":"false","MaxUsers":80},"852":{"Game":"false","Internal":"46","Member":"false","MaxUsers":80},"853":{"Game":"false","Internal":"47","Member":"false","MaxUsers":80},"854":{"Game":"false","Internal":"48","Member":"false","MaxUsers":80},"855":{"Game":"false","Internal":"49","Member":"false","MaxUsers":80},"856":{"Game":"false","Internal":"50","Member":"false","MaxUsers":80},"857":{"Game":"false","Internal":"51","Member":"false","MaxUsers":80},"858":{"Game":"false","Internal":"52","Member":"false","MaxUsers":80},"859":{"Game":"false","Internal":"53","Member":"false","MaxUsers":80},"860":{"Game":"false","Internal":"54","Member":"false","MaxUsers":80},"861":{"Game":"false","Internal":"55","Member":"true","MaxUsers":80},"862":{"Game":"false","Internal":"56","Member":"true","MaxUsers":80},"863":{"Game":"false","Internal":"57","Member":"true","MaxUsers":80},"864":{"Game":"false","Internal":"58","Member":"true","MaxUsers":80},"865":{"Game":"false","Internal":"59","Member":"true","MaxUsers":80},"866":{"Game":"false","Internal":"60","Member":"true","MaxUsers":80},"867":{"Game":"false","Internal":"61","Member":"true","MaxUsers":80},"868":{"Game":"false","Internal":"62","Member":"true","MaxUsers":80},"874":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"875":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"876":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"877":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"878":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"890":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"899":{"Game":"false","Internal":"63","Member":"false","MaxUsers":80},"900":{"Game":"true","Internal":"64","Member":"false","MaxUsers":800},"901":{"Game":"true","Internal":"65","Member":"false","MaxUsers":800},"902":{"Game":"true","Internal":"66","Member":"false","MaxUsers":800},"903":{"Game":"true","Internal":"67","Member":"false","MaxUsers":800},"904":{"Game":"true","Internal":"68","Member":"false","MaxUsers":800},"905":{"Game":"true","Internal":"69","Member":"false","MaxUsers":800},"906":{"Game":"true","Internal":"70","Member":"false","MaxUsers":800},"907":{"Game":"true","Internal":"71","Member":"false","MaxUsers":800},"908":{"Game":"true","Internal":"72","Member":"false","MaxUsers":800},"909":{"Game":"true","Internal":"73","Member":"false","MaxUsers":800},"910":{"Game":"true","Internal":"74","Member":"false","MaxUsers":800},"911":{"Game":"true","Internal":"75","Member":"false","MaxUsers":800},"912":{"Game":"true","Internal":"76","Member":"false","MaxUsers":800},"913":{"Game":"true","Internal":"77","Member":"false","MaxUsers":800},"914":{"Game":"true","Internal":"78","Member":"false","MaxUsers":800},"915":{"Game":"true","Internal":"79","Member":"false","MaxUsers":800},"916":{"Game":"true","Internal":"80","Member":"false","MaxUsers":800},"917":{"Game":"true","Internal":"81","Member":"false","MaxUsers":800},"918":{"Game":"true","Internal":"82","Member":"false","MaxUsers":800},"919":{"Game":"true","Internal":"83","Member":"false","MaxUsers":800},"920":{"Game":"true","Internal":"84","Member":"false","MaxUsers":800},"921":{"Game":"true","Internal":"85","Member":"false","MaxUsers":800},"922":{"Game":"true","Internal":"86","Member":"false","MaxUsers":800},"923":{"Game":"true","Internal":"87","Member":"false","MaxUsers":800},"924":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"925":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"926":{"Game":"true","Internal":"88","Member":"false","MaxUsers":800},"927":{"Game":"true","Internal":"89","Member":"false","MaxUsers":800},"941":{"Game":"true","Internal":"90","Member":"false","MaxUsers":800},"942":{"Game":"true","Internal":"91","Member":"false","MaxUsers":800},"943":{"Game":"true","Internal":"92","Member":"false","MaxUsers":800},"944":{"Game":"true","Internal":"93","Member":"false","MaxUsers":800},"945":{"Game":"true","Internal":"94","Member":"false","MaxUsers":800},"946":{"Game":"true","Internal":"95","Member":"false","MaxUsers":800},"947":{"Game":"true","Internal":"96","Member":"false","MaxUsers":800},"948":{"Game":"true","Internal":"97","Member":"false","MaxUsers":800},"949":{"Game":"true","Internal":"98","Member":"false","MaxUsers":800},"950":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":800},"951":{"Game":"true","Internal":"99","Member":"false","MaxUsers":80},"952":{"Game":"true","Internal":"100","Member":"false","MaxUsers":800},"953":{"Game":"true","Internal":"101","Member":"false","MaxUsers":800},"954":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":800},"955":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":800},"956":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":800},"957":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":800},"958":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":800},"959":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":800},"960":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":800},"963":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":800},"964":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":800},"994":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"995":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":80},"996":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":2000},"997":{"Game":"true","Internal":"102","Member":"false","MaxUsers":80},"998":{"Game":"true","Internal":"103","Member":"false","MaxUsers":0},"999":{"Game":"true","Internal":"104","Member":"true","MaxUsers":80},"1100":{"Game":"false","Internal":-1,"Member":"false","MaxUsers":0}}
+{
+	"100":
+	{
+		"Name": "Town Center",
+		"MaxUsers": 120
+	},
+	"110":
+	{
+		"Name": "Coffee Shop",
+		"MaxUsers": 80
+	},
+	"111":
+	{
+		"Name": "Mancala",
+		"MaxUsers": 80
+	},
+	"120":
+	{
+		"Name": "Night Club",
+		"MaxUsers": 80
+	},
+	"121":
+	{
+		"Name": "Lounge",
+		"MaxUsers": 80
+	},
+	"122":
+	{
+		"Name": "school",
+		"MaxUsers": 80
+	},
+	"130":
+	{
+		"Name": "Clothes Shop",
+		"MaxUsers": 80
+	},
+	"200":
+	{
+		"Name": "Ski Village",
+		"MaxUsers": 80
+	},
+	"210":
+	{
+		"Name": "Sports Shop",
+		"MaxUsers": 80
+	},
+	"212":
+	{
+		"Name": "Agent Lobby Multi",
+		"MaxUsers": 80
+	},
+	"220":
+	{
+		"Name": "Find Four (Lodge)",
+		"MaxUsers": 80
+	},
+	"221":
+	{
+		"Name": "Find Four (Attic)",
+		"MaxUsers": 80
+	},
+	"230":
+	{
+		"Name": "Ski Hill",
+		"MaxUsers": 80
+	},
+	"300":
+	{
+		"Name": "The Plaza",
+		"MaxUsers": 80
+	},
+	"310":
+	{
+		"Name": "Pet Shop",
+		"MaxUsers": 80
+	},
+	"320":
+	{
+		"Name": "The Dojo",
+		"MaxUsers": 80
+	},
+	"321":
+	{
+		"Name": "Dojo Exterior",
+		"MaxUsers": 80
+	},
+	"323":
+	{
+		"Name": "Agent Command",
+		"MaxUsers": 80
+	},
+	"324":
+	{
+		"Name": "Dojo Exterior Solo",
+		"MaxUsers": 80
+	},
+	"326":
+	{
+		"Name": "CJ Snow Dojo",
+		"MaxUsers": 80
+	},
+	"330":
+	{
+		"Name": "Pizza Parlor",
+		"MaxUsers": 80
+	},
+	"340":
+	{
+		"Name": "The Mall",
+		"MaxUsers": 80
+	},
+	"400":
+	{
+		"Name": "The Beach",
+		"MaxUsers": 80
+	},
+	"410":
+	{
+		"Name": "Lighthouse",
+		"MaxUsers": 80
+	},
+	"411":
+	{
+		"Name": "Beacon",
+		"MaxUsers": 80
+	},
+	"420":
+	{
+		"Name": "Pirate Ship",
+		"MaxUsers": 80
+	},
+	"421":
+	{
+		"Name": "Ship's Hold",
+		"MaxUsers": 80
+	},
+	"422":
+	{
+		"Name": "Treasure Hunt",
+		"MaxUsers": 80
+	},
+	"423":
+	{
+		"Name": "The Crows Nest",
+		"MaxUsers": 80
+	},
+	"430":
+	{
+		"Name": "Puffle Hotel Lobby",
+		"MaxUsers": 80
+	},
+	"431":
+	{
+		"Name": "Puffle Hotel Spa",
+		"MaxUsers": 80
+	},
+	"432":
+	{
+		"Name": "Puffle Hotel Roof",
+		"MaxUsers": 80
+	},
+	"433":
+	{
+		"Name": "Cloud Forest",
+		"MaxUsers": 800
+	},
+	"434":
+	{
+		"Name": "Puffle Park",
+		"MaxUsers": 80
+	},
+	"435":
+	{
+		"Name": "Skatepark",
+		"MaxUsers": 80
+	},
+	"436":
+	{
+		"Name": "Puffle Wild",
+		"MaxUsers": 80
+	},
+	"437":
+	{
+		"Name": "UFO",
+		"MaxUsers": 800
+	},
+	"800":
+	{
+		"Name": "The Dock",
+		"MaxUsers": 80
+	},
+	"801":
+	{
+		"Name": "Snow Forts",
+		"MaxUsers": 80
+	},
+	"802":
+	{
+		"Name": "Ice Rink",
+		"MaxUsers": 80
+	},
+	"803":
+	{
+		"Name": "HQ",
+		"MaxUsers": 80
+	},
+	"804":
+	{
+		"Name": "Boiler Room",
+		"MaxUsers": 80
+	},
+	"805":
+	{
+		"Name": "Ice Berg",
+		"MaxUsers": 80
+	},
+	"806":
+	{
+		"Name": "Underground Pool",
+		"MaxUsers": 80
+	},
+	"807":
+	{
+		"Name": "Mine Shack",
+		"MaxUsers": 80
+	},
+	"808":
+	{
+		"Name": "The Mine",
+		"MaxUsers": 80
+	},
+	"809":
+	{
+		"Name": "Forest",
+		"MaxUsers": 80
+	},
+	"810":
+	{
+		"Name": "Cove",
+		"MaxUsers": 80
+	},
+	"811":
+	{
+		"Name": "Box Dimension",
+		"MaxUsers": 80
+	},
+	"812":
+	{
+		"Name": "Dojo Fire",
+		"MaxUsers": 80
+	},
+	"813":
+	{
+		"Name": "Gold Mine",
+		"MaxUsers": 80
+	},
+	"814":
+	{
+		"Name": "Lake",
+		"MaxUsers": 80
+	},
+	"815":
+	{
+		"Name": "Underwater",
+		"MaxUsers": 80
+	},
+	"816":
+	{
+		"Name": "Card'jitsu Water",
+		"MaxUsers": 80
+	},
+	"851":
+	{
+		"Name": "Party1",
+		"MaxUsers": 80
+	},
+	"852":
+	{
+		"Name": "Party2",
+		"MaxUsers": 80
+	},
+	"853":
+	{
+		"Name": "Party3",
+		"MaxUsers": 80
+	},
+	"854":
+	{
+		"Name": "Party4",
+		"MaxUsers": 80
+	},
+	"855":
+	{
+		"Name": "Party5",
+		"MaxUsers": 80
+	},
+	"856":
+	{
+		"Name": "Party6",
+		"MaxUsers": 80
+	},
+	"857":
+	{
+		"Name": "Party7",
+		"MaxUsers": 80
+	},
+	"858":
+	{
+		"Name": "Party8",
+		"MaxUsers": 80
+	},
+	"859":
+	{
+		"Name": "Party9",
+		"MaxUsers": 80
+	},
+	"860":
+	{
+		"Name": "Party10",
+		"MaxUsers": 80
+	},
+	"861":
+	{
+		"Name": "Party11",
+		"MaxUsers": 80
+	},
+	"862":
+	{
+		"Name": "Party12",
+		"MaxUsers": 80
+	},
+	"863":
+	{
+		"Name": "Party13",
+		"MaxUsers": 80
+	},
+	"864":
+	{
+		"Name": "Party14",
+		"MaxUsers": 80
+	},
+	"865":
+	{
+		"Name": "Party15",
+		"MaxUsers": 80
+	},
+	"866":
+	{
+		"Name": "Party16",
+		"MaxUsers": 80
+	},
+	"867":
+	{
+		"Name": "Party17",
+		"MaxUsers": 80
+	},
+	"868":
+	{
+		"Name": "Party18",
+		"MaxUsers": 80
+	},
+	"869":
+	{
+		"Name": "party19",
+		"MaxUsers": 80
+	},
+	"874":
+	{
+		"Name": "Party24",
+		"MaxUsers": 80
+	},
+	"875":
+	{
+		"Name": "Party25",
+		"MaxUsers": 80
+	},
+	"876":
+	{
+		"Name": "Party26",
+		"MaxUsers": 80
+	},
+	"877":
+	{
+		"Name": "Party27",
+		"MaxUsers": 80
+	},
+	"878":
+	{
+		"Name": "Party28",
+		"MaxUsers": 80
+	},
+	"890":
+	{
+		"Name": "Party99",
+		"MaxUsers": 80
+	},
+	"891":
+	{
+		"Name": "partysolo1",
+		"MaxUsers": 800
+	},
+	"898":
+	{
+		"Name": "Sound Room",
+		"MaxUsers": 800
+	},
+	"899":
+	{
+		"Name": "Party",
+		"MaxUsers": 80
+	},
+	"900":
+	{
+		"Name": "Astro Barrier",
+		"MaxUsers": 800
+	},
+	"901":
+	{
+		"Name": "Bean Counters",
+		"MaxUsers": 800
+	},
+	"902":
+	{
+		"Name": "Puffle Roundup",
+		"MaxUsers": 800
+	},
+	"903":
+	{
+		"Name": "Hydro Hopper",
+		"MaxUsers": 800
+	},
+	"904":
+	{
+		"Name": "Ice Fishing",
+		"MaxUsers": 800
+	},
+	"905":
+	{
+		"Name": "Cart Surfer",
+		"MaxUsers": 800
+	},
+	"906":
+	{
+		"Name": "Jetpack Adventure",
+		"MaxUsers": 800
+	},
+	"907":
+	{
+		"Name": "Mission 1",
+		"MaxUsers": 800
+	},
+	"908":
+	{
+		"Name": "Mission 2",
+		"MaxUsers": 800
+	},
+	"909":
+	{
+		"Name": "Thin Ice",
+		"MaxUsers": 800
+	},
+	"910":
+	{
+		"Name": "Pizzatron 3000",
+		"MaxUsers": 800
+	},
+	"911":
+	{
+		"Name": "Mission 3",
+		"MaxUsers": 800
+	},
+	"912":
+	{
+		"Name": "Catchin' Waves",
+		"MaxUsers": 800
+	},
+	"913":
+	{
+		"Name": "Mission 4",
+		"MaxUsers": 800
+	},
+	"914":
+	{
+		"Name": "Mission 5",
+		"MaxUsers": 800
+	},
+	"915":
+	{
+		"Name": "Mission 6",
+		"MaxUsers": 800
+	},
+	"916":
+	{
+		"Name": "Aqua Grabber",
+		"MaxUsers": 800
+	},
+	"917":
+	{
+		"Name": "Paint By Letters: My Puffle",
+		"MaxUsers": 800
+	},
+	"918":
+	{
+		"Name": "Paint By Letters: Burnt out Bulbs",
+		"MaxUsers": 800
+	},
+	"919":
+	{
+		"Name": "Paint By Letters: Lime Green Dojo Clean",
+		"MaxUsers": 800
+	},
+	"920":
+	{
+		"Name": "Mission 7",
+		"MaxUsers": 800
+	},
+	"921":
+	{
+		"Name": "Mission 8",
+		"MaxUsers": 800
+	},
+	"922":
+	{
+		"Name": "Mission 9",
+		"MaxUsers": 800
+	},
+	"923":
+	{
+		"Name": "Mission 10",
+		"MaxUsers": 800
+	},
+	"924":
+	{
+		"Name": "Game24",
+		"MaxUsers": 80
+	},
+	"925":
+	{
+		"Name": "Game25",
+		"MaxUsers": 80
+	},
+	"926":
+	{
+		"Name": "DJ3K",
+		"MaxUsers": 800
+	},
+	"927":
+	{
+		"Name": "Mission 11",
+		"MaxUsers": 800
+	},
+	"941":
+	{
+		"Name": "Puffle Soaker",
+		"MaxUsers": 800
+	},
+	"942":
+	{
+		"Name": "Balloon Pop",
+		"MaxUsers": 800
+	},
+	"943":
+	{
+		"Name": "Ring the Bell",
+		"MaxUsers": 800
+	},
+	"944":
+	{
+		"Name": "Feed a Puffle",
+		"MaxUsers": 800
+	},
+	"945":
+	{
+		"Name": "Memory Card",
+		"MaxUsers": 800
+	},
+	"946":
+	{
+		"Name": "Puffle paddle",
+		"MaxUsers": 800
+	},
+	"947":
+	{
+		"Name": "Puffle Shuffle",
+		"MaxUsers": 800
+	},
+	"948":
+	{
+		"Name": "Grab and Spin",
+		"MaxUsers": 800
+	},
+	"949":
+	{
+		"Name": "Puffle Rescue",
+		"MaxUsers": 800
+	},
+	"950":
+	{
+		"Name": "System Defender",
+		"MaxUsers": 800
+	},
+	"951":
+	{
+		"Name": "Sensei",
+		"MaxUsers": 80
+	},
+	"952":
+	{
+		"Name": "Dance Contest",
+		"MaxUsers": 800
+	},
+	"953":
+	{
+		"Name": "Fire Sensei",
+		"MaxUsers": 800
+	},
+	"954":
+	{
+		"Name": "Water Sensei",
+		"MaxUsers": 800
+	},
+	"955":
+	{
+		"Name": "Puffle Launch",
+		"MaxUsers": 800
+	},
+	"956":
+	{
+		"Name": "Bits And Bolts",
+		"MaxUsers": 800
+	},
+	"957":
+	{
+		"Name": "Rollerscape",
+		"MaxUsers": 800
+	},
+	"958":
+	{
+		"Name": "Scorn Battle",
+		"MaxUsers": 800
+	},
+	"959":
+	{
+		"Name": "Smoothie",
+		"MaxUsers": 800
+	},
+	"960":
+	{
+		"Name": "Ice Jam",
+		"MaxUsers": 800
+	},
+	"961":
+	{
+		"Name": "DinoDig",
+		"MaxUsers": 800
+	},
+	"962":
+	{
+		"Name": "Party Game",
+		"MaxUsers": 800
+	},
+	"963":
+	{
+		"Name": "Spy Drills",
+		"MaxUsers": 800
+	},
+	"994":
+	{
+		"Name": "igloo_card",
+		"MaxUsers": 80
+	},
+	"995":
+	{
+		"Name": "Card'jitsu Water",
+		"MaxUsers": 80
+	},
+	"996":
+	{
+		"Name": "",
+		"MaxUsers": 2000
+	},
+	"997":
+	{
+		"Name": "Card'jitsu Fire",
+		"MaxUsers": 80
+	},
+	"998":
+	{
+		"Name": "Card Jitsu",
+		"MaxUsers": 0
+	},
+	"999":
+	{
+		"Name": "Sled Race",
+		"MaxUsers": 80
+	},
+	"1100":
+	{
+		"Name": "My Penguin ",
+		"MaxUsers": 0
+	},
+	"1104":
+	{
+		"Name": "Gold Mine",
+		"MaxUsers": 80
+	}
+}
