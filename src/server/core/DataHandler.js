@@ -10,15 +10,10 @@ class DataHandler
 	{
 		this.server = server
 		this.database = server.database
+
+		this.failedLogins = {}
 	}
-	/*
-	 * Inputted password '123123' -> Custom encryption to server
-	 * Server decrypts it -> '123123' gets hashed to Keccak256 and then compared.
-	 *
-	 * We don't use XML libraries to parse.
-	 * Why? Because split works just fine.
-	 * This will save some resources as well.
-	 */
+
 	handleLogin(data, penguin)
 	{
 		const username = data.split("CDATA[")[1].split("]]></nick>")[0]
@@ -43,10 +38,15 @@ class DataHandler
 
 			if (this.server.type == "login")
 			{
+				if (this.failedLogins[penguin.ipAddr] == undefined) this.failedLogins[penguin.ipAddr] = []
+				if (this.failedLogins[penguin.ipAddr].length >= 7) return penguin.sendError(150, true)
+
 				const hash = GameDataEncryptor.hashPassword(GameDataEncryptor.decryptZaseth(password, penguin.randomKey))
 
-				if (result.password == hash)
+				if (result.password == hash && this.failedLogins[penguin.ipAddr].length < 7)
 				{
+					delete this.failedLogins[penguin.ipAddr]
+
 					penguin.loginKey = GameDataEncryptor.generateRandomKey(12)
 
 					this.database.updateColumn(username, "loginkey", penguin.loginKey)
@@ -56,6 +56,8 @@ class DataHandler
 				}
 				else
 				{
+					this.failedLogins[penguin.ipAddr].push(1)
+
 					return penguin.sendError(101, true)
 				}
 			}
@@ -65,10 +67,7 @@ class DataHandler
 
 				const penguinObj = this.server.getPenguin(result.id)
 
-				if (penguinObj)
-				{
-					return penguinObj.disconnect()
-				}
+				if (penguinObj) return penguinObj.disconnect()
 
 				if (result.password == hash)
 				{
@@ -79,6 +78,7 @@ class DataHandler
 				{
 					return penguin.sendError(101, true)
 				}
+
 				this.database.updateColumn(result.id, "loginkey", "")
 			}
 		}).catch((err) =>
@@ -86,13 +86,7 @@ class DataHandler
 			return penguin.sendError(100, true)
 		})
 	}
-	/*
-	 * We check if the incoming data starts with '<' and ends with '>'.
-	 * If it doesn't start and end with that, it's a game packet.
-	 * The packet is also checked if it starts with '%' and ends with '%'.
-	 *
-	 * Same as in handleLogin, no XML parsing libraries are used.
-	 */
+
 	handleData(data, penguin)
 	{
 		if (data.charAt(0) == "<" && data.charAt(data.length - 1) == ">")
@@ -109,16 +103,7 @@ class DataHandler
 
 				if (type == "verChk")
 				{
-					const version = data.split("ver v='")[1].split("'")[0]
-
-					if (version == 153)
-					{
-						return penguin.sendRaw(`<msg t="sys"><body action="apiOK" r="0"></body></msg>`)
-					}
-					else
-					{
-						return penguin.disconnect()
-					}
+					return penguin.sendRaw(`<msg t="sys"><body action="apiOK" r="0"></body></msg>`)
 				}
 				else if (type == "rndK")
 				{

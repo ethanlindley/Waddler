@@ -53,11 +53,7 @@ class ClubPenguin
 		this.server = server
 		this.database = server.database
 	}
-	/*
-	 * Handles the game data.
-	 * The incoming XT packet is parsed.
-	 * After it's parsed, the right handler is signed to it.
-	 */
+
 	handleGameData(data, penguin)
 	{
 		data = data.split("%")

@@ -10,14 +10,11 @@ class Penguin
 	{
 		this.socket = socket
 		this.server = server
+		this.ipAddr = socket.remoteAddress.split(":").pop()
 		this.database = server.database
 		this.roomHandler = server.roomHandler
 	}
-	/*
-	 * Sets the client.
-	 *
-	 * penguin is SQL retrieved data, an object actually.
-	 */
+
 	setPenguin(penguin)
 	{
 		this.id = penguin.id
@@ -39,6 +36,7 @@ class Penguin
 
 		this.rank = penguin.rank
 		this.moderator = (penguin.moderator >= 1)
+		this.epf = (penguin.epf >= 1)
 
 		this.x = 0
 		this.y = 0
@@ -46,11 +44,7 @@ class Penguin
 
 		this.getInventory()
 	}
-	/*
-	 * Builds the player string.
-	 *
-	 * Before the player string is built, we check if the player has been set.
-	 */
+
 	buildPlayerString()
 	{
 		if (!this.id || !this.username) return this.disconnect()
@@ -76,9 +70,7 @@ class Penguin
 		]
 		return playerArr.join("|")
 	}
-	/*
-	 * Gets the inventory from the player.
-	 */
+
 	getInventory()
 	{
 		let inventory = []
@@ -105,17 +97,13 @@ class Penguin
 			Logger.error(err)
 		})
 	}
-	/*
-	 * Updates the clothing for the player.
-	 */
+
 	updateClothing(type, item)
 	{
 		this[type] = item
 		this.updateColumn(type, item)
 	}
-	/*
-	 * Adds coins.
-	 */
+
 	addCoins(coins)
 	{
 		this.coins += coins
@@ -129,18 +117,14 @@ class Penguin
 
 		this.updateColumn("coins", this.coins)
 	}
-	/*
-	 * Removes coins.
-	 */
+
 	removeCoins(coins)
 	{
 		this.coins -= coins
 
 		this.updateColumn("coins", this.coins)
 	}
-	/*
-	 * Adds an item.
-	 */
+
 	addItem(item)
 	{
 		if (sp.getPatchedItems().includes(item) && !this.moderator)
@@ -163,11 +147,7 @@ class Penguin
 			this.sendError(400)
 		}
 	}
-	/*
-	 * Writes a raw packet to the socket.
-	 *
-	 * The socket is checked as well before writing to it.
-	 */
+
 	sendRaw(data)
 	{
 		if (this.socket && this.socket.writable)
@@ -176,34 +156,24 @@ class Penguin
 			this.socket.write(data + "\0")
 		}
 	}
-	/*
-	 * Joins the XT packet and writes it.
-	 */
+
 	sendXt()
 	{
 		this.sendRaw(`%xt%${Array.prototype.join.call(arguments, "%")}%`)
 	}
-	/*
-	 * Writes an error given by the error code.
-	 */
+
 	sendError(err, disconnect)
 	{
 		this.sendXt("e", -1, err)
-		if (disconnect)
-		{
-			this.disconnect()
-		}
+
+		if (disconnect) this.disconnect()
 	}
-	/*
-	 * Disconnect a client.
-	 */
+
 	disconnect()
 	{
 		this.server.removePenguin(this)
 	}
-	/*
-	 * Update a column in the database.
-	 */
+
 	updateColumn(column, value, table = null)
 	{
 		this.database.updateColumn(this.id, column, value, table).catch((err) =>
@@ -211,9 +181,7 @@ class Penguin
 			Logger.error(err)
 		})
 	}
-	/*
-	 * Gets the column from the database.
-	 */
+
 	getColumn(column, table = null)
 	{
 		return this.database.getColumn(this.id, column, table)

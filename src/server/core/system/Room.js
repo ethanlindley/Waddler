@@ -9,9 +9,7 @@ class Room
 		this.parent = manager
 		this.server = manager.server
 	}
-	/*
-	 * Adds the player in a room.
-	 */
+
 	addPenguin(penguin, coords)
 	{
 		let x = coords[0],
@@ -30,10 +28,7 @@ class Room
 		this.penguins.push(penguin)
 		this.sendXt("ap", -1, penguin.buildPlayerString())
 
-		if (this.id > 1000)
-		{
-			penguin.sendXt("jp", -1, this.id)
-		}
+		if (this.id > 1000) penguin.sendXt("jp", -1, this.id)
 
 		if (this.penguins.length > 0)
 		{
@@ -44,9 +39,7 @@ class Room
 			penguin.sendXt("jr", -1, this.id)
 		}
 	}
-	/*
-	 * Removes the player from a room.
-	 */
+
 	removePenguin(penguin)
 	{
 		const index = this.penguins.indexOf(penguin)
@@ -54,37 +47,26 @@ class Room
 		if (index > -1)
 		{
 			this.penguins.splice(index, 1)
+
 			this.sendXt("rp", -1, penguin.id)
 		}
 	}
-	/*
-	 * Writes a raw packet to the socket.
-	 */
+
 	sendRaw(data)
 	{
-		for (const penguin of this.penguins)
-		{
-			penguin.sendRaw(data)
-		}
+		for (const penguin of this.penguins) penguin.sendRaw(data)
 	}
-	/*
-	 * Writes XT packet to all players in a room.
-	 */
+
 	sendXt()
 	{
 		this.sendRaw(`%xt%${Array.prototype.join.call(arguments, "%")}%`)
 	}
-	/*
-	 * Builds the room string (players in a room).
-	 */
+
 	buildRoomString()
 	{
 		let roomStr = ""
 
-		for (const penguin of this.penguins)
-		{
-			roomStr += `%${penguin.buildPlayerString()}`
-		}
+		for (const penguin of this.penguins) roomStr += `%${penguin.buildPlayerString()}`
 
 		return roomStr.substr(1)
 	}

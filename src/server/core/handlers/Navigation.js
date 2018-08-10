@@ -2,14 +2,11 @@
 
 class Navigation
 {
-	/*
-	 * Handles players joining the server.
-	 */
 	static handleJoinServer(data, penguin)
 	{
 		const randomRoom = [100, 110, 300, 400][Math.floor(Math.random() * 4)]
 
-		penguin.sendXt("js", -1, 0, 1, penguin.moderator ? 1 : 0)
+		penguin.sendXt("js", -1, 1, Number(penguin.epf), Number(penguin.moderator), 1)
 		penguin.sendXt("gps", -1, "")
 		penguin.sendXt("lp", -1, penguin.buildPlayerString(), penguin.coins, 0, 1440, Math.floor(new Date() / 1000), penguin.age, 4, 1)
 
@@ -21,11 +18,7 @@ class Navigation
 			6: 0
 		}, penguin)
 	}
-	/*
-	 * Handles players joining a room.
-	 * The difference here is that this is sent on handleJoinServer.
-	 * Also we check if the player is joining a game room based on the room they want to join.
-	 */
+
 	static handleJoinRoom(data, penguin)
 	{
 		const room = parseInt(data[4])
@@ -50,9 +43,7 @@ class Navigation
 			penguin.sendError(210)
 		}
 	}
-	/*
-	 * Handles players joining a room.
-	 */
+
 	static handleJoinPlayer(data, penguin)
 	{
 		let room = parseInt(data[4])

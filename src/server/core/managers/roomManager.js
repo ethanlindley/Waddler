@@ -21,10 +21,7 @@ class roomManager
 			}
 		}
 	}
-	/*
-	 * Creates a room.
-	 * We first check if the room doesn't exist before creating it.
-	 */
+
 	createRoom(id)
 	{
 		if (!this.rooms[id])
@@ -36,10 +33,7 @@ class roomManager
 			Logger.error(`Tried to create room ${id} but it already exists`)
 		}
 	}
-	/*
-	 * Gets information from a room.
-	 * We first check if the room exists.
-	 */
+
 	getRoom(id)
 	{
 		if (this.rooms[id])
@@ -51,10 +45,7 @@ class roomManager
 			Logger.error(`Tried to get room ${id} but it doesn't exist`)
 		}
 	}
-	/*
-	 * Checks if the igloo is open.
-	 * We first check if the room exists.
-	 */
+
 	checkIgloo(id)
 	{
 		if (this.rooms[id])
@@ -65,10 +56,7 @@ class roomManager
 			}
 		}
 	}
-	/*
-	 * Closes the igloo.
-	 * We first check if the room exists.
-	 */
+
 	closeIgloo(id)
 	{
 		if (this.rooms[id])
