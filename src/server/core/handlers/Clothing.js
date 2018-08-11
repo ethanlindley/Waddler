@@ -1,10 +1,8 @@
 "use strict"
 
-class Clothing
-{
-	static handleUpdateClothing(data, penguin)
-	{
-		const type = data[2].substr(2),
+class Clothing {
+	static handleUpdateClothing(data, penguin) {
+		const type = String(data[2].substr(2)),
 			item = parseInt(data[4])
 
 		const types = {
@@ -19,41 +17,33 @@ class Clothing
 			"upp": "photo"
 		}
 
+		if (type.length != 3) return penguin.disconnect()
 		if (isNaN(item)) return penguin.disconnect()
+		if (!types[type]) return penguin.disconnect()
 
-		if (types[type])
-		{
-			penguin.room.sendXt(type, -1, penguin.id, item)
-			penguin.updateClothing(types[type], item)
-		}
+		penguin.room.sendXt(type, -1, penguin.id, item)
+		penguin.updateClothing(types[type], item)
 	}
 
-	static handleAddItem(data, penguin)
-	{
+	static handleAddItem(data, penguin) {
 		const item = parseInt(data[4])
 
 		if (isNaN(item)) return penguin.disconnect()
 
 		const items = require("../../crumbs/items")
 
-		if (items[item])
-		{
-			const cost = items[item].cost
+		if (!items[item]) return penguin.sendError(402)
 
-			if (penguin.inventory.includes(item)) return penguin.sendError(400)
-			if (penguin.coins < cost) return penguin.sendError(401)
+		const cost = items[item].cost
 
-			penguin.removeCoins(cost)
-			penguin.addItem(item)
-		}
-		else
-		{
-			penguin.sendError(402)
-		}
+		if (penguin.inventory.includes(item)) return penguin.sendError(400)
+		if (penguin.coins < cost) return penguin.sendError(401)
+
+		penguin.removeCoins(cost)
+		penguin.addItem(item)
 	}
 
-	static handleGetInventory(data, penguin)
-	{
+	static handleGetInventory(data, penguin) {
 		penguin.getInventory()
 		penguin.sendXt("gi", -1, penguin.inventory.join("%"))
 	}

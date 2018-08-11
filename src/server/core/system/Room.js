@@ -1,17 +1,14 @@
 "use strict"
 
-class Room
-{
-	constructor(id, manager)
-	{
+class Room {
+	constructor(id, manager) {
 		this.penguins = []
 		this.id = id
 		this.parent = manager
 		this.server = manager.server
 	}
 
-	addPenguin(penguin, coords)
-	{
+	addPenguin(penguin, coords) {
 		let x = coords[0],
 			y = coords[1]
 
@@ -30,40 +27,32 @@ class Room
 
 		if (this.id > 1000) penguin.sendXt("jp", -1, this.id)
 
-		if (this.penguins.length > 0)
-		{
+		if (this.penguins.length > 0) {
 			penguin.sendXt("jr", -1, this.id, this.buildRoomString())
-		}
-		else
-		{
+		} else {
 			penguin.sendXt("jr", -1, this.id)
 		}
 	}
 
-	removePenguin(penguin)
-	{
+	removePenguin(penguin) {
 		const index = this.penguins.indexOf(penguin)
 
-		if (index > -1)
-		{
+		if (index > -1) {
 			this.penguins.splice(index, 1)
 
 			this.sendXt("rp", -1, penguin.id)
 		}
 	}
 
-	sendRaw(data)
-	{
+	sendRaw(data) {
 		for (const penguin of this.penguins) penguin.sendRaw(data)
 	}
 
-	sendXt()
-	{
+	sendXt() {
 		this.sendRaw(`%xt%${Array.prototype.join.call(arguments, "%")}%`)
 	}
 
-	buildRoomString()
-	{
+	buildRoomString() {
 		let roomStr = ""
 
 		for (const penguin of this.penguins) roomStr += `%${penguin.buildPlayerString()}`

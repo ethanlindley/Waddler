@@ -4,10 +4,8 @@ const Logger = require("../Logger")
 
 const sp = require("./utils/sp")
 
-class Penguin
-{
-	constructor(socket, server)
-	{
+class Penguin {
+	constructor(socket, server) {
 		this.socket = socket
 		this.server = server
 		this.ipAddr = socket.remoteAddress.split(":").pop()
@@ -15,8 +13,7 @@ class Penguin
 		this.roomHandler = server.roomHandler
 	}
 
-	setPenguin(penguin)
-	{
+	setPenguin(penguin) {
 		this.id = penguin.id
 		this.username = penguin.username
 
@@ -40,12 +37,12 @@ class Penguin
 		this.x = 0
 		this.y = 0
 		this.frame = 1
+		this.coinDig = 0
 
 		this.getInventory()
 	}
 
-	buildPlayerString()
-	{
+	buildPlayerString() {
 		if (!this.id || !this.username) return this.disconnect()
 
 		const playerArr = [
@@ -70,119 +67,81 @@ class Penguin
 		return playerArr.join("|")
 	}
 
-	getInventory()
-	{
+	getInventory() {
 		let inventory = []
 
-		this.getColumn("itemid", "inventory").then((result) =>
-		{
-			if (result.length > 0)
-			{
-				result.forEach(row =>
-				{
-					inventory.push(row.itemid)
-				})
+		this.getColumn("itemid", "inventory").then((result) => {
+			if (result.length <= 0) return this.disconnect()
 
-				this.inventory = inventory
-			}
-			else
-			{
-				Logger.cheat(`${this.username} has an empty inventory`)
+			result.forEach(row => {
+				inventory.push(row.itemid)
+			})
 
-				this.disconnect()
-			}
-		}).catch((err) =>
-		{
+			this.inventory = inventory
+		}).catch((err) => {
 			Logger.error(err)
 		})
 	}
 
-	updateClothing(type, item)
-	{
+	updateClothing(type, item) {
 		this[type] = item
 		this.updateColumn(type, item)
 	}
 
-	addCoins(coins)
-	{
+	addCoins(coins) {
 		this.coins += coins
 
-		if (coins > 9999 && !this.moderator)
-		{
-			Logger.cheat(`${this.username} tried to add a large amount of coins`)
-
-			return this.disconnect()
-		}
+		if (coins > 9999 && !this.moderator) return this.disconnect()
 
 		this.updateColumn("coins", this.coins)
 	}
 
-	removeCoins(coins)
-	{
+	removeCoins(coins) {
 		this.coins -= coins
 
 		this.updateColumn("coins", this.coins)
 	}
 
-	addItem(item)
-	{
-		if (sp.getPatchedItems().includes(item) && !this.moderator)
-		{
-			Logger.cheat(`${this.username} tried to add a patched item`)
+	addItem(item) {
+		if (sp.getPatchedItems().includes(item) && !this.moderator) return this.sendError(410)
 
-			return this.sendError(410)
-		}
+		if (this.inventory.includes(item)) return this.sendError(400)
 
-		if (!this.inventory.includes(item))
-		{
-			this.inventory.push(item)
+		this.inventory.push(item)
 
-			this.database.insertItem(this.id, item)
+		this.database.insertItem(this.id, item)
 
-			this.sendXt("ai", -1, item, this.coins)
-		}
-		else
-		{
-			this.sendError(400)
-		}
+		this.sendXt("ai", -1, item, this.coins)
 	}
 
-	sendRaw(data)
-	{
-		if (this.socket && this.socket.writable)
-		{
+	sendRaw(data) {
+		if (this.socket && this.socket.writable) {
 			Logger.outgoing(data)
 			this.socket.write(data + "\0")
 		}
 	}
 
-	sendXt()
-	{
+	sendXt() {
 		this.sendRaw(`%xt%${Array.prototype.join.call(arguments, "%")}%`)
 	}
 
-	sendError(err, disconnect)
-	{
+	sendError(err, disconnect) {
 		this.sendXt("e", -1, err)
 
 		if (disconnect) this.disconnect()
 	}
 
-	disconnect()
-	{
+	disconnect() {
 		this.server.removePenguin(this)
 	}
 
-	updateColumn(column, value, table = null)
-	{
-		this.database.updateColumn(this.id, column, value, table).catch((err) =>
-		{
+	updateColumn(column, value, table = null) {
+		this.database.updateColumn(this.id, column, value, table).catch((err) => {
 			Logger.error(err)
 		})
 	}
 
-	getColumn(column, table = null)
-	{
+	getColumn(column, table = null) {
 		return this.database.getColumn(this.id, column, table)
 	}
 }

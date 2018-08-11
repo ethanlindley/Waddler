@@ -10,10 +10,8 @@ const World = require("./core/World")
 
 const roomManager = require("./core/managers/roomManager")
 
-class Server
-{
-	constructor(type)
-	{
+class Server {
+	constructor(type) {
 		this.type = type
 		this.port = type == "login" ? 6112 : 6113
 
@@ -23,8 +21,7 @@ class Server
 		this.gameHandler = new World(this)
 		this.dataHandler = new DataHandler(this)
 
-		if (this.type == "game")
-		{
+		if (this.type == "game") {
 			this.roomManager = new roomManager(this)
 		}
 
@@ -34,10 +31,8 @@ class Server
 		process.on("SIGTERM", () => this.handleShutdown())
 	}
 
-	startServer()
-	{
-		require("net").createServer(socket =>
-		{
+	startServer() {
+		require("net").createServer(socket => {
 			socket.setEncoding("utf8")
 			socket.setTimeout(600000)
 			socket.setNoDelay(true)
@@ -48,21 +43,19 @@ class Server
 
 			this.penguins.push(penguin)
 
-			socket.on("data", (data) =>
-			{
+			Logger.info(`${penguin.ipAddr} connected`)
+
+			socket.on("data", (data) => {
 				return this.dataHandler.handleData(data.toString().split("\0")[0], penguin)
 			})
 
-			socket.on("close", () =>
-			{
-				Logger.info(`Client disconnected`)
+			socket.on("close", () => {
+				Logger.info(`${penguin.ipAddr} disconnected`)
 				return penguin.disconnect()
 			})
 
-			socket.on("error", (error) =>
-			{
-				if (this.type == "game" && error == "ECONNRESET")
-				{
+			socket.on("error", (error) => {
+				if (this.type == "game" && error == "ECONNRESET") {
 					return penguin.sendError(1, true)
 				}
 
@@ -70,65 +63,50 @@ class Server
 				return penguin.disconnect()
 			})
 
-		}).listen(this.port, () =>
-		{
+		}).listen(this.port, () => {
 			Logger.info(`Waddler {${this.type}} listening on port ${this.port}`)
 		})
 	}
 
-	getPenguin(player)
-	{
-		for (const penguin of this.penguins)
-		{
+	getPenguin(player) {
+		for (const penguin of this.penguins) {
 			const type = isNaN(player) ? penguin.username : penguin.id
-			if (type === player)
-			{
+			if (type === player) {
 				return penguin
 			}
 		}
 	}
 
-	isPenguinOnline(player)
-	{
-		for (const penguin of this.penguins)
-		{
+	isPenguinOnline(player) {
+		for (const penguin of this.penguins) {
 			const type = isNaN(player) ? penguin.username : penguin.id
-			if (type === player)
-			{
+			if (type === player) {
 				return true
 			}
 		}
 		return false
 	}
 
-	handleShutdown()
-	{
-		if (this.penguins.length > 0)
-		{
+	handleShutdown() {
+		if (this.penguins.length > 0) {
 			Logger.info("Server shutting down in 3 seconds")
 			Logger.info(`Disconnecting ${this.penguins.length} client(s)`)
-			setTimeout(() =>
-			{
-				for (const penguin of this.penguins)
-				{
+			setTimeout(() => {
+				for (const penguin of this.penguins) {
 					penguin.disconnect()
 				}
 				process.exit(0)
 			}, 3000)
-		}
-		else
-		{
+		} else {
 			Logger.info("No clients connected, shutting down instantly")
 			process.exit(0)
 		}
 	}
 
-	removePenguin(penguin)
-	{
+	removePenguin(penguin) {
 		const index = this.penguins.indexOf(penguin)
 
-		if (index > -1)
-		{
+		if (index > -1) {
 			Logger.info("Removing client")
 
 			this.penguins.splice(index, 1)

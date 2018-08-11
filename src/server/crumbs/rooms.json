@@ -1,706 +1,565 @@
 {
-	"100":
-	{
+	"100": {
 		"Name": "Town Center",
 		"MaxUsers": 120
 	},
-	"110":
-	{
+	"110": {
 		"Name": "Coffee Shop",
 		"MaxUsers": 80
 	},
-	"111":
-	{
+	"111": {
 		"Name": "Mancala",
 		"MaxUsers": 80
 	},
-	"120":
-	{
+	"120": {
 		"Name": "Night Club",
 		"MaxUsers": 80
 	},
-	"121":
-	{
+	"121": {
 		"Name": "Lounge",
 		"MaxUsers": 80
 	},
-	"122":
-	{
+	"122": {
 		"Name": "school",
 		"MaxUsers": 80
 	},
-	"130":
-	{
+	"130": {
 		"Name": "Clothes Shop",
 		"MaxUsers": 80
 	},
-	"200":
-	{
+	"200": {
 		"Name": "Ski Village",
 		"MaxUsers": 80
 	},
-	"210":
-	{
+	"210": {
 		"Name": "Sports Shop",
 		"MaxUsers": 80
 	},
-	"212":
-	{
+	"212": {
 		"Name": "Agent Lobby Multi",
 		"MaxUsers": 80
 	},
-	"220":
-	{
+	"220": {
 		"Name": "Find Four (Lodge)",
 		"MaxUsers": 80
 	},
-	"221":
-	{
+	"221": {
 		"Name": "Find Four (Attic)",
 		"MaxUsers": 80
 	},
-	"230":
-	{
+	"230": {
 		"Name": "Ski Hill",
 		"MaxUsers": 80
 	},
-	"300":
-	{
+	"300": {
 		"Name": "The Plaza",
 		"MaxUsers": 80
 	},
-	"310":
-	{
+	"310": {
 		"Name": "Pet Shop",
 		"MaxUsers": 80
 	},
-	"320":
-	{
+	"320": {
 		"Name": "The Dojo",
 		"MaxUsers": 80
 	},
-	"321":
-	{
+	"321": {
 		"Name": "Dojo Exterior",
 		"MaxUsers": 80
 	},
-	"323":
-	{
+	"323": {
 		"Name": "Agent Command",
 		"MaxUsers": 80
 	},
-	"324":
-	{
+	"324": {
 		"Name": "Dojo Exterior Solo",
 		"MaxUsers": 80
 	},
-	"326":
-	{
+	"326": {
 		"Name": "CJ Snow Dojo",
 		"MaxUsers": 80
 	},
-	"330":
-	{
+	"330": {
 		"Name": "Pizza Parlor",
 		"MaxUsers": 80
 	},
-	"340":
-	{
+	"340": {
 		"Name": "The Mall",
 		"MaxUsers": 80
 	},
-	"400":
-	{
+	"400": {
 		"Name": "The Beach",
 		"MaxUsers": 80
 	},
-	"410":
-	{
+	"410": {
 		"Name": "Lighthouse",
 		"MaxUsers": 80
 	},
-	"411":
-	{
+	"411": {
 		"Name": "Beacon",
 		"MaxUsers": 80
 	},
-	"420":
-	{
+	"420": {
 		"Name": "Pirate Ship",
 		"MaxUsers": 80
 	},
-	"421":
-	{
+	"421": {
 		"Name": "Ship's Hold",
 		"MaxUsers": 80
 	},
-	"422":
-	{
+	"422": {
 		"Name": "Treasure Hunt",
 		"MaxUsers": 80
 	},
-	"423":
-	{
+	"423": {
 		"Name": "The Crows Nest",
 		"MaxUsers": 80
 	},
-	"430":
-	{
+	"430": {
 		"Name": "Puffle Hotel Lobby",
 		"MaxUsers": 80
 	},
-	"431":
-	{
+	"431": {
 		"Name": "Puffle Hotel Spa",
 		"MaxUsers": 80
 	},
-	"432":
-	{
+	"432": {
 		"Name": "Puffle Hotel Roof",
 		"MaxUsers": 80
 	},
-	"433":
-	{
+	"433": {
 		"Name": "Cloud Forest",
 		"MaxUsers": 800
 	},
-	"434":
-	{
+	"434": {
 		"Name": "Puffle Park",
 		"MaxUsers": 80
 	},
-	"435":
-	{
+	"435": {
 		"Name": "Skatepark",
 		"MaxUsers": 80
 	},
-	"436":
-	{
+	"436": {
 		"Name": "Puffle Wild",
 		"MaxUsers": 80
 	},
-	"437":
-	{
+	"437": {
 		"Name": "UFO",
 		"MaxUsers": 800
 	},
-	"800":
-	{
+	"800": {
 		"Name": "The Dock",
 		"MaxUsers": 80
 	},
-	"801":
-	{
+	"801": {
 		"Name": "Snow Forts",
 		"MaxUsers": 80
 	},
-	"802":
-	{
+	"802": {
 		"Name": "Ice Rink",
 		"MaxUsers": 80
 	},
-	"803":
-	{
+	"803": {
 		"Name": "HQ",
 		"MaxUsers": 80
 	},
-	"804":
-	{
+	"804": {
 		"Name": "Boiler Room",
 		"MaxUsers": 80
 	},
-	"805":
-	{
+	"805": {
 		"Name": "Ice Berg",
 		"MaxUsers": 80
 	},
-	"806":
-	{
+	"806": {
 		"Name": "Underground Pool",
 		"MaxUsers": 80
 	},
-	"807":
-	{
+	"807": {
 		"Name": "Mine Shack",
 		"MaxUsers": 80
 	},
-	"808":
-	{
+	"808": {
 		"Name": "The Mine",
 		"MaxUsers": 80
 	},
-	"809":
-	{
+	"809": {
 		"Name": "Forest",
 		"MaxUsers": 80
 	},
-	"810":
-	{
+	"810": {
 		"Name": "Cove",
 		"MaxUsers": 80
 	},
-	"811":
-	{
+	"811": {
 		"Name": "Box Dimension",
 		"MaxUsers": 80
 	},
-	"812":
-	{
+	"812": {
 		"Name": "Dojo Fire",
 		"MaxUsers": 80
 	},
-	"813":
-	{
+	"813": {
 		"Name": "Gold Mine",
 		"MaxUsers": 80
 	},
-	"814":
-	{
+	"814": {
 		"Name": "Lake",
 		"MaxUsers": 80
 	},
-	"815":
-	{
+	"815": {
 		"Name": "Underwater",
 		"MaxUsers": 80
 	},
-	"816":
-	{
+	"816": {
 		"Name": "Card'jitsu Water",
 		"MaxUsers": 80
 	},
-	"851":
-	{
+	"851": {
 		"Name": "Party1",
 		"MaxUsers": 80
 	},
-	"852":
-	{
+	"852": {
 		"Name": "Party2",
 		"MaxUsers": 80
 	},
-	"853":
-	{
+	"853": {
 		"Name": "Party3",
 		"MaxUsers": 80
 	},
-	"854":
-	{
+	"854": {
 		"Name": "Party4",
 		"MaxUsers": 80
 	},
-	"855":
-	{
+	"855": {
 		"Name": "Party5",
 		"MaxUsers": 80
 	},
-	"856":
-	{
+	"856": {
 		"Name": "Party6",
 		"MaxUsers": 80
 	},
-	"857":
-	{
+	"857": {
 		"Name": "Party7",
 		"MaxUsers": 80
 	},
-	"858":
-	{
+	"858": {
 		"Name": "Party8",
 		"MaxUsers": 80
 	},
-	"859":
-	{
+	"859": {
 		"Name": "Party9",
 		"MaxUsers": 80
 	},
-	"860":
-	{
+	"860": {
 		"Name": "Party10",
 		"MaxUsers": 80
 	},
-	"861":
-	{
+	"861": {
 		"Name": "Party11",
 		"MaxUsers": 80
 	},
-	"862":
-	{
+	"862": {
 		"Name": "Party12",
 		"MaxUsers": 80
 	},
-	"863":
-	{
+	"863": {
 		"Name": "Party13",
 		"MaxUsers": 80
 	},
-	"864":
-	{
+	"864": {
 		"Name": "Party14",
 		"MaxUsers": 80
 	},
-	"865":
-	{
+	"865": {
 		"Name": "Party15",
 		"MaxUsers": 80
 	},
-	"866":
-	{
+	"866": {
 		"Name": "Party16",
 		"MaxUsers": 80
 	},
-	"867":
-	{
+	"867": {
 		"Name": "Party17",
 		"MaxUsers": 80
 	},
-	"868":
-	{
+	"868": {
 		"Name": "Party18",
 		"MaxUsers": 80
 	},
-	"869":
-	{
+	"869": {
 		"Name": "party19",
 		"MaxUsers": 80
 	},
-	"874":
-	{
+	"874": {
 		"Name": "Party24",
 		"MaxUsers": 80
 	},
-	"875":
-	{
+	"875": {
 		"Name": "Party25",
 		"MaxUsers": 80
 	},
-	"876":
-	{
+	"876": {
 		"Name": "Party26",
 		"MaxUsers": 80
 	},
-	"877":
-	{
+	"877": {
 		"Name": "Party27",
 		"MaxUsers": 80
 	},
-	"878":
-	{
+	"878": {
 		"Name": "Party28",
 		"MaxUsers": 80
 	},
-	"890":
-	{
+	"890": {
 		"Name": "Party99",
 		"MaxUsers": 80
 	},
-	"891":
-	{
+	"891": {
 		"Name": "partysolo1",
 		"MaxUsers": 800
 	},
-	"898":
-	{
+	"898": {
 		"Name": "Sound Room",
 		"MaxUsers": 800
 	},
-	"899":
-	{
+	"899": {
 		"Name": "Party",
 		"MaxUsers": 80
 	},
-	"900":
-	{
+	"900": {
 		"Name": "Astro Barrier",
 		"MaxUsers": 800
 	},
-	"901":
-	{
+	"901": {
 		"Name": "Bean Counters",
 		"MaxUsers": 800
 	},
-	"902":
-	{
+	"902": {
 		"Name": "Puffle Roundup",
 		"MaxUsers": 800
 	},
-	"903":
-	{
+	"903": {
 		"Name": "Hydro Hopper",
 		"MaxUsers": 800
 	},
-	"904":
-	{
+	"904": {
 		"Name": "Ice Fishing",
 		"MaxUsers": 800
 	},
-	"905":
-	{
+	"905": {
 		"Name": "Cart Surfer",
 		"MaxUsers": 800
 	},
-	"906":
-	{
+	"906": {
 		"Name": "Jetpack Adventure",
 		"MaxUsers": 800
 	},
-	"907":
-	{
+	"907": {
 		"Name": "Mission 1",
 		"MaxUsers": 800
 	},
-	"908":
-	{
+	"908": {
 		"Name": "Mission 2",
 		"MaxUsers": 800
 	},
-	"909":
-	{
+	"909": {
 		"Name": "Thin Ice",
 		"MaxUsers": 800
 	},
-	"910":
-	{
+	"910": {
 		"Name": "Pizzatron 3000",
 		"MaxUsers": 800
 	},
-	"911":
-	{
+	"911": {
 		"Name": "Mission 3",
 		"MaxUsers": 800
 	},
-	"912":
-	{
+	"912": {
 		"Name": "Catchin' Waves",
 		"MaxUsers": 800
 	},
-	"913":
-	{
+	"913": {
 		"Name": "Mission 4",
 		"MaxUsers": 800
 	},
-	"914":
-	{
+	"914": {
 		"Name": "Mission 5",
 		"MaxUsers": 800
 	},
-	"915":
-	{
+	"915": {
 		"Name": "Mission 6",
 		"MaxUsers": 800
 	},
-	"916":
-	{
+	"916": {
 		"Name": "Aqua Grabber",
 		"MaxUsers": 800
 	},
-	"917":
-	{
+	"917": {
 		"Name": "Paint By Letters: My Puffle",
 		"MaxUsers": 800
 	},
-	"918":
-	{
+	"918": {
 		"Name": "Paint By Letters: Burnt out Bulbs",
 		"MaxUsers": 800
 	},
-	"919":
-	{
+	"919": {
 		"Name": "Paint By Letters: Lime Green Dojo Clean",
 		"MaxUsers": 800
 	},
-	"920":
-	{
+	"920": {
 		"Name": "Mission 7",
 		"MaxUsers": 800
 	},
-	"921":
-	{
+	"921": {
 		"Name": "Mission 8",
 		"MaxUsers": 800
 	},
-	"922":
-	{
+	"922": {
 		"Name": "Mission 9",
 		"MaxUsers": 800
 	},
-	"923":
-	{
+	"923": {
 		"Name": "Mission 10",
 		"MaxUsers": 800
 	},
-	"924":
-	{
+	"924": {
 		"Name": "Game24",
 		"MaxUsers": 80
 	},
-	"925":
-	{
+	"925": {
 		"Name": "Game25",
 		"MaxUsers": 80
 	},
-	"926":
-	{
+	"926": {
 		"Name": "DJ3K",
 		"MaxUsers": 800
 	},
-	"927":
-	{
+	"927": {
 		"Name": "Mission 11",
 		"MaxUsers": 800
 	},
-	"941":
-	{
+	"941": {
 		"Name": "Puffle Soaker",
 		"MaxUsers": 800
 	},
-	"942":
-	{
+	"942": {
 		"Name": "Balloon Pop",
 		"MaxUsers": 800
 	},
-	"943":
-	{
+	"943": {
 		"Name": "Ring the Bell",
 		"MaxUsers": 800
 	},
-	"944":
-	{
+	"944": {
 		"Name": "Feed a Puffle",
 		"MaxUsers": 800
 	},
-	"945":
-	{
+	"945": {
 		"Name": "Memory Card",
 		"MaxUsers": 800
 	},
-	"946":
-	{
+	"946": {
 		"Name": "Puffle paddle",
 		"MaxUsers": 800
 	},
-	"947":
-	{
+	"947": {
 		"Name": "Puffle Shuffle",
 		"MaxUsers": 800
 	},
-	"948":
-	{
+	"948": {
 		"Name": "Grab and Spin",
 		"MaxUsers": 800
 	},
-	"949":
-	{
+	"949": {
 		"Name": "Puffle Rescue",
 		"MaxUsers": 800
 	},
-	"950":
-	{
+	"950": {
 		"Name": "System Defender",
 		"MaxUsers": 800
 	},
-	"951":
-	{
+	"951": {
 		"Name": "Sensei",
 		"MaxUsers": 80
 	},
-	"952":
-	{
+	"952": {
 		"Name": "Dance Contest",
 		"MaxUsers": 800
 	},
-	"953":
-	{
+	"953": {
 		"Name": "Fire Sensei",
 		"MaxUsers": 800
 	},
-	"954":
-	{
+	"954": {
 		"Name": "Water Sensei",
 		"MaxUsers": 800
 	},
-	"955":
-	{
+	"955": {
 		"Name": "Puffle Launch",
 		"MaxUsers": 800
 	},
-	"956":
-	{
+	"956": {
 		"Name": "Bits And Bolts",
 		"MaxUsers": 800
 	},
-	"957":
-	{
+	"957": {
 		"Name": "Rollerscape",
 		"MaxUsers": 800
 	},
-	"958":
-	{
+	"958": {
 		"Name": "Scorn Battle",
 		"MaxUsers": 800
 	},
-	"959":
-	{
+	"959": {
 		"Name": "Smoothie",
 		"MaxUsers": 800
 	},
-	"960":
-	{
+	"960": {
 		"Name": "Ice Jam",
 		"MaxUsers": 800
 	},
-	"961":
-	{
+	"961": {
 		"Name": "DinoDig",
 		"MaxUsers": 800
 	},
-	"962":
-	{
+	"962": {
 		"Name": "Party Game",
 		"MaxUsers": 800
 	},
-	"963":
-	{
+	"963": {
 		"Name": "Spy Drills",
 		"MaxUsers": 800
 	},
-	"994":
-	{
+	"994": {
 		"Name": "igloo_card",
 		"MaxUsers": 80
 	},
-	"995":
-	{
+	"995": {
 		"Name": "Card'jitsu Water",
 		"MaxUsers": 80
 	},
-	"996":
-	{
+	"996": {
 		"Name": "",
 		"MaxUsers": 2000
 	},
-	"997":
-	{
+	"997": {
 		"Name": "Card'jitsu Fire",
 		"MaxUsers": 80
 	},
-	"998":
-	{
+	"998": {
 		"Name": "Card Jitsu",
 		"MaxUsers": 0
 	},
-	"999":
-	{
+	"999": {
 		"Name": "Sled Race",
 		"MaxUsers": 80
 	},
-	"1100":
-	{
+	"1100": {
 		"Name": "My Penguin ",
 		"MaxUsers": 0
 	},
-	"1104":
-	{
+	"1104": {
 		"Name": "Gold Mine",
 		"MaxUsers": 80
 	}

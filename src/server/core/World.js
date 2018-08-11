@@ -1,6 +1,7 @@
 "use strict"
 
 const Logger = require("../Logger")
+const sp = require("./utils/sp")
 
 const Clothing = require("./handlers/Clothing")
 const Navigation = require("./handlers/Navigation")
@@ -9,185 +10,155 @@ const Toy = require("./handlers/Toy")
 const Multiplayer = require("./handlers/Multiplayer")
 
 const xtHandlers = {
-	"s":
-	{
-		"s#upc":
-		{
+	"s": {
+		"s#upc": {
 			func: "handleUpdateClothing",
 			file: Clothing
 		},
-		"s#uph":
-		{
+		"s#uph": {
 			func: "handleUpdateClothing",
 			file: Clothing
 		},
-		"s#upf":
-		{
+		"s#upf": {
 			func: "handleUpdateClothing",
 			file: Clothing
 		},
-		"s#upn":
-		{
+		"s#upn": {
 			func: "handleUpdateClothing",
 			file: Clothing
 		},
-		"s#upb":
-		{
+		"s#upb": {
 			func: "handleUpdateClothing",
 			file: Clothing
 		},
-		"s#upa":
-		{
+		"s#upa": {
 			func: "handleUpdateClothing",
 			file: Clothing
 		},
-		"s#upe":
-		{
+		"s#upe": {
 			func: "handleUpdateClothing",
 			file: Clothing
 		},
-		"s#upl":
-		{
+		"s#upl": {
 			func: "handleUpdateClothing",
 			file: Clothing
 		},
-		"s#upp":
-		{
+		"s#upp": {
 			func: "handleUpdateClothing",
 			file: Clothing
 		},
-		"i#ai":
-		{
+		"i#ai": {
 			func: "handleAddItem",
-			file: Clothing
+			file: Clothing,
+			timeout: 2
 		},
-		"i#gi":
-		{
+		"i#gi": {
 			func: "handleGetInventory",
 			file: Clothing
 		},
-		"j#js":
-		{
+		"j#js": {
 			func: "handleJoinServer",
 			file: Navigation
 		},
-		"j#jr":
-		{
+		"j#jr": {
 			func: "handleJoinRoom",
 			file: Navigation
 		},
-		"j#jp":
-		{
+		"j#jp": {
 			func: "handleJoinPlayer",
 			file: Navigation
 		},
-		"u#sp":
-		{
+		"u#sp": {
 			func: "handleSendPosition",
-			file: Player
+			file: Player,
+			timeout: 5
 		},
-		"u#sf":
-		{
+		"u#sf": {
 			func: "handleSendFrame",
 			file: Player
 		},
-		"u#sa":
-		{
+		"u#sa": {
 			func: "handleSendAction",
 			file: Player
 		},
-		"u#sb":
-		{
+		"u#sb": {
 			func: "handleSendSnowball",
 			file: Player
 		},
-		"u#se":
-		{
+		"u#se": {
 			func: "handleSendEmote",
 			file: Player
 		},
-		"u#sj":
-		{
+		"u#sj": {
 			func: "handleSendJoke",
 			file: Player
 		},
-		"u#ss":
-		{
+		"u#ss": {
 			func: "handleSendSafeMessage",
 			file: Player
 		},
-		"u#sg":
-		{
+		"u#sg": {
 			func: "handleSendTourGuide",
 			file: Player
 		},
-		"u#gp":
-		{
+		"u#gp": {
 			func: "handleGetPlayer",
 			file: Player
 		},
-		"u#h":
-		{
+		"u#h": {
 			func: "handleHeartBeat",
 			file: Player
 		},
-		"u#glr":
-		{
+		"u#glr": {
 			func: "handleLastRevision",
 			file: Player
 		},
-		"u#sl":
-		{
+		"u#sl": {
 			func: "handleSendLine",
 			file: Player
 		},
-		"m#sm":
-		{
+		"m#sm": {
 			func: "handleSendMessage",
 			file: Player
 		},
-		"t#at":
-		{
+		"r#cdu": {
+			func: "handleMineCoins",
+			file: Player
+		},
+		"t#at": {
 			func: "handleOpenPlayerBook",
 			file: Toy
 		},
-		"t#rt":
-		{
+		"t#rt": {
 			func: "handleClosePlayerBook",
 			file: Toy
 		}
 	},
-	"z":
-	{
-		"m":
-		{
+	"z": {
+		"m": {
 			func: "handleMovePuck",
 			file: Multiplayer
 		},
-		"gz":
-		{
+		"gz": {
 			func: "handleGetGame",
 			file: Multiplayer
 		}
 	}
 }
 
-class World
-{
-	constructor(server)
-	{
+class World {
+	constructor(server) {
 		this.server = server
 		this.database = server.database
 	}
 
-	handleGameData(data, penguin)
-	{
+	handleGameData(data, penguin) {
 		const packet = data
 
 		data = data.split("%")
 		data.shift()
 
-		if (data[0] != "xt") return penguin.disconnect()
+		if (data[0] != "xt") return penguin.sendError(800, true)
 
 		const type = data[1],
 			handler = data[2]
@@ -199,16 +170,28 @@ class World
 		if (!method) return Logger.unknown(packet)
 
 		const func = method["func"],
-			file = method["file"]
+			file = method["file"],
+			timeout = method["timeout"]
 
-		if (typeof file[func] == "function")
-		{
+		if (typeof file[func] == "function") {
 			Logger.incoming(packet)
 
+			if (timeout != undefined) {
+				if (!penguin.throttled) penguin.throttled = {}
+
+				if (penguin.throttled[handler] && (sp.getTime() < penguin.throttled[handler])) {
+					Logger.warn("Kicked packet spammer")
+
+					delete penguin.throttled
+
+					return penguin.sendError(800, true)
+				}
+
+				penguin.throttled[handler] = (sp.getTime() + timeout)
+			}
+
 			file[func](data, penguin)
-		}
-		else
-		{
+		} else {
 			Logger.error(`Unexisting packet "${packet}" passed through error checking`)
 		}
 	}

@@ -1,9 +1,9 @@
 "use strict"
 
-class Player
-{
-	static handleSendPosition(data, penguin)
-	{
+const sp = require("../utils/sp")
+
+class Player {
+	static handleSendPosition(data, penguin) {
 		const x = parseInt(data[4]),
 			y = parseInt(data[5])
 
@@ -12,33 +12,33 @@ class Player
 		penguin.x = x
 		penguin.y = y
 
+		if (penguin.coinDig > 5) return penguin.sendError(800, true)
+		if (penguin.coinDig != 0) penguin.coinDig = 0
+
 		penguin.room.sendXt("sp", -1, penguin.id, x, y)
 	}
 
-	static handleSendFrame(data, penguin)
-	{
-		const frame = parseInt(data[4])
+	static handleSendFrame(data, penguin) {
+		const frameId = parseInt(data[4])
 
-		if (isNaN(frame)) return penguin.disconnect()
+		if (isNaN(frameId)) return penguin.disconnect()
 
-		penguin.frame = frame
+		penguin.frame = frameId
 
-		penguin.room.sendXt("sf", -1, penguin.id, frame)
+		penguin.room.sendXt("sf", -1, penguin.id, frameId)
 	}
 
-	static handleSendAction(data, penguin)
-	{
-		const action = parseInt(data[4])
+	static handleSendAction(data, penguin) {
+		const actionId = parseInt(data[4])
 
-		if (isNaN(action)) return penguin.disconnect()
+		if (isNaN(actionId)) return penguin.disconnect()
 
 		penguin.frame = 1
 
-		penguin.room.sendXt("sa", -1, penguin.id, action)
+		penguin.room.sendXt("sa", -1, penguin.id, actionId)
 	}
 
-	static handleSendSnowball(data, penguin)
-	{
+	static handleSendSnowball(data, penguin) {
 		const x = parseInt(data[4]),
 			y = parseInt(data[5])
 
@@ -47,50 +47,44 @@ class Player
 		penguin.room.sendXt("sb", -1, penguin.id, x, y)
 	}
 
-	static handleSendEmote(data, penguin)
-	{
-		const emote = parseInt(data[4])
+	static handleSendEmote(data, penguin) {
+		const emoteId = parseInt(data[4])
 
-		if (isNaN(emote)) return penguin.disconnect()
+		if (isNaN(emoteId)) return penguin.disconnect()
 
-		penguin.room.sendXt("se", -1, penguin.id, emote)
+		penguin.room.sendXt("se", -1, penguin.id, emoteId)
 	}
 
-	static handleSendJoke(data, penguin)
-	{
-		const joke = parseInt(data[4])
+	static handleSendJoke(data, penguin) {
+		const jokeId = parseInt(data[4])
 
-		if (isNaN(joke)) return penguin.disconnect()
+		if (isNaN(jokeId)) return penguin.disconnect()
 
-		penguin.room.sendXt("sj", -1, penguin.id, joke)
+		penguin.room.sendXt("sj", -1, penguin.id, jokeId)
 	}
 
-	static handleSendSafeMessage(data, penguin)
-	{
-		const sfMsg = parseInt(data[4])
+	static handleSendSafeMessage(data, penguin) {
+		const safeMessageId = parseInt(data[4])
 
-		if (isNaN(sfMsg)) return penguin.disconnect()
+		if (isNaN(safeMessageId)) return penguin.disconnect()
 
-		penguin.room.sendXt("ss", -1, penguin.id, sfMsg)
+		penguin.room.sendXt("ss", -1, penguin.id, safeMessageId)
 	}
 
-	static handleSendTourGuide(data, penguin)
-	{
-		const tour = parseInt(data[4])
+	static handleSendTourGuide(data, penguin) {
+		const tourGuideId = parseInt(data[4])
 
-		if (isNaN(tour)) return penguin.disconnect()
+		if (isNaN(tourGuideId)) return penguin.disconnect()
 
-		penguin.room.sendXt("sg", -1, penguin.id, tour)
+		penguin.room.sendXt("sg", -1, penguin.id, tourGuideId)
 	}
 
-	static handleGetPlayer(data, penguin)
-	{
+	static handleGetPlayer(data, penguin) {
 		const id = parseInt(data[4])
 
 		if (isNaN(id)) return penguin.disconnect()
 
-		penguin.database.getPlayer(id).then((result) =>
-		{
+		penguin.database.getPlayer(id).then((result) => {
 			const playerInfo = [
 				result.id,
 				result.username,
@@ -106,44 +100,47 @@ class Player
 				result.photo
 			]
 			penguin.sendXt("gp", -1, playerInfo.join("|") + "|")
-		}).catch((err) =>
-		{
+		}).catch((err) => {
 			console.error(err)
 			return penguin.disconnect()
 		})
 	}
 
-	static handleHeartBeat(data, penguin)
-	{
+	static handleHeartBeat(data, penguin) {
 		penguin.sendXt("h", -1)
 	}
 
-	static handleLastRevision(data, penguin)
-	{
+	static handleLastRevision(data, penguin) {
 		penguin.sendXt("glr", -1, "Waddler")
 	}
 
-	static handleSendLine(data, penguin)
-	{
-		const line = parseInt(data[4])
+	static handleSendLine(data, penguin) {
+		const lineId = parseInt(data[4])
 
-		if (isNaN(line)) return penguin.disconnect()
+		if (isNaN(lineId)) return penguin.disconnect()
 
-		penguin.sendXt("sl", -1, penguin.id, line)
+		penguin.sendXt("sl", -1, penguin.id, lineId)
 	}
 
-	static handleSendMessage(data, penguin)
-	{
+	static handleSendMessage(data, penguin) {
 		const message = String(data[5])
 
-		if (message.length > 0 && message.length <= 48)
-		{
-			penguin.room.sendXt("sm", -1, penguin.id, message)
-		}
-		else
-		{
-			penguin.sendError(5, true)
-		}
+		if (message.length <= 0 || message.length > 48) return penguin.sendError(5, true)
+
+		penguin.room.sendXt("sm", -1, penguin.id, message)
+	}
+
+	static handleMineCoins(data, penguin) {
+		if (penguin.frame != 26) return penguin.sendError(5, true)
+		if (penguin.coinDig > 5) return
+
+		const amount = sp.getRandomCoins()
+
+		penguin.addCoins(amount)
+
+		penguin.sendXt("cdu", -1, amount, penguin.coins)
+
+		penguin.coinDig++
 	}
 }
 
