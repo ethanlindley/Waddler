@@ -181,6 +181,11 @@ const xtHandlers = {
 		{
 			func: "handleMovePuck",
 			file: Multiplayer
+		},
+		"gz":
+		{
+			func: "handleGetGame",
+			file: Multiplayer
 		}
 	}
 }

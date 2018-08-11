@@ -8,7 +8,7 @@ class Navigation
 		const x = Math.floor(Math.random() * 300) + 100
 		const y = Math.floor(Math.random() * 300) + 100
 
-		penguin.sendXt("js", -1, 1, Number(penguin.epf), Number(penguin.moderator), 1)
+		penguin.sendXt("js", -1, 0, 1, Number(penguin.moderator), 1)
 		penguin.sendXt("gps", -1, "")
 		penguin.sendXt("lp", -1, penguin.buildPlayerString(), penguin.coins, 0, 1440, Math.floor(new Date() / 1000), penguin.age, 4, 1)
 
