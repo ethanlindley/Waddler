@@ -11,168 +11,150 @@ const Multiplayer = require("./handlers/Multiplayer")
 const xtHandlers = {
 	"s":
 	{
-		"s":
+		"s#upc":
 		{
-			"upc":
-			{
-				func: "handleUpdateClothing",
-				file: Clothing
-			},
-			"uph":
-			{
-				func: "handleUpdateClothing",
-				file: Clothing
-			},
-			"upf":
-			{
-				func: "handleUpdateClothing",
-				file: Clothing
-			},
-			"upn":
-			{
-				func: "handleUpdateClothing",
-				file: Clothing
-			},
-			"upb":
-			{
-				func: "handleUpdateClothing",
-				file: Clothing
-			},
-			"upa":
-			{
-				func: "handleUpdateClothing",
-				file: Clothing
-			},
-			"upe":
-			{
-				func: "handleUpdateClothing",
-				file: Clothing
-			},
-			"upl":
-			{
-				func: "handleUpdateClothing",
-				file: Clothing
-			},
-			"upp":
-			{
-				func: "handleUpdateClothing",
-				file: Clothing
-			}
+			func: "handleUpdateClothing",
+			file: Clothing
 		},
-		"i":
+		"s#uph":
 		{
-			"ai":
-			{
-				func: "handleAddItem",
-				file: Clothing
-			},
-			"gi":
-			{
-				func: "handleGetInventory",
-				file: Clothing
-			}
+			func: "handleUpdateClothing",
+			file: Clothing
 		},
-		"j":
+		"s#upf":
 		{
-			"js":
-			{
-				func: "handleJoinServer",
-				file: Navigation
-			},
-			"jr":
-			{
-				func: "handleJoinRoom",
-				file: Navigation
-			},
-			"jp":
-			{
-				func: "handleJoinPlayer",
-				file: Navigation
-			}
+			func: "handleUpdateClothing",
+			file: Clothing
 		},
-		"u":
+		"s#upn":
 		{
-			"sp":
-			{
-				func: "handleSendPosition",
-				file: Player
-			},
-			"sf":
-			{
-				func: "handleSendFrame",
-				file: Player
-			},
-			"sa":
-			{
-				func: "handleSendAction",
-				file: Player
-			},
-			"sb":
-			{
-				func: "handleSendSnowball",
-				file: Player
-			},
-			"se":
-			{
-				func: "handleSendEmote",
-				file: Player
-			},
-			"sj":
-			{
-				func: "handleSendJoke",
-				file: Player
-			},
-			"ss":
-			{
-				func: "handleSendSafeMessage",
-				file: Player
-			},
-			"sg":
-			{
-				func: "handleSendTourGuide",
-				file: Player
-			},
-			"gp":
-			{
-				func: "handleGetPlayer",
-				file: Player
-			},
-			"h":
-			{
-				func: "handleHeartBeat",
-				file: Player
-			},
-			"glr":
-			{
-				func: "handleLastRevision",
-				file: Player
-			},
-			"sl":
-			{
-				func: "handleSendLine",
-				file: Player
-			}
+			func: "handleUpdateClothing",
+			file: Clothing
 		},
-		"m":
+		"s#upb":
 		{
-			"sm":
-			{
-				func: "handleSendMessage",
-				file: Player
-			}
+			func: "handleUpdateClothing",
+			file: Clothing
 		},
-		"t":
+		"s#upa":
 		{
-			"at":
-			{
-				func: "handleOpenPlayerBook",
-				file: Toy
-			},
-			"rt":
-			{
-				func: "handleClosePlayerBook",
-				file: Toy
-			}
+			func: "handleUpdateClothing",
+			file: Clothing
+		},
+		"s#upe":
+		{
+			func: "handleUpdateClothing",
+			file: Clothing
+		},
+		"s#upl":
+		{
+			func: "handleUpdateClothing",
+			file: Clothing
+		},
+		"s#upp":
+		{
+			func: "handleUpdateClothing",
+			file: Clothing
+		},
+		"i#ai":
+		{
+			func: "handleAddItem",
+			file: Clothing
+		},
+		"i#gi":
+		{
+			func: "handleGetInventory",
+			file: Clothing
+		},
+		"j#js":
+		{
+			func: "handleJoinServer",
+			file: Navigation
+		},
+		"j#jr":
+		{
+			func: "handleJoinRoom",
+			file: Navigation
+		},
+		"j#jp":
+		{
+			func: "handleJoinPlayer",
+			file: Navigation
+		},
+		"u#sp":
+		{
+			func: "handleSendPosition",
+			file: Player
+		},
+		"u#sf":
+		{
+			func: "handleSendFrame",
+			file: Player
+		},
+		"u#sa":
+		{
+			func: "handleSendAction",
+			file: Player
+		},
+		"u#sb":
+		{
+			func: "handleSendSnowball",
+			file: Player
+		},
+		"u#se":
+		{
+			func: "handleSendEmote",
+			file: Player
+		},
+		"u#sj":
+		{
+			func: "handleSendJoke",
+			file: Player
+		},
+		"u#ss":
+		{
+			func: "handleSendSafeMessage",
+			file: Player
+		},
+		"u#sg":
+		{
+			func: "handleSendTourGuide",
+			file: Player
+		},
+		"u#gp":
+		{
+			func: "handleGetPlayer",
+			file: Player
+		},
+		"u#h":
+		{
+			func: "handleHeartBeat",
+			file: Player
+		},
+		"u#glr":
+		{
+			func: "handleLastRevision",
+			file: Player
+		},
+		"u#sl":
+		{
+			func: "handleSendLine",
+			file: Player
+		},
+		"m#sm":
+		{
+			func: "handleSendMessage",
+			file: Player
+		},
+		"t#at":
+		{
+			func: "handleOpenPlayerBook",
+			file: Toy
+		},
+		"t#rt":
+		{
+			func: "handleClosePlayerBook",
+			file: Toy
 		}
 	},
 	"z":
@@ -208,22 +190,27 @@ class World
 		if (data[0] != "xt") return penguin.disconnect()
 
 		const type = data[1],
-			group = data[2].split("#")[0],
-			handler = data[2].split("#")[1]
+			handler = data[2]
 
-		if (type == "s" && xtHandlers[type][group] == undefined || type == "z" && xtHandlers[type][data[2]] == undefined)
-		{
-			return Logger.unknown(`Unknown packet: ${packet}`)
-		}
+		if (handler.split("#")[1].substr(0, 3) == "epf" || handler.substr(0, 3) == "iCP") return
 
-		const method = type == "s" ? xtHandlers[type][group][handler] : xtHandlers[type][data[2]]
+		const method = xtHandlers[type][handler]
+
+		if (!method) return Logger.unknown(packet)
 
 		const func = method["func"],
 			file = method["file"]
 
-		Logger.incoming(packet)
+		if (typeof file[func] == "function")
+		{
+			Logger.incoming(packet)
 
-		file[func](data, penguin)
+			file[func](data, penguin)
+		}
+		else
+		{
+			Logger.error(`Unexisting packet "${packet}" passed through error checking`)
+		}
 	}
 }
 
