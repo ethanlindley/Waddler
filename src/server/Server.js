@@ -55,10 +55,6 @@ class Server {
 			})
 
 			socket.on("error", (error) => {
-				if (this.type == "game" && error == "ECONNRESET") {
-					return penguin.sendError(1, true)
-				}
-
 				Logger.error(error)
 				return penguin.disconnect()
 			})

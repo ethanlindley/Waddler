@@ -16,15 +16,6 @@ class DataHandler {
 		const username = data.split("CDATA[")[1].split("]]></nick>")[0]
 		const password = data.split("CDATA[")[2].split("]]></pword>")[0]
 
-		if (password.length == 0) return penguin.sendError(130, true)
-		if (username.length == 0) return penguin.sendError(140, true)
-
-		if (password.length > 32) return penguin.sendError(132, true)
-		if (username.length > 12) return penguin.sendError(142, true)
-
-		if (password.length < 4) return penguin.sendError(131, true)
-		if (username.length < 3) return penguin.sendError(141, true)
-
 		this.database.getPlayer(username).then((result) => {
 			if (result.banned >= 1) return penguin.sendError(603, true)
 
@@ -61,8 +52,6 @@ class DataHandler {
 				} else {
 					return penguin.sendError(101, true)
 				}
-
-				this.database.updateColumn(result.id, "loginkey", "")
 			}
 		}).catch((err) => {
 			return penguin.sendError(100, true)
@@ -82,6 +71,7 @@ class DataHandler {
 					return penguin.sendRaw(`<msg t="sys"><body action="apiOK" r="0"></body></msg>`)
 				} else if (type == "rndK") {
 					penguin.randomKey = GameDataEncryptor.generateRandomKey(12)
+
 					penguin.sendRaw(`<msg t="sys"><body action="rndK" r="-1"><k>${penguin.randomKey}</k></body></msg>`)
 				} else if (type == "login") {
 					return this.handleLogin(data, penguin)

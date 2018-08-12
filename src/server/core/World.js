@@ -70,14 +70,9 @@ const xtHandlers = {
 			func: "handleJoinPlayer",
 			file: Navigation
 		},
-		"j#grs": {
-			func: "handleRefreshRoom",
-			file: Navigation
-		},
 		"u#sp": {
 			func: "handleSendPosition",
-			file: Player,
-			timeout: 0.1
+			file: Player
 		},
 		"u#sf": {
 			func: "handleSendFrame",
@@ -212,12 +207,10 @@ class World {
 		data = data.split("%")
 		data.shift()
 
-		if (data[0] != "xt") return penguin.sendError(800, true)
+		if (data[0] != "xt") return penguin.disconnect()
 
 		const type = data[1],
 			handler = data[2]
-
-		if (handler.substr(0, 3) == "iCP") return
 
 		const method = xtHandlers[type][handler]
 
@@ -234,11 +227,8 @@ class World {
 				if (!penguin.throttled) penguin.throttled = {}
 
 				if (penguin.throttled[handler] && (sp.getTime() < penguin.throttled[handler])) {
-					Logger.warn("Kicked packet spammer")
-
 					delete penguin.throttled
-
-					return penguin.sendError(800, true)
+					return penguin.sendError(1, true)
 				}
 
 				penguin.throttled[handler] = (sp.getTime() + timeout)

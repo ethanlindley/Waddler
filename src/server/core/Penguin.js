@@ -37,7 +37,7 @@ class Penguin {
 		this.x = 0
 		this.y = 0
 		this.frame = 1
-
+		this.gameRoomId = 0
 		this.coinDig = 0
 
 		this.openIgloos = []
