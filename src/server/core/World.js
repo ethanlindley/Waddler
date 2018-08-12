@@ -7,6 +7,8 @@ const Clothing = require("./handlers/Clothing")
 const Navigation = require("./handlers/Navigation")
 const Player = require("./handlers/Player")
 const Toy = require("./handlers/Toy")
+const Igloo = require("./handlers/Igloo")
+const EPF = require("./handlers/EPF")
 const Multiplayer = require("./handlers/Multiplayer")
 
 const xtHandlers = {
@@ -50,7 +52,7 @@ const xtHandlers = {
 		"i#ai": {
 			func: "handleAddItem",
 			file: Clothing,
-			timeout: 2
+			timeout: 1
 		},
 		"i#gi": {
 			func: "handleGetInventory",
@@ -71,7 +73,7 @@ const xtHandlers = {
 		"u#sp": {
 			func: "handleSendPosition",
 			file: Player,
-			timeout: 5
+			timeout: 0.1
 		},
 		"u#sf": {
 			func: "handleSendFrame",
@@ -99,6 +101,10 @@ const xtHandlers = {
 		},
 		"u#sg": {
 			func: "handleSendTourGuide",
+			file: Player
+		},
+		"u#sma": {
+			func: "handleSendMascotMessage",
 			file: Player
 		},
 		"u#gp": {
@@ -132,6 +138,50 @@ const xtHandlers = {
 		"t#rt": {
 			func: "handleClosePlayerBook",
 			file: Toy
+		},
+		"g#gr": {
+			func: "handleLoadPlayerIglooList",
+			file: Igloo
+		},
+		"g#go": {
+			func: "handlegetIgloos",
+			file: Igloo
+		},
+		"g#or": {
+			func: "handleOpenIgloo",
+			file: Igloo
+		},
+		"g#cr": {
+			func: "handleCloseIgloo",
+			file: Igloo
+		},
+		"f#epfgr": {
+			func: "handleGetEPFPoints",
+			file: EPF
+		},
+		"f#epfgf": {
+			func: "handleGetEPFPoints",
+			file: EPF
+		},
+		"f#epfgm": {
+			func: "handleGetCOMMessages",
+			file: EPF
+		},
+		"f#epfga": {
+			func: "handleEPFGetAgent",
+			file: EPF
+		},
+		"f#epfsf": {
+			func: "handleSetFieldOpPoints",
+			file: EPF
+		},
+		"f#epfsa": {
+			func: "handleEPFSetAgent",
+			file: EPF
+		},
+		"f#epfai": {
+			func: "handleAddEPFItem",
+			file: EPF
 		}
 	},
 	"z": {
@@ -163,7 +213,7 @@ class World {
 		const type = data[1],
 			handler = data[2]
 
-		if (handler.split("#")[1].substr(0, 3) == "epf" || handler.substr(0, 3) == "iCP") return
+		if (handler.substr(0, 3) == "iCP") return
 
 		const method = xtHandlers[type][handler]
 

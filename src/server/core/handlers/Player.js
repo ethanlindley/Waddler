@@ -79,6 +79,14 @@ class Player {
 		penguin.room.sendXt("sg", -1, penguin.id, tourGuideId)
 	}
 
+	static handleSendMascotMessage(data, penguin) {
+		const mascotMessageId = parseInt(data[4])
+
+		if (isNaN(mascotMessageId)) return penguin.disconnect()
+
+		penguin.room.sendXt("sma", -1, penguin.id, mascotMessageId)
+	}
+
 	static handleGetPlayer(data, penguin) {
 		const id = parseInt(data[4])
 

@@ -37,7 +37,10 @@ class Penguin {
 		this.x = 0
 		this.y = 0
 		this.frame = 1
+
 		this.coinDig = 0
+
+		this.openIgloos = []
 
 		this.getInventory()
 	}
@@ -80,6 +83,20 @@ class Penguin {
 			this.inventory = inventory
 		}).catch((err) => {
 			Logger.error(err)
+		})
+	}
+
+	getIgloos() {
+		let igloos = []
+
+		this.getColumn("igloos").then((result) => {
+			let iglooStr = result[0].igloos
+
+			if (iglooStr.length < 0) return this.disconnect()
+
+			igloos.push(iglooStr.split("|").join("|"))
+
+			this.igloos = igloos
 		})
 	}
 
