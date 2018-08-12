@@ -70,6 +70,10 @@ const xtHandlers = {
 			func: "handleJoinPlayer",
 			file: Navigation
 		},
+		"j#grs": {
+			func: "handleRefreshRoom",
+			file: Navigation
+		},
 		"u#sp": {
 			func: "handleSendPosition",
 			file: Player,
@@ -163,10 +167,6 @@ const xtHandlers = {
 			func: "handleGetEPFPoints",
 			file: EPF
 		},
-		"f#epfgm": {
-			func: "handleGetCOMMessages",
-			file: EPF
-		},
 		"f#epfga": {
 			func: "handleEPFGetAgent",
 			file: EPF
@@ -191,6 +191,10 @@ const xtHandlers = {
 		},
 		"gz": {
 			func: "handleGetGame",
+			file: Multiplayer
+		},
+		"zo": {
+			func: "handleGameOver",
 			file: Multiplayer
 		}
 	}

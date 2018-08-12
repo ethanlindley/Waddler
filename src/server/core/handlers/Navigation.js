@@ -30,8 +30,11 @@ class Navigation {
 		if (!x || isNaN(x)) x = sp.getRandomPosition()
 		if (!y || isNaN(y)) y = sp.getRandomPosition()
 
-		if (penguin.room) penguin.room.removePenguin(penguin)
-		if (room > 900) return penguin.sendXt("jg", -1, room)
+		if (penguin.room) return penguin.room.removePenguin(penguin)
+		if (room > 900) {
+			penguin.gameRoomId = room
+			return penguin.sendXt("jg", -1, room)
+		}
 
 		const roomObj = penguin.server.roomManager.getRoom(room)
 
@@ -62,6 +65,10 @@ class Navigation {
 		} else {
 			penguin.sendError(210)
 		}
+	}
+
+	static handleRefreshRoom(data, penguin) {
+		penguin.sendXt("grs", -1, penguin.id, penguin.room.buildRoomString())
 	}
 }
 

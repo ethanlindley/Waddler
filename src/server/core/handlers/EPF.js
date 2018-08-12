@@ -9,10 +9,6 @@ class EPF {
 		penguin.sendXt("epfgf", -1, 1)
 	}
 
-	static handleGetCOMMessages(data, penguin) {
-		penguin.sendXt("epfgm", -1, 0, `Welcome!|${Math.round((Date.now() / 1000))}|10`)
-	}
-
 	static handleEPFGetAgent(data, penguin) {
 		penguin.sendXt("epfga", -1, 1)
 	}
