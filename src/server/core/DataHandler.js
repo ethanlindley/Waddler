@@ -21,15 +21,13 @@ class DataHandler {
 
 			if (this.server.type == "login") {
 				if (this.failedLogins[penguin.ipAddr] == undefined) this.failedLogins[penguin.ipAddr] = []
-				if (this.failedLogins[penguin.ipAddr].length >= 7) return penguin.sendError(150, true)
+				if (this.failedLogins[penguin.ipAddr].length > 7) return penguin.sendError(150, true)
 
 				const hash = GameDataEncryptor.hashPassword(GameDataEncryptor.decryptZaseth(password, penguin.randomKey))
-
 				if (result.password == hash && this.failedLogins[penguin.ipAddr].length < 7) {
 					delete this.failedLogins[penguin.ipAddr]
 
 					penguin.loginKey = GameDataEncryptor.generateRandomKey(12)
-
 					this.database.updateColumn(username, "loginkey", penguin.loginKey)
 
 					penguin.sendXt("sd", -1, "100|Snowy Lands|127.0.0.1|6113")
@@ -40,12 +38,11 @@ class DataHandler {
 					return penguin.sendError(101, true)
 				}
 			} else {
-				const hash = GameDataEncryptor.hashPassword(GameDataEncryptor.decryptZaseth(password, result.loginkey))
-
 				const penguinObj = this.server.getPenguin(result.id)
 
 				if (penguinObj) return penguinObj.disconnect()
 
+				const hash = GameDataEncryptor.hashPassword(GameDataEncryptor.decryptZaseth(password, result.loginkey))
 				if (result.password == hash) {
 					penguin.sendXt("l", -1)
 					penguin.setPenguin(result)
@@ -53,34 +50,32 @@ class DataHandler {
 					return penguin.sendError(101, true)
 				}
 			}
-		}).catch((err) => {
+		}).catch(() => {
 			return penguin.sendError(100, true)
 		})
 	}
 
 	handleData(data, penguin) {
-		if (data.charAt(0) == "<" && data.charAt(data.length - 1) == ">") {
+		if (data.startsWith("<") && data.endsWith(">")) {
 			Logger.incoming(data)
-
 			if (data == "<policy-file-request/>") {
-				return penguin.sendRaw(`<cross-domain-policy><site-control permitted-cross-domain-policies="master-only"/><allow-access-from domain="*" to-ports="*"/></cross-domain-policy>`)
+				return penguin.sendRaw(`<cross-domain-policy><allow-access-from domain="*" to-ports="6112, 6113, 80, 443"/></cross-domain-policy>`)
 			} else {
 				const type = data.split("action='")[1].split("'")[0]
-
 				if (type == "verChk") {
 					return penguin.sendRaw(`<msg t="sys"><body action="apiOK" r="0"></body></msg>`)
 				} else if (type == "rndK") {
 					penguin.randomKey = GameDataEncryptor.generateRandomKey(12)
-
-					penguin.sendRaw(`<msg t="sys"><body action="rndK" r="-1"><k>${penguin.randomKey}</k></body></msg>`)
+					return penguin.sendRaw(`<msg t="sys"><body action="rndK" r="-1"><k>${penguin.randomKey}</k></body></msg>`)
 				} else if (type == "login") {
 					return this.handleLogin(data, penguin)
+				} else {
+					return penguin.disconnect()
 				}
 			}
-		} else if (data.charAt(0) == "%" && data.charAt(data.length - 1) == "%") {
+		} else if (data.startsWith("%") && data.endsWith("%")) {
 			return this.server.gameHandler.handleGameData(data, penguin)
 		} else {
-			Logger.warn(`Unknown data received: ${data}`)
 			return penguin.disconnect()
 		}
 	}

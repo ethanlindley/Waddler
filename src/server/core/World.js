@@ -6,9 +6,11 @@ const sp = require("./utils/sp")
 const Clothing = require("./handlers/Clothing")
 const Navigation = require("./handlers/Navigation")
 const Player = require("./handlers/Player")
+
 const Toy = require("./handlers/Toy")
 const Igloo = require("./handlers/Igloo")
-const EPF = require("./handlers/EPF")
+const Moderation = require("./handlers/Moderation")
+
 const Multiplayer = require("./handlers/Multiplayer")
 
 const xtHandlers = {
@@ -124,7 +126,8 @@ const xtHandlers = {
 		},
 		"m#sm": {
 			func: "handleSendMessage",
-			file: Player
+			file: Player,
+			timeout: 0.5
 		},
 		"r#cdu": {
 			func: "handleMineCoins",
@@ -154,29 +157,17 @@ const xtHandlers = {
 			func: "handleCloseIgloo",
 			file: Igloo
 		},
-		"f#epfgr": {
-			func: "handleGetEPFPoints",
-			file: EPF
+		"o#b": {
+			func: "handleBan",
+			file: Moderation
 		},
-		"f#epfgf": {
-			func: "handleGetEPFPoints",
-			file: EPF
+		"o#k": {
+			func: "handleKick",
+			file: Moderation
 		},
-		"f#epfga": {
-			func: "handleEPFGetAgent",
-			file: EPF
-		},
-		"f#epfsf": {
-			func: "handleSetFieldOpPoints",
-			file: EPF
-		},
-		"f#epfsa": {
-			func: "handleEPFSetAgent",
-			file: EPF
-		},
-		"f#epfai": {
-			func: "handleAddEPFItem",
-			file: EPF
+		"o#m": {
+			func: "handleMute",
+			file: Moderation
 		}
 	},
 	"z": {

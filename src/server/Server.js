@@ -48,17 +48,14 @@ class Server {
 			socket.on("data", (data) => {
 				return this.dataHandler.handleData(data.toString().split("\0")[0], penguin)
 			})
-
 			socket.on("close", () => {
 				Logger.info(`${penguin.ipAddr} disconnected`)
 				return penguin.disconnect()
 			})
-
 			socket.on("error", (error) => {
 				Logger.error(error)
 				return penguin.disconnect()
 			})
-
 		}).listen(this.port, () => {
 			Logger.info(`Waddler {${this.type}} listening on port ${this.port}`)
 		})
@@ -104,6 +101,14 @@ class Server {
 
 		if (index > -1) {
 			Logger.info("Removing client")
+
+			if (penguin.room) penguin.room.removePenguin(penguin)
+
+			if (this.roomManager) {
+				const igloo = (penguin.id + 1000)
+
+				if (this.roomManager.checkIgloo(igloo)) this.roomManager.closeIgloo(igloo)
+			}
 
 			this.penguins.splice(index, 1)
 

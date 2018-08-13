@@ -16,7 +16,6 @@ class Penguin {
 	setPenguin(penguin) {
 		this.id = penguin.id
 		this.username = penguin.username
-
 		this.age = sp.dateToInt() - penguin.registrationdate
 
 		this.coins = penguin.coins
@@ -33,6 +32,7 @@ class Penguin {
 
 		this.rank = penguin.rank
 		this.moderator = (penguin.moderator >= 1)
+		this.muted = false
 
 		this.x = 0
 		this.y = 0
@@ -70,6 +70,14 @@ class Penguin {
 		return playerArr.join("|")
 	}
 
+	addItem(item) {
+		if (sp.getPatchedItems().includes(item) && !this.moderator) return this.sendError(410)
+		if (this.inventory.includes(item)) return this.sendError(400)
+
+		this.inventory.push(item)
+		this.database.insertItem(this.id, item)
+		this.sendXt("ai", -1, item, this.coins)
+	}
 	getInventory() {
 		let inventory = []
 
@@ -85,6 +93,10 @@ class Penguin {
 			Logger.error(err)
 		})
 	}
+	updateClothing(type, item) {
+		this[type] = item
+		this.updateColumn(type, item)
+	}
 
 	getIgloos() {
 		let igloos = []
@@ -92,17 +104,12 @@ class Penguin {
 		this.getColumn("igloos").then((result) => {
 			let iglooStr = result[0].igloos
 
-			if (iglooStr.length < 0) return this.disconnect()
+			if (iglooStr.length <= 0) return this.disconnect()
 
 			igloos.push(iglooStr.split("|").join("|"))
 
 			this.igloos = igloos
 		})
-	}
-
-	updateClothing(type, item) {
-		this[type] = item
-		this.updateColumn(type, item)
 	}
 
 	addCoins(coins) {
@@ -112,23 +119,9 @@ class Penguin {
 
 		this.updateColumn("coins", this.coins)
 	}
-
 	removeCoins(coins) {
 		this.coins -= coins
-
 		this.updateColumn("coins", this.coins)
-	}
-
-	addItem(item) {
-		if (sp.getPatchedItems().includes(item) && !this.moderator) return this.sendError(410)
-
-		if (this.inventory.includes(item)) return this.sendError(400)
-
-		this.inventory.push(item)
-
-		this.database.insertItem(this.id, item)
-
-		this.sendXt("ai", -1, item, this.coins)
 	}
 
 	sendRaw(data) {
@@ -137,11 +130,9 @@ class Penguin {
 			this.socket.write(data + "\0")
 		}
 	}
-
 	sendXt() {
 		this.sendRaw(`%xt%${Array.prototype.join.call(arguments, "%")}%`)
 	}
-
 	sendError(err, disconnect) {
 		this.sendXt("e", -1, err)
 
@@ -157,7 +148,6 @@ class Penguin {
 			Logger.error(err)
 		})
 	}
-
 	getColumn(column, table = null) {
 		return this.database.getColumn(this.id, column, table)
 	}

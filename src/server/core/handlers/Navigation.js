@@ -5,11 +5,10 @@ const sp = require("../utils/sp")
 class Navigation {
 	static handleJoinServer(data, penguin) {
 		const randomRoom = sp.getRandomRoom()
-
 		const x = sp.getRandomPosition()
 		const y = sp.getRandomPosition()
 
-		penguin.sendXt("js", -1, 0, 1, Number(penguin.moderator), 1)
+		penguin.sendXt("js", -1, 1, 0, Number(penguin.moderator), 1)
 		penguin.sendXt("gps", -1, "")
 		penguin.sendXt("lp", -1, penguin.buildPlayerString(), penguin.coins, 0, 1440, sp.getTime(), penguin.age, 4, 1)
 
@@ -31,7 +30,6 @@ class Navigation {
 		if (!y || isNaN(y)) y = sp.getRandomPosition()
 
 		if (penguin.room) penguin.room.removePenguin(penguin)
-
 		if (room > 900) {
 			penguin.gameRoomId = room
 			return penguin.sendXt("jg", -1, room)

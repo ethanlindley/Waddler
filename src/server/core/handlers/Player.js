@@ -134,8 +134,11 @@ class Player {
 		const message = String(data[5])
 
 		if (message.length <= 0 || message.length > 48) return penguin.sendError(5, true)
-
-		penguin.room.sendXt("sm", -1, penguin.id, message)
+		if (penguin.muted) {
+			penguin.room.sendXt("mm", -1, penguin.id, message)
+		} else {
+			penguin.room.sendXt("sm", -1, penguin.id, message)
+		}
 	}
 
 	static handleMineCoins(data, penguin) {
@@ -145,9 +148,7 @@ class Player {
 		const amount = sp.getRandomCoins()
 
 		penguin.addCoins(amount)
-
 		penguin.sendXt("cdu", -1, amount, penguin.coins)
-
 		penguin.coinDig++
 	}
 }

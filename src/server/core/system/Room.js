@@ -16,9 +16,7 @@ class Room {
 		if (!y || isNaN(y)) y = 0
 
 		penguin.room = this
-
 		penguin.frame = 1
-
 		penguin.x = x
 		penguin.y = y
 
@@ -39,7 +37,6 @@ class Room {
 
 		if (index > -1) {
 			this.penguins.splice(index, 1)
-
 			this.sendXt("rp", -1, penguin.id)
 		}
 	}
