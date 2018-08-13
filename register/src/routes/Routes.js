@@ -7,7 +7,10 @@ const hashPassword = (pass) => {
 }
 
 const handleRegister = (body, database, res) => {
-	const [username, password, color] = [_.escape(body.username), _.escape(body.password), body.color]
+	const [username, password, color] = [body.username, body.password, body.color]
+
+	if (_.escape(username) != username) return res.code(200).send("Your username contains illegal characters")
+	if (_.escape(password) != password) return res.code(200).send("Your password contains illegal characters")
 
 	database.usernameExists(username).then((result) => {
 		const count = result["count(*)"]
