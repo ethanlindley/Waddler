@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Register</title>
+
+    <link rel="stylesheet" type="text/css" href="./dist/components/reset.css">
+    <link rel="stylesheet" type="text/css" href="./dist/components/site.css">
+    <link rel="stylesheet" href="./dist/components/themes/default.css">
+    <link rel="stylesheet" type="text/css" href="./dist/components/container.css">
+    <link rel="stylesheet" type="text/css" href="./dist/components/grid.css">
+    <link rel="stylesheet" type="text/css" href="./dist/components/header.css">
+    <link rel="stylesheet" type="text/css" href="./dist/components/image.css">
+    <link rel="stylesheet" type="text/css" href="./dist/components/menu.css">
+    <link rel="stylesheet" type="text/css" href="./dist/components/divider.css">
+    <link rel="stylesheet" type="text/css" href="./dist/components/segment.css">
+    <link rel="stylesheet" type="text/css" href="./dist/components/form.css">
+    <link rel="stylesheet" type="text/css" href="./dist/components/input.css">
+    <link rel="stylesheet" type="text/css" href="./dist/components/button.css">
+    <link rel="stylesheet" type="text/css" href="./dist/components/list.css">
+    <link rel="stylesheet" type="text/css" href="./dist/components/message.css">
+    <link rel="stylesheet" type="text/css" href="./dist/components/icon.css">
+
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/droidarabickufi.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./dist/components/form.js"></script>
+    <script src="./dist/components/transition.js"></script>
+
+    <link rel="icon" type="image/png" href="./dist/assets/images/logo.png" />
+
+    <style type="text/css">
+    	body {
+    		background-color: #DADADA;
+    	}
+    	body > .grid {
+    		height: 100%;
+    	}
+    	.image {
+    		margin-top: -100px;
+    	}
+    	.column {
+    		max-width: 450px;
+    	}
+    	.ui.menu .item img.logo {
+    		margin-right: 1.5em;
+    	}
+    	.main.container {
+    		margin-top: 7em;
+    	}
+    	.wireframe {
+    		margin-top: 2em;
+    	}
+    	.ui.footer.segment {
+    		margin: 5em 0em 0em;
+    		padding: 5em 0em;
+    	}
+    </style>
+</head>
+
+<body>
+	<div class="ui middle aligned center aligned grid">
+		<div class="column">
+			<h2 class="ui teal image header">
+				<div class="content">
+					Register an account
+				</div>
+			</h2>
+			<form name="register" class="ui large form" action="http://127.0.0.1:6969/registerPost" onsubmit="return validateForm()" method="POST">
+				<div class="ui stacked segment">
+					<div class="field">
+						<div class="ui left icon input">
+							<i class="user icon"></i>
+							<input type="text" name="username" class="pure-input-rounded" minlength="4" maxlength="12" pattern="[A-Za-z0-9]+" placeholder="Username">
+						</div>
+					</div>
+					<div class="field">
+						<div class="ui left icon input">
+							<i class="lock icon"></i>
+							<input type="password" name="password" class="pure-input-rounded" minlength="4" maxlength="12" pattern="[a-zA-Z0-9]+" placeholder="Password">
+						</div>
+					</div>
+					<select class="ui dropdown" name="color">
+                        <option value="6">Orange</option>
+                        <option value="11">Dark green</option>
+                        <option value="13">Lime green</option>
+                        <option value="7">Yellow</option>
+                        <option value="10">Peach</option>
+                        <option value="9">Brown</option>
+                        <option value="5">Red</option>
+                        <option value="4">Black</option>
+                        <option value="1">Blue</option>
+                        <option value="12">Light blue</option>
+                        <option value="2">Green</option>
+                        <option value="16">Arctic white</option>
+                        <option value="8">Dark purple</option>
+                        <option value="3">Pink</option>
+                        <option value="15">Aqua</option>
+                    </select><br>
+                    <input class="ui fluid large teal submit button" type="submit" value="Register">
+                </div>
+            </form>
+            <div class="ui message">
+            	<p>Made by <font color="#35BDB2">Zaseth</font></p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    	function validateForm() {
+    		var x = document.forms["register"]["username"].value.toString()
+    		var y = document.forms["register"]["password"].value.toString()
+
+    		x.replace("<", "&lt;").replace(">", "&gt;").replace("'", "\\'")
+            y.replace("<", "&lt;").replace(">", "&gt;").replace("'", "\\'")
+
+            if (x.length > 12 || y.length > 12 || x.length < 4 || y.length < 4) return false
+    	}
+    </script>
+</body>
+</html>
