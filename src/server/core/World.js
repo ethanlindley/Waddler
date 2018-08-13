@@ -72,6 +72,10 @@ const xtHandlers = {
 			func: "handleJoinPlayer",
 			file: Navigation
 		},
+		"j#grs": {
+			func: "handleRefreshRoom",
+			file: Navigation
+		},
 		"u#sp": {
 			func: "handleSendPosition",
 			file: Player
@@ -151,6 +155,14 @@ const xtHandlers = {
 		},
 		"g#go": {
 			func: "handlegetIgloos",
+			file: Igloo
+		},
+		"g#gm": {
+			func: "handleGetActiveIgloo",
+			file: Igloo
+		},
+		"g#gf": {
+			func: "handleGetIglooFurniture",
 			file: Igloo
 		},
 		"g#or": {

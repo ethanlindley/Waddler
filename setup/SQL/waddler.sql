@@ -1,11 +1,36 @@
 DROP TABLE IF EXISTS `inventory`;
 CREATE TABLE `inventory` (
-	`id` int(10) UNSIGNED NOT NULL,
-	`itemid` int(10) UNSIGNED NOT NULL
+    `id` int(10) UNSIGNED NOT NULL,
+    `itemid` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `inventory` WRITE;
 INSERT INTO `inventory` VALUES (100, 1);
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `furniture`;
+CREATE TABLE `furniture` (
+    `id` int(10) UNSIGNED NOT NULL,
+    `furnitureid` int(10) UNSIGNED NOT NULL,
+    `quantity` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `furniture` WRITE;
+INSERT INTO `furniture` VALUES (100, 572, 1);
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `igloo`;
+CREATE TABLE `igloo` (
+    `id` int(10) UNSIGNED NOT NULL,
+    `music` int(10) UNSIGNED NOT NULL DEFAULT 0,
+    `floor` int(10) UNSIGNED NOT NULL DEFAULT 0,
+    `furniture` longtext NOT NULL,
+    `locked` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+    `type` int(10) UNSIGNED NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `igloo` WRITE;
+INSERT INTO `igloo` VALUES (100, 0, 14, '572', 0, 1);
 UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `penguins`;

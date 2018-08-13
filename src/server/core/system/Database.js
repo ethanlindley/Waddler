@@ -43,6 +43,18 @@ class Database {
 			console.error(err)
 		})
 	}
+
+	getIglooDetails(id) {
+		return this.knex("igloo").select("*").where({
+			id
+		})
+	}
+
+	handleGetIglooFurniture(id) {
+		return this.knex("furniture").select("furnitureid", "quantity").where({
+			id
+		})
+	}
 }
 
 module.exports = Database

@@ -65,6 +65,10 @@ class Navigation {
 			penguin.sendError(210)
 		}
 	}
+
+	static handleRefreshRoom(data, penguin) {
+		penguin.sendXt("grs", -1, penguin.id, penguin.room.buildRoomString())
+	}
 }
 
 module.exports = Navigation
