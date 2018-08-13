@@ -1,0 +1,17 @@
+{
+	"name": "waddler-convertCrumbs",
+	"version": "1.0.0",
+	"description": "Converts icer.ink's crumbs to be used with Waddler",
+	"keywords": [
+		"club",
+		"penguin",
+		"cpps",
+		"clubpenguin",
+		"clubpenguinprivateserver"
+	],
+	"dependencies": {
+		"request-promise": "^4.2.2"
+	},
+	"author": "Zaseth",
+	"license": "MIT"
+}

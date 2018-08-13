@@ -8,6 +8,8 @@ An open source in-development Club Penguin emulator, written in Node.js.
 * The first CP emulator to use Keccak256 for it's password hashing
 * Stable and well written
 * Uses the latest, fastest and securest modules
+* Contains a script to converts icer.ink's crumbs to be used with Waddler, allowing Waddler to use the latest crumbs
+* Everything that is logged is stored in separate text files in a nice format
 
 # Setup
 
@@ -16,6 +18,7 @@ An open source in-development Club Penguin emulator, written in Node.js.
 * Extract it into a folder
 * Run MYSQL and NGINX (or Apache)
 * Conform your settings in `\src\config.json` and in `\register\src\config.json` (make sure they're both the same)
+* Import the .SQL file in `\setup\SQL\`
 * If you're on a VPS, change the `action=` link in `\register\src\public`
 * In your mediaserver, go to `\v2\client\` and replace that airtower.swf with the one in `\setup\airtower\`
 * Open CMD and CD to Waddler's main folder where `package.json` is located

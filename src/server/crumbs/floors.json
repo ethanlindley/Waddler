@@ -1,1 +1,98 @@
-{"0":{"name":"Floor Removal","cost":0},"1":{"name":"Terracotta Tile","cost":0},"2":{"name":"Maple Hardwood","cost":0},"3":{"name":"Green Carpet","cost":0},"4":{"name":"Burgundy Carpet","cost":0},"5":{"name":"Black & White Tile","cost":0},"6":{"name":"Linoleum","cost":0},"7":{"name":"Dance Floor","cost":0},"8":{"name":"Painted Dance Steps","cost":0},"9":{"name":"Bamboo Floor","cost":0},"10":{"name":"Dirt & Leaves","cost":0},"11":{"name":"Blue Turf","cost":0},"12":{"name":"Whirlpool","cost":0},"13":{"name":"Cherry Hardwood","cost":0},"14":{"name":"Phony Lawn","cost":0},"15":{"name":"Black Carpet","cost":0},"16":{"name":"Dark Stone Tile","cost":0},"17":{"name":"Pink Carpet","cost":0},"18":{"name":"Sand Floor","cost":0},"19":{"name":"Sunny Sky Floor","cost":0},"20":{"name":"Cobblestone","cost":0},"21":{"name":"Snowy Floor","cost":0},"22":{"name":"Lime Green Carpet","cost":0},"23":{"name":"Woven Rice Mat","cost":0}}
+{
+	"0": {
+		"cost": 20,
+		"name": "Floor Removal"
+	},
+	"1": {
+		"cost": 680,
+		"name": "Terracotta Tile"
+	},
+	"2": {
+		"cost": 620,
+		"name": "Maple Hardwood"
+	},
+	"3": {
+		"cost": 530,
+		"name": "Green Carpet"
+	},
+	"4": {
+		"cost": 530,
+		"name": "Burgundy Carpet"
+	},
+	"5": {
+		"cost": 510,
+		"name": "Black & White Tile"
+	},
+	"6": {
+		"cost": 540,
+		"name": "Linoleum"
+	},
+	"7": {
+		"cost": 1000,
+		"name": "Dance Floor"
+	},
+	"8": {
+		"cost": 280,
+		"name": "Painted Dance Steps"
+	},
+	"9": {
+		"cost": 370,
+		"name": "Bamboo Floor"
+	},
+	"10": {
+		"cost": 400,
+		"name": "Dirt & Leaves"
+	},
+	"11": {
+		"cost": 530,
+		"name": "Blue Turf"
+	},
+	"12": {
+		"cost": 750,
+		"name": "Whirlpool"
+	},
+	"13": {
+		"cost": 620,
+		"name": "Cherry Hardwood"
+	},
+	"14": {
+		"cost": 700,
+		"name": "Phony Lawn"
+	},
+	"15": {
+		"cost": 530,
+		"name": "Black Carpet"
+	},
+	"16": {
+		"cost": 800,
+		"name": "Dark Stone Tile"
+	},
+	"17": {
+		"cost": 530,
+		"name": "Pink Carpet"
+	},
+	"18": {
+		"cost": 400,
+		"name": "Sand Floor"
+	},
+	"19": {
+		"cost": 530,
+		"name": "Sunny Sky Floor"
+	},
+	"20": {
+		"cost": 1200,
+		"name": "Cobblestone"
+	},
+	"21": {
+		"cost": 400,
+		"name": "Snowy Floor"
+	},
+	"22": {
+		"cost": 530,
+		"name": "Lime Green Carpet"
+	},
+	"23": {
+		"cost": 750,
+		"name": "Woven Rice Mat"
+	}
+}
