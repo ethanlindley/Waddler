@@ -133,6 +133,10 @@ const xtHandlers = {
 			func: "handleMineCoins",
 			file: Player
 		},
+		"e#dc": {
+			func: "handleDonateCoins",
+			file: Player
+		},
 		"t#at": {
 			func: "handleOpenPlayerBook",
 			file: Toy

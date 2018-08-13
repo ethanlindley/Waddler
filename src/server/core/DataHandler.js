@@ -38,7 +38,7 @@ class DataHandler {
 					return penguin.sendError(101, true)
 				}
 			} else {
-				const penguinObj = this.server.getPenguin(result.id)
+				const penguinObj = this.server.getPenguinById(result.id)
 
 				if (penguinObj) return penguinObj.disconnect()
 
@@ -59,7 +59,7 @@ class DataHandler {
 		if (data.startsWith("<") && data.endsWith(">")) {
 			Logger.incoming(data)
 			if (data == "<policy-file-request/>") {
-				return penguin.sendRaw(`<cross-domain-policy><allow-access-from domain="*" to-ports="6112, 6113, 80, 443"/></cross-domain-policy>`)
+				return penguin.sendRaw(`<cross-domain-policy><allow-access-from domain="*" to-ports="*"/></cross-domain-policy>`)
 			} else {
 				const type = data.split("action='")[1].split("'")[0]
 				if (type == "verChk") {

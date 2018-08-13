@@ -10,7 +10,7 @@ class Moderation {
 
 		penguin.database.updateColumn(id, "banned", 1)
 
-		const player = penguin.server.getPenguin(id)
+		const player = penguin.server.getPenguinById(id)
 
 		if (player) {
 			player.sendXt("b", -1)
@@ -25,7 +25,7 @@ class Moderation {
 
 		if (isNaN(id)) return penguin.disconnect()
 
-		const player = penguin.server.getPenguin(id)
+		const player = penguin.server.getPenguinById(id)
 
 		if (player) player.sendError(5, true)
 	}
@@ -37,7 +37,7 @@ class Moderation {
 
 		if (isNaN(id)) return penguin.disconnect()
 
-		let player = penguin.server.getPenguin(id)
+		let player = penguin.server.getPenguinById(id)
 
 		if (player) player.muted = !player.muted
 	}

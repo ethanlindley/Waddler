@@ -61,19 +61,25 @@ class Server {
 		})
 	}
 
-	getPenguin(player) {
+	getPenguinById(id) {
 		for (const penguin of this.penguins) {
-			const type = isNaN(player) ? penguin.username : penguin.id
-			if (type === player) {
+			if (penguin.id == id) {
 				return penguin
 			}
 		}
 	}
 
-	isPenguinOnline(player) {
+	getPenguinByUsername(username) {
 		for (const penguin of this.penguins) {
-			const type = isNaN(player) ? penguin.username : penguin.id
-			if (type === player) {
+			if (penguin.username.toLowerCase() == username.toLowerCase()) {
+				return penguin
+			}
+		}
+	}
+
+	isPenguinOnline(id) {
+		for (const penguin of this.penguins) {
+			if (penguin.id == id) {
 				return true
 			}
 		}

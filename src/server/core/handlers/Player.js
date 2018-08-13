@@ -151,6 +151,15 @@ class Player {
 		penguin.sendXt("cdu", -1, amount, penguin.coins)
 		penguin.coinDig++
 	}
+
+	static handleDonateCoins(data, penguin) {
+		const amount = parseInt(data[4])
+
+		if (penguin.coins < amount) return penguin.sendError(401)
+
+		penguin.removeCoins(amount)
+		penguin.sendXt("dc", -1, penguin.id, penguin.coins)
+	}
 }
 
 module.exports = Player
