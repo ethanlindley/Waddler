@@ -32,6 +32,13 @@ class Database {
 			igloos: "1"
 		})
 	}
+
+	addColor(id, color) {
+		return this.knex("inventory").insert({
+			id: id,
+			itemid: color
+		})
+	}
 }
 
 module.exports = Database

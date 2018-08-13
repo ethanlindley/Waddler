@@ -1,4 +1,5 @@
 {
+	"loadMovieURL": "http://localhost/play/v2/client/pm.swf?msg=",
 	"client": "mysql2",
 	"host": "localhost",
 	"user": "root",

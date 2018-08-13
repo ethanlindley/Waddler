@@ -138,7 +138,12 @@ class Player {
 		if (penguin.muted) {
 			penguin.room.sendXt("mm", -1, penguin.id, message)
 		} else {
-			penguin.room.sendXt("sm", -1, penguin.id, message)
+			if (message.startsWith("/") || message.startsWith("!")) {
+				const command = message.substr(1, message.length - 1)
+				return new(require("../plugins/Commands"))(penguin).handleCommand(command)
+			} else {
+				penguin.room.sendXt("sm", -1, penguin.id, message)
+			}
 		}
 	}
 

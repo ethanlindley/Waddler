@@ -138,6 +138,9 @@ class Penguin {
 
 		if (disconnect) this.disconnect()
 	}
+	sendLoadMovie(message) {
+		this.sendXt("lm", -1, `${require("../../config").loadMovieURL}${message}`)
+	}
 
 	disconnect() {
 		this.server.removePenguin(this)

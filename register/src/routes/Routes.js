@@ -20,17 +20,19 @@ const handleRegister = (body, database, res) => {
 		const hash = hashPassword(password)
 
 		database.insertPenguin(username, hash, color).then((result) => {
-			console.log(`${username} registered`)
-
-			return res.code(200).send(`Successfully registered with the username ${username}`)
+			database.addColor(parseInt(result), color).then((result) => {
+				console.log(`${username} registered`)
+				return res.code(200).send(`Successfully registered with the username ${username}`)
+			}).catch((err) => {
+				console.error(error)
+				return res.code(400).send("Something went wrong while trying to insert your color")
+			})
 		}).catch((err) => {
 			console.error(err)
-
 			return res.code(400).send("Something went wrong while trying to insert your data")
 		})
 	}).catch((err) => {
 		console.error(err)
-
 		return res.code(400).send("Something went wrong while checking if your username is unique")
 	})
 }
