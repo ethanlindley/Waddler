@@ -1,6 +1,6 @@
 "use strict"
 
-module.exports = class FindFour {
+class FindFour {
 	constructor() {
 		this.currentPlayer = 1
 		this.boardMap = [
@@ -133,3 +133,5 @@ module.exports = class FindFour {
 		}
 	}
 }
+
+module.exports = FindFour
