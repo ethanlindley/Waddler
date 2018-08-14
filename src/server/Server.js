@@ -9,6 +9,7 @@ const DataHandler = require("./core/DataHandler")
 const World = require("./core/World")
 
 const roomManager = require("./core/managers/roomManager")
+const gameManager = require("./core/managers/gameManager")
 
 class Server {
 	constructor(type) {
@@ -23,6 +24,7 @@ class Server {
 
 		if (this.type == "game") {
 			this.roomManager = new roomManager(this)
+			this.gameManager = new gameManager(this)
 		}
 
 		this.startServer()
@@ -109,6 +111,7 @@ class Server {
 			Logger.info("Removing client")
 
 			if (penguin.room) penguin.room.removePenguin(penguin)
+			if (penguin.tableId) this.gameManager.leaveTable(penguin)
 
 			if (this.roomManager) {
 				const igloo = (penguin.id + 1000)

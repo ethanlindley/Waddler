@@ -213,6 +213,18 @@ const xtHandlers = {
 		"p#pg": {
 			func: "handleGetPufflesByPlayerId",
 			file: Pet
+		},
+		"a#gt": {
+			func: "handleGetTable",
+			file: Multiplayer
+		},
+		"a#jt": {
+			func: "handleJoinTable",
+			file: Multiplayer
+		},
+		"a#lt": {
+			func: "handleLeaveTable",
+			file: Multiplayer
 		}
 	},
 	"z": {
@@ -226,6 +238,14 @@ const xtHandlers = {
 		},
 		"zo": {
 			func: "handleGameOver",
+			file: Multiplayer
+		},
+		"jz": {
+			func: "handleJoinGame",
+			file: Multiplayer
+		},
+		"zm": {
+			func: "handleSendMove",
 			file: Multiplayer
 		}
 	}
