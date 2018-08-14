@@ -215,15 +215,15 @@ const xtHandlers = {
 			file: Pet
 		},
 		"a#gt": {
-			func: "handleGetTable",
+			func: "handleMultiplayerData",
 			file: Multiplayer
 		},
 		"a#jt": {
-			func: "handleJoinTable",
+			func: "handleMultiplayerData",
 			file: Multiplayer
 		},
 		"a#lt": {
-			func: "handleLeaveTable",
+			func: "handleMultiplayerData",
 			file: Multiplayer
 		}
 	},
@@ -233,7 +233,7 @@ const xtHandlers = {
 			file: Multiplayer
 		},
 		"gz": {
-			func: "handleGetGame",
+			func: "handleMultiplayerData",
 			file: Multiplayer
 		},
 		"zo": {
@@ -241,11 +241,11 @@ const xtHandlers = {
 			file: Multiplayer
 		},
 		"jz": {
-			func: "handleJoinGame",
+			func: "handleMultiplayerData",
 			file: Multiplayer
 		},
 		"zm": {
-			func: "handleSendMove",
+			func: "handleMultiplayerData",
 			file: Multiplayer
 		}
 	}

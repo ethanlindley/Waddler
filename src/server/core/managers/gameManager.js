@@ -7,11 +7,24 @@ class gameManager {
 		this.tableGames = []
 		this.tablePopulation = []
 		this.tablePlayers = []
+		this.gameType = ""
+	}
 
-		for (let i = 200; i < 208; i++) {
-			this.tableGames[i] = null
-			this.tablePopulation[i] = {}
-			this.tablePlayers[i] = []
+	generateArrays(gameType) {
+		if (gameType == "F") {
+			this.gameType = gameType
+			for (let i = 200; i < 208; i++) {
+				this.tableGames[i] = null
+				this.tablePopulation[i] = {}
+				this.tablePlayers[i] = []
+			}
+		} else if (gameType == "M") {
+			this.gameType = gameType
+			for (let i = 100; i < 104; i++) {
+				this.tableGames[i] = null
+				this.tablePopulation[i] = {}
+				this.tablePlayers[i] = []
+			}
 		}
 	}
 
