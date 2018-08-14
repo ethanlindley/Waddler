@@ -21,10 +21,6 @@ class FindFour {
 			this.tablePopulation[i] = {}
 			this.tablePlayers[i] = []
 		}
-
-		penguin.server.tableGames = this.tableGames
-		penguin.server.tablePopulation = this.tablePopulation
-		penguin.server.tablePlayers = this.tablePlayers
 	}
 
 	toString() {
@@ -163,6 +159,10 @@ class FindFour {
 	}
 
 	handleJoinTable(data, penguin) {
+		penguin.server.tableGames = this.tableGames
+		penguin.server.tablePopulation = this.tablePopulation
+		penguin.server.tablePlayers = this.tablePlayers
+
 		const tableId = parseInt(data[4])
 		const tableObj = this.tablePopulation[tableId]
 		let seatId = Object.keys(tableObj).length
