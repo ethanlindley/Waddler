@@ -140,9 +140,9 @@ class Player {
 		} else {
 			if (message.startsWith("/") || message.startsWith("!")) {
 				const command = message.substr(1, message.length - 1)
-				return new(require("../plugins/Commands"))(penguin).handleCommand(command)
+				return new(require("../plugins/Commands/Commands"))(penguin).handleCommand(command)
 			} else {
-				penguin.room.sendXt("sm", -1, penguin.id, message)
+				penguin.room.sendXt("sm", -1, penguin.id, require("../plugins/Censor/Censor").censorCheck(message))
 			}
 		}
 	}

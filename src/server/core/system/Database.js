@@ -44,15 +44,34 @@ class Database {
 		})
 	}
 
-	getIglooDetails(id) {
+	updateQuantity(id) {
+		return this.knex.raw("UPDATE `furniture` SET `quantity` = quantity + ? WHERE `id` = ?", [1, id]).then(() => {}).catch((err) => {
+			console.error(err)
+		})
+	}
+	insertFurniture(id, furnitureid) {
+		return this.knex("furniture").insert({
+			id: id,
+			furnitureid: furnitureid,
+			quantity: 1
+		})
+	}
+
+	getFurnitureAndQuantity(id) {
+		return this.knex("furniture").select("furnitureid", "quantity").where({
+			id
+		})
+	}
+
+	getActiveIgloo(id) {
 		return this.knex("igloo").select("*").where({
 			id
 		})
 	}
 
-	handleGetIglooFurniture(id) {
-		return this.knex("furniture").select("furnitureid", "quantity").where({
-			id
+	addIgloo(id, igloo) {
+		return this.knex.raw('UPDATE `penguins` SET `igloos` =' + `concat(igloos, "|", ${igloo})` + 'WHERE `id` = ?', [id]).then(() => {}).catch((err) => {
+			console.error(err)
 		})
 	}
 }

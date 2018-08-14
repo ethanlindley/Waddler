@@ -98,6 +98,16 @@ class Penguin {
 		this.updateColumn(type, item)
 	}
 
+	getFurniture() {
+		this.database.getFurnitureAndQuantity(this.id).then((result) => {
+			if (result.length <= 0) return this.sendXt("gf", -1, [])
+
+			result.forEach(row => {
+				this.sendXt("gf", -1, [row.furnitureid, row.quantity].join("|") + "|")
+			})
+
+		})
+	}
 	getIgloos() {
 		let igloos = []
 
@@ -110,6 +120,24 @@ class Penguin {
 
 			this.igloos = igloos
 		})
+	}
+
+	addFurniture(furnitureid) {
+		this.getColumn("furnitureid", "furniture").then((result) => {
+			result.length != 0 ? this.database.updateQuantity(this.id) : this.database.insertFurniture(this.id, furnitureid)
+
+			this.sendXt("af", -1, furnitureid, this.coins)
+		})
+	}
+	addIgloo(igloo) {
+		this.database.addIgloo(this.id, igloo)
+
+		if (this.room.id == (this.id + 1000)) penguin.sendXt("au", -1, igloo, this.coins)
+	}
+	addFloor(floor) {
+		this.updateColumn("floor", floor, "igloo")
+
+		penguin.sendXt("ag", -1, floor, this.coins)
 	}
 
 	addCoins(coins) {

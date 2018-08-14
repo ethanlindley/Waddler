@@ -11,6 +11,7 @@ const Toy = require("./handlers/Toy")
 const Igloo = require("./handlers/Igloo")
 const Moderation = require("./handlers/Moderation")
 
+const Pet = require("./handlers/Pet")
 const Multiplayer = require("./handlers/Multiplayer")
 
 const xtHandlers = {
@@ -149,20 +150,32 @@ const xtHandlers = {
 			func: "handleClosePlayerBook",
 			file: Toy
 		},
-		"g#gr": {
-			func: "handleLoadPlayerIglooList",
+		"g#af": {
+			func: "handleIglooFurniture",
 			file: Igloo
 		},
-		"g#go": {
-			func: "handlegetIgloos",
+		"g#gf": {
+			func: "handleGetFurniture",
 			file: Igloo
 		},
 		"g#gm": {
 			func: "handleGetActiveIgloo",
 			file: Igloo
 		},
-		"g#gf": {
-			func: "handleGetIglooFurniture",
+		"g#gr": {
+			func: "handleLoadPlayerIglooList",
+			file: Igloo
+		},
+		"g#go": {
+			func: "handleGetIgloos",
+			file: Igloo
+		},
+		"g#ur": {
+			func: "handleSaveFurniture",
+			file: Igloo
+		},
+		"g#um": {
+			func: "handleUpdateMusic",
 			file: Igloo
 		},
 		"g#or": {
@@ -171,6 +184,18 @@ const xtHandlers = {
 		},
 		"g#cr": {
 			func: "handleCloseIgloo",
+			file: Igloo
+		},
+		"g#au": {
+			func: "handleBuyIgloo",
+			file: Igloo
+		},
+		"g#ao": {
+			func: "handleUpdateIgloo",
+			file: Igloo
+		},
+		"g#ag": {
+			func: "handleUpdateIglooFloor",
 			file: Igloo
 		},
 		"o#b": {
@@ -184,6 +209,10 @@ const xtHandlers = {
 		"o#m": {
 			func: "handleMute",
 			file: Moderation
+		},
+		"p#pg": {
+			func: "handleGetPufflesByPlayerId",
+			file: Pet
 		}
 	},
 	"z": {

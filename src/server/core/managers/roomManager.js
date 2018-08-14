@@ -21,8 +21,6 @@ class roomManager {
 	createRoom(id) {
 		if (!this.rooms[id]) {
 			return this.rooms[id] = new Room(id, this)
-		} else {
-			Logger.error(`Tried to create room ${id} but it already exists`)
 		}
 	}
 
@@ -30,7 +28,7 @@ class roomManager {
 		if (this.rooms[id]) {
 			return this.rooms[id]
 		} else {
-			Logger.error(`Tried to get room ${id} but it doesn't exist`)
+			return false
 		}
 	}
 

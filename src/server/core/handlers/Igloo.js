@@ -1,13 +1,42 @@
 "use strict"
 
 class Igloo {
+	static handleIglooFurniture(data, penguin) {
+		const furnitureid = parseInt(data[4])
+
+		const furniture = require("../../crumbs/furniture")
+
+		if (!furniture[furnitureid]) return penguin.sendError(402)
+
+		const cost = furniture[furnitureid].cost
+
+		if (penguin.coins < cost) return penguin.sendError(401)
+
+		penguin.removeCoins(cost)
+		penguin.addFurniture(furnitureid)
+	}
+
+	static handleGetFurniture(data, penguin) {
+		return penguin.getFurniture()
+	}
+
+	static handleGetActiveIgloo(data, penguin) {
+		if (penguin.id != parseInt(data[4])) return penguin.disconnect()
+
+		penguin.database.getActiveIgloo(penguin.id).then((result) => {
+			const iglooStr = `${result[0].type}%${result[0].music}%${result[0].floor}%${result[0].furniture}%${result[0].locked}`
+
+			penguin.sendXt("gm", -1, penguin.id, iglooStr)
+		})
+	}
+
 	static handleLoadPlayerIglooList(data, penguin) {
 		if (penguin.openIgloos.length == 0 || Object.keys(penguin.openIgloos).length == 0) return penguin.sendXt("gr", -1)
 
 		let iglooList = []
 
 		for (const i in Object.keys(penguin.openIgloos)) {
-			let id = Object.keys(penguin.openIgloos[i])
+			let id = Object.keys(penguin.openIgloos)[i]
 			let username = penguin.openIgloos[id]
 
 			iglooList.push([id, username].join("|"))
@@ -21,37 +50,78 @@ class Igloo {
 		penguin.sendXt("go", -1, penguin.igloos)
 	}
 
-	static handleGetActiveIgloo(data, penguin) {
-		if (parseInt(data[4]) != penguin.id) return
+	static handleSaveFurniture(data, penguin) {
+		let furniture = data.join(",").substr(13)
 
-		penguin.database.getIglooDetails(penguin.id).then((result) => {
-			const [type, music, floor, furniture, locked] = [result[0].type, result[0].music, result[0].floor, result[0].furniture, result[0].locked]
-			penguin.sendXt("gm", -1, penguin.id, type, music, floor, furniture, locked)
-		})
+		if (furniture.length < 1) return penguin.updateColumn("furnitureid", "[]", "furniture")
+
+		if (furniture.length > 99) return penguin.sendError(10006)
+
+		penguin.updateColumn("furniture", furniture, "igloo")
 	}
 
-	static handleGetIglooFurniture(data, penguin) {
-		penguin.database.getIglooFurniture(penguin.id).then((result) => {
-			if (result.length != 0) {
-				result.forEach(row => {
-					penguin.sendXt("gf", -1, [row.furnitureid, row.quantity].join("|") + "|")
-				})
-			} else {
-				penguin.sendXt("gf", -1, [])
-			}
-		})
+	static handleUpdateMusic(data, penguin) {
+		const musicId = parseInt(data[4])
+
+		if (isNaN(musicId)) return penguin.disconnect()
+
+		penguin.updateColumn("music", musicId, "igloo")
 	}
 
 	static handleOpenIgloo(data, penguin) {
-		if (parseInt(data[4]) != penguin.id) return
+		if (penguin.id != parseInt(data[4])) return penguin.disconnect()
 
 		penguin.openIgloos[penguin.id] = penguin.username
 	}
 
 	static handleCloseIgloo(data, penguin) {
-		if (parseInt(data[4]) != penguin.id) return
+		if (penguin.id != parseInt(data[4])) return penguin.disconnect()
 
 		delete penguin.openIgloos[penguin.id]
+	}
+
+	static handleBuyIgloo(data, penguin) {
+		const igloo = parseInt(data[4])
+
+		if (isNaN(igloo)) return penguin.disconnect()
+
+		const igloos = require("../../crumbs/igloos")
+
+		if (!igloos[igloo]) return penguin.sendError(402)
+
+		const cost = igloos[igloo].cost
+
+		if (penguin.coins < cost) return penguin.sendError(401)
+
+		penguin.removeCoins(cost)
+		penguin.addIgloo(igloo)
+	}
+
+	static handleUpdateIgloo(data, penguin) {
+		const igloo = parseInt(data[4])
+
+		if (isNaN(igloo)) return penguin.disconnect()
+
+		penguin.updateColumn("furniture", "[]", "igloo")
+		penguin.updateColumn("floor", 0, "igloo")
+		penguin.updateColumn("type", igloo, "igloo")
+	}
+
+	static handleUpdateIglooFloor(data, penguin) {
+		const floor = parseInt(data[4])
+
+		if (isNaN(floor)) return penguin.disconnect()
+
+		const floors = require("../../crumbs/floors")
+
+		if (!floors[floor]) return penguin.sendError(402)
+
+		const cost = floors[floor].cost
+
+		if (penguin.coins < cost) return penguin.sendError(401)
+
+		penguin.removeCoins(cost)
+		penguin.addFloor(floor)
 	}
 }
 
