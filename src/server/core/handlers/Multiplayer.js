@@ -53,9 +53,9 @@ class Multiplayer {
 			handler = data[2]
 
 		if (sp.isFindFourTable(parseInt(data[4]))) {
-			penguin.server.gameManager.generateArrays("F")
+			penguin.server.gameManager.gameType = "F"
 		} else if (sp.isMancalaTable(parseInt(data[4]))) {
-			penguin.server.gameManager.generateArrays("M")
+			penguin.server.gameManager.gameType = "M"
 		}
 
 		const method = gameHandlers[type][handler]

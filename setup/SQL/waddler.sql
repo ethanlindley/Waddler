@@ -6,6 +6,7 @@ CREATE TABLE `inventory` (
 
 LOCK TABLES `inventory` WRITE;
 INSERT INTO `inventory` VALUES (100, 1);
+INSERT INTO `inventory` VALUES (101, 1);
 UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `furniture`;
@@ -17,6 +18,7 @@ CREATE TABLE `furniture` (
 
 LOCK TABLES `furniture` WRITE;
 INSERT INTO `furniture` VALUES (100, 572, 1);
+INSERT INTO `furniture` VALUES (101, 572, 1);
 UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `igloo`;
@@ -31,6 +33,7 @@ CREATE TABLE `igloo` (
 
 LOCK TABLES `igloo` WRITE;
 INSERT INTO `igloo` VALUES (100, 0, 14, '572', 0, 1);
+INSERT INTO `igloo` VALUES (101, 0, 14, '572', 0, 1);
 UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `penguins`;
@@ -60,4 +63,5 @@ CREATE TABLE `penguins` (
 
 LOCK TABLES `penguins` WRITE;
 INSERT INTO `penguins` VALUES (100, 'Zaseth', '43244635c14605fdbe23fa89b5cf12bd14a14bfb9420f66788dd6914a31d8c7b', '', '20180808', 0, 1, 0, 9999, 1, 0, 0, 0, 0, 0, 0, 0, 0, '1|22|23');
+INSERT INTO `penguins` VALUES (101, 'Daan', '43244635c14605fdbe23fa89b5cf12bd14a14bfb9420f66788dd6914a31d8c7b', '', '20180808', 0, 0, 0, 9999, 1, 0, 0, 0, 0, 0, 0, 0, 0, '1');
 UNLOCK TABLES;

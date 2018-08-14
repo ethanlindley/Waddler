@@ -11,6 +11,20 @@ class FindFour {
 			[0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0]
 		]
+
+		this.tableGames = []
+		this.tablePopulation = []
+		this.tablePlayers = []
+
+		for (let i = 200; i < 208; i++) {
+			this.tableGames[i] = null
+			this.tablePopulation[i] = {}
+			this.tablePlayers[i] = []
+		}
+
+		penguin.server.tableGames = this.tableGames
+		penguin.server.tablePopulation = this.tablePopulation
+		penguin.server.tablePlayers = this.tablePlayers
 	}
 
 	toString() {
@@ -32,8 +46,7 @@ class FindFour {
 	}
 
 	validPlacement(column, row) {
-		if (this.boardMap[row][column] !== 0)
-			return false
+		if (this.boardMap[row][column] !== 0) return false
 		return true
 	}
 
@@ -139,8 +152,8 @@ class FindFour {
 		let tablePopulation = ""
 
 		for (const tableId of data) {
-			if (penguin.server.gameManager.tablePopulation[tableId]) {
-				const tableObj = penguin.server.gameManager.tablePopulation[tableId]
+			if (this.tablePopulation[tableId]) {
+				const tableObj = this.tablePopulation[tableId]
 				const seatId = Object.keys(tableObj).length
 
 				tablePopulation += `${tableId}|${seatId}%`
@@ -151,15 +164,15 @@ class FindFour {
 
 	handleJoinTable(data, penguin) {
 		const tableId = parseInt(data[4])
-		const tableObj = penguin.server.gameManager.tablePopulation[tableId]
+		const tableObj = this.tablePopulation[tableId]
 		let seatId = Object.keys(tableObj).length
 
-		if (!penguin.server.gameManager.tableGames[tableId]) penguin.server.gameManager.tableGames[tableId] = this
+		if (!this.tableGames[tableId]) this.tableGames[tableId] = this
 
 		seatId += 1
 
-		penguin.server.gameManager.tablePopulation[tableId][penguin.username] = penguin
-		penguin.server.gameManager.tablePlayers[tableId].push(penguin)
+		this.tablePopulation[tableId][penguin.username] = penguin
+		this.tablePlayers[tableId].push(penguin)
 		penguin.sendXt("jt", -1, tableId, seatId)
 		penguin.room.sendXt("ut", -1, tableId, seatId)
 		penguin.tableId = tableId
@@ -174,8 +187,8 @@ class FindFour {
 			penguin.sendXt("gz", -1, "0%0%0%0%")
 		} else if (penguin.tableId) {
 			const tableId = penguin.tableId
-			const players = Object.keys(penguin.server.gameManager.tablePopulation[tableId])
-			const board = penguin.server.gameManager.tableGames[tableId].toString()
+			const players = Object.keys(this.tablePopulation[tableId])
+			const board = this.tableGames[tableId].toString()
 			const [playerOne, playerTwo] = players
 
 			penguin.sendXt("gz", -1, playerOne, playerTwo, board)
@@ -185,12 +198,12 @@ class FindFour {
 	handleJoinGame(data, penguin) {
 		if (penguin.tableId) {
 			const tableId = penguin.tableId
-			const tableObj = penguin.server.gameManager.tablePopulation[tableId]
+			const tableObj = this.tablePopulation[tableId]
 			const seatId = Object.keys(tableObj).length - 1
 
 			penguin.sendXt("jz", -1, seatId)
 
-			for (const player of penguin.server.gameManager.tablePlayers[tableId]) {
+			for (const player of this.tablePlayers[tableId]) {
 				player.sendXt("uz", -1, seatId, penguin.username)
 
 				if (seatId == 1) player.sendXt("sz", -1, 0)
@@ -201,18 +214,18 @@ class FindFour {
 	handleSendMove(data, penguin) {
 		if (penguin.tableId) {
 			const tableId = penguin.tableId
-			const isPlaying = penguin.server.gameManager.tablePlayers[tableId].indexOf(penguin) < 2
-			const isReady = penguin.server.gameManager.tablePlayers[tableId].length >= 2
+			const isPlaying = this.tablePlayers[tableId].indexOf(penguin) < 2
+			const isReady = this.tablePlayers[tableId].length >= 2
 
 			if (isPlaying && isReady) {
 				const chipColumn = parseInt(data[4])
 				const chipRow = parseInt(data[5])
-				const seatId = penguin.server.gameManager.tablePlayers[tableId].indexOf(penguin)
+				const seatId = this.tablePlayers[tableId].indexOf(penguin)
 
-				if (penguin.server.gameManager.tableGames[tableId].currentPlayer == (seatId + 1)) {
-					const result = penguin.server.gameManager.tableGames[tableId].placeChip(chipColumn, chipRow)
+				if (this.tableGames[tableId].currentPlayer == (seatId + 1)) {
+					const result = this.tableGames[tableId].placeChip(chipColumn, chipRow)
 					const opponentSeat = (seatId == 0 ? 1 : 0)
-					const opponent = penguin.server.gameManager.tablePlayers[tableId][opponentSeat]
+					const opponent = this.tablePlayers[tableId][opponentSeat]
 
 					if (result == 1) {
 						penguin.addCoins(20)
@@ -223,7 +236,7 @@ class FindFour {
 						opponent.addCoins(5)
 					}
 
-					for (const player of penguin.server.gameManager.tablePlayers[tableId]) {
+					for (const player of this.tablePlayers[tableId]) {
 						player.sendXt("zm", -1, seatId, chipColumn, chipRow)
 
 						if (result == 1 || result == 2) player.sendXt("zo", -1, player.coins)

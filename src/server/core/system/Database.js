@@ -28,7 +28,6 @@ class Database {
 			console.error(err)
 		})
 	}
-
 	getColumn(player, column, table) {
 		const type = isNaN(player) ? "username" : "id"
 
@@ -56,19 +55,16 @@ class Database {
 			quantity: 1
 		})
 	}
-
 	getFurnitureAndQuantity(id) {
 		return this.knex("furniture").select("furnitureid", "quantity").where({
 			id
 		})
 	}
-
 	getActiveIgloo(id) {
 		return this.knex("igloo").select("*").where({
 			id
 		})
 	}
-
 	addIgloo(id, igloo) {
 		return this.knex.raw('UPDATE `penguins` SET `igloos` =' + `concat(igloos, "|", ${igloo})` + 'WHERE `id` = ?', [id]).then(() => {}).catch((err) => {
 			console.error(err)
