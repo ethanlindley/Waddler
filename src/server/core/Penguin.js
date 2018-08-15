@@ -14,9 +14,9 @@ class Penguin {
 	}
 
 	setPenguin(penguin) {
-		this.id = penguin.id
+		this.id = penguin.ID
 		this.username = penguin.username
-		this.age = sp.dateToInt() - penguin.registrationdate
+		this.age = sp.dateToInt() - penguin.registrationDate
 
 		this.coins = penguin.coins
 
@@ -81,7 +81,7 @@ class Penguin {
 	getInventory() {
 		let inventory = []
 
-		this.getColumn("itemid", "inventory").then((result) => {
+		this.getColumn("itemID", "inventory").then((result) => {
 			if (result.length <= 0) return this.disconnect()
 
 			result.forEach(row => {
@@ -123,7 +123,7 @@ class Penguin {
 	}
 
 	addFurniture(furnitureid) {
-		this.getColumn("furnitureid", "furniture").then((result) => {
+		this.getColumn("furnitureID", "furniture").then((result) => {
 			result.length != 0 ? this.database.updateQuantity(this.id) : this.database.insertFurniture(this.id, furnitureid)
 
 			this.sendXt("af", -1, furnitureid, this.coins)

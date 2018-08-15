@@ -16,58 +16,87 @@ class Database {
 	}
 
 	getPlayer(player) {
-		const type = isNaN(player) ? "username" : "id"
+		const type = isNaN(player) ? "username" : "ID"
 
 		return this.knex("penguins").first("*").where(type, player)
 	}
 
+	getUsernameById(ID) {
+		return this.knex("penguins").select("username").where({
+			ID
+		})
+	}
+
 	updateColumn(player, column, value, table) {
-		const type = isNaN(player) ? "username" : "id"
+		const type = isNaN(player) ? "username" : "ID"
 
 		return this.knex(table == null ? "penguins" : table).update(column, value).where(type, player).then(() => {}).catch((err) => {
 			console.error(err)
 		})
 	}
 	getColumn(player, column, table) {
-		const type = isNaN(player) ? "username" : "id"
+		const type = isNaN(player) ? "username" : "ID"
 
 		return this.knex(table == null ? "penguins" : table).select(column).where(type, player)
 	}
 
-	insertItem(id, item) {
+	insertItem(ID, item) {
 		return this.knex("inventory").insert({
-			id: id,
-			itemid: item
+			ID: ID,
+			itemID: item
 		}).catch((err) => {
 			console.error(err)
 		})
 	}
 
-	updateQuantity(id) {
-		return this.knex.raw("UPDATE `furniture` SET `quantity` = quantity + ? WHERE `id` = ?", [1, id]).then(() => {}).catch((err) => {
+	updateQuantity(ID) {
+		return this.knex.raw("UPDATE `furniture` SET `quantity` = quantity + ? WHERE `ID` = ?", [1, ID]).then(() => {}).catch((err) => {
 			console.error(err)
 		})
 	}
-	insertFurniture(id, furnitureid) {
+	insertFurniture(ID, furnitureID) {
 		return this.knex("furniture").insert({
-			id: id,
-			furnitureid: furnitureid,
+			ID: ID,
+			furnitureID: furnitureID,
 			quantity: 1
 		})
 	}
-	getFurnitureAndQuantity(id) {
-		return this.knex("furniture").select("furnitureid", "quantity").where({
-			id
+	getFurnitureAndQuantity(ID) {
+		return this.knex("furniture").select("furnitureID", "quantity").where({
+			ID
 		})
 	}
-	getActiveIgloo(id) {
+	getActiveIgloo(ID) {
 		return this.knex("igloo").select("*").where({
-			id
+			ID
 		})
 	}
-	addIgloo(id, igloo) {
-		return this.knex.raw('UPDATE `penguins` SET `igloos` =' + `concat(igloos, "|", ${igloo})` + 'WHERE `id` = ?', [id]).then(() => {}).catch((err) => {
+	addIgloo(ID, igloo) {
+		return this.knex.raw('UPDATE `penguins` SET `igloos` =' + `concat(igloos, "|", ${igloo})` + 'WHERE `ID` = ?', [ID]).then(() => {}).catch((err) => {
 			console.error(err)
+		})
+	}
+
+	getIgnored(ID) {
+		return this.knex("ignored").select("ignoredID", "ignoredUsername").where({
+			ID
+		})
+	}
+	alreadyIgnored(toIgnore) {
+		return this.knex("ignored").select("*").where("ignoredID", toIgnore)
+	}
+	addIgnore(ID, toIgnore, usernameToIgnore) {
+		return this.knex("ignored").insert({
+			ID: ID,
+			ignoredID: toIgnore,
+			ignoredUsername: usernameToIgnore
+		})
+	}
+	removeIgnore(ID, toRemove, usernameToRemove) {
+		return this.knex("ignored").del().where({
+			ID: ID,
+			ignoredID: toRemove,
+			ignoredUsername: usernameToRemove
 		})
 	}
 }

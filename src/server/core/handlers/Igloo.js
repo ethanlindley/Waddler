@@ -53,7 +53,7 @@ class Igloo {
 	static handleSaveFurniture(data, penguin) {
 		let furniture = data.join(",").substr(13)
 
-		if (furniture.length < 1) return penguin.updateColumn("furnitureid", "[]", "furniture")
+		if (furniture.length < 1) return penguin.updateColumn("furnitureID", "[]", "furniture")
 
 		if (furniture.length > 99) return penguin.sendError(10006)
 

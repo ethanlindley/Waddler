@@ -28,7 +28,7 @@ class DataHandler {
 					delete this.failedLogins[penguin.ipAddr]
 
 					penguin.loginKey = GameDataEncryptor.generateRandomKey(12)
-					this.database.updateColumn(username, "loginkey", penguin.loginKey)
+					this.database.updateColumn(username, "loginKey", penguin.loginKey)
 
 					penguin.sendXt("sd", -1, "100|Snowy Lands|127.0.0.1|6113")
 					penguin.sendXt("l", -1, penguin.id, penguin.loginKey, "", "100,1")
@@ -38,11 +38,11 @@ class DataHandler {
 					return penguin.sendError(101, true)
 				}
 			} else {
-				const penguinObj = this.server.getPenguinById(result.id)
+				const penguinObj = this.server.getPenguinById(result.ID)
 
 				if (penguinObj) return penguinObj.disconnect()
 
-				const hash = GameDataEncryptor.hashPassword(GameDataEncryptor.decryptZaseth(password, result.loginkey))
+				const hash = GameDataEncryptor.hashPassword(GameDataEncryptor.decryptZaseth(password, result.loginKey))
 				if (result.password == hash) {
 					penguin.sendXt("l", -1)
 					penguin.setPenguin(result)

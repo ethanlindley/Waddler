@@ -12,6 +12,7 @@ const Igloo = require("./handlers/Igloo")
 const Moderation = require("./handlers/Moderation")
 
 const Pet = require("./handlers/Pet")
+const Ignore = require("./handlers/Ignore")
 const Multiplayer = require("./handlers/Multiplayer")
 
 const xtHandlers = {
@@ -213,6 +214,18 @@ const xtHandlers = {
 		"p#pg": {
 			func: "handleGetPufflesByPlayerId",
 			file: Pet
+		},
+		"n#gn": {
+			func: "handleGetIgnored",
+			file: Ignore
+		},
+		"n#an": {
+			func: "handleAddIgnore",
+			file: Ignore
+		},
+		"n#rn": {
+			func: "handleRemoveIgnore",
+			file: Ignore
 		},
 		"a#gt": {
 			func: "handleMultiplayerData",

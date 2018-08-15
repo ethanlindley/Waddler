@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS `inventory`;
 CREATE TABLE `inventory` (
-    `id` int(10) UNSIGNED NOT NULL,
-    `itemid` int(10) UNSIGNED NOT NULL
+    `ID` int(10) UNSIGNED NOT NULL,
+    `itemID` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `inventory` WRITE;
@@ -11,8 +11,8 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `furniture`;
 CREATE TABLE `furniture` (
-    `id` int(10) UNSIGNED NOT NULL,
-    `furnitureid` int(10) UNSIGNED NOT NULL,
+    `ID` int(10) UNSIGNED NOT NULL,
+    `furnitureID` int(10) UNSIGNED NOT NULL,
     `quantity` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -23,7 +23,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `igloo`;
 CREATE TABLE `igloo` (
-    `id` int(10) UNSIGNED NOT NULL,
+    `ID` int(10) UNSIGNED NOT NULL,
     `music` int(10) UNSIGNED NOT NULL DEFAULT 0,
     `floor` int(10) UNSIGNED NOT NULL DEFAULT 0,
     `furniture` longtext NOT NULL,
@@ -36,13 +36,20 @@ INSERT INTO `igloo` VALUES (100, 0, 14, '572', 0, 1);
 INSERT INTO `igloo` VALUES (101, 0, 14, '572', 0, 1);
 UNLOCK TABLES;
 
+DROP TABLE IF EXISTS `ignored`;
+CREATE TABLE `ignored` (
+    `ID` int(10) UNSIGNED NOT NULL,
+    `ignoredID` int(10) UNSIGNED NOT NULL,
+    `ignoredUsername` varchar(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 DROP TABLE IF EXISTS `penguins`;
 CREATE TABLE `penguins` (
-    `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `username` varchar(12) NOT NULL,
     `password` char(255) NOT NULL,
-    `loginkey` char(255) NOT NULL,
-    `registrationdate` varchar(8) NOT NULL,
+    `loginKey` char(255) NOT NULL,
+    `registrationDate` varchar(8) NOT NULL,
     `banned` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
     `moderator` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
     `rank` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
@@ -57,7 +64,7 @@ CREATE TABLE `penguins` (
     `pin` smallint(5) UNSIGNED NOT NULL DEFAULT 0,
     `photo` smallint(5) UNSIGNED NOT NULL DEFAULT 0,
     `igloos` longtext NOT NULL,
-    PRIMARY KEY (`id`),
+    PRIMARY KEY (`ID`),
     UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
 
