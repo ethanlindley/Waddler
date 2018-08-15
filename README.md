@@ -11,6 +11,7 @@ An open source in-development Club Penguin emulator, written in Node.js.
 * Contains a script to converts icer.ink's crumbs to be used with Waddler, allowing Waddler to use the latest crumbs
 * Everything that is logged is stored in separate text files in a nice format
 * Comes with modified Club Penguin files to conform Waddler
+* Advanced multiplayer handler that allows you to add multiple minigames (supports Find Four by default)
 
 # Setup
 

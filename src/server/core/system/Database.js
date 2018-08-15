@@ -1,6 +1,7 @@
 "use strict"
 
 const config = require("../../../config")
+const Logger = require("../../Logger")
 
 class Database {
 	constructor() {
@@ -31,7 +32,7 @@ class Database {
 		const type = isNaN(player) ? "username" : "ID"
 
 		return this.knex(table == null ? "penguins" : table).update(column, value).where(type, player).then(() => {}).catch((err) => {
-			console.error(err)
+			Logger.error(err)
 		})
 	}
 	getColumn(player, column, table) {
@@ -45,13 +46,13 @@ class Database {
 			ID: ID,
 			itemID: item
 		}).catch((err) => {
-			console.error(err)
+			Logger.error(err)
 		})
 	}
 
 	updateQuantity(ID) {
 		return this.knex.raw("UPDATE `furniture` SET `quantity` = quantity + ? WHERE `ID` = ?", [1, ID]).then(() => {}).catch((err) => {
-			console.error(err)
+			Logger.error(err)
 		})
 	}
 	insertFurniture(ID, furnitureID) {
@@ -73,7 +74,12 @@ class Database {
 	}
 	addIgloo(ID, igloo) {
 		return this.knex.raw('UPDATE `penguins` SET `igloos` =' + `concat(igloos, "|", ${igloo})` + 'WHERE `ID` = ?', [ID]).then(() => {}).catch((err) => {
-			console.error(err)
+			Logger.error(err)
+		})
+	}
+	alreadyOwnsIgloo(ID) {
+		return this.knex("penguins").select("igloos").where({
+			ID
 		})
 	}
 

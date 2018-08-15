@@ -71,7 +71,7 @@ class Penguin {
 	}
 
 	addItem(item) {
-		if (sp.getPatchedItems().includes(item) && !this.moderator) return this.sendError(410)
+		if (require("./plugins/PatchedItems/items").includes(item) && !this.moderator) return this.sendError(410)
 		if (this.inventory.includes(item)) return this.sendError(400)
 
 		this.inventory.push(item)
@@ -82,7 +82,7 @@ class Penguin {
 		let inventory = []
 
 		this.getColumn("itemID", "inventory").then((result) => {
-			if (result.length <= 0) return this.disconnect()
+			if (result.length <= 0) return this.sendXt("gi", -1, "")
 
 			result.forEach(row => {
 				inventory.push(row.itemid)
@@ -100,12 +100,13 @@ class Penguin {
 
 	getFurniture() {
 		this.database.getFurnitureAndQuantity(this.id).then((result) => {
-			if (result.length <= 0) return this.sendXt("gf", -1, [])
+			if (result.length <= 0) return this.sendXt("gf", -1, "")
 
 			result.forEach(row => {
 				this.sendXt("gf", -1, [row.furnitureid, row.quantity].join("|") + "|")
 			})
-
+		}).catch((err) => {
+			Logger.error(err)
 		})
 	}
 	getIgloos() {
@@ -114,11 +115,13 @@ class Penguin {
 		this.getColumn("igloos").then((result) => {
 			let iglooStr = result[0].igloos
 
-			if (iglooStr.length <= 0) return this.disconnect()
+			if (iglooStr.length <= 0) return this.sendXt("go", -1, "")
 
 			igloos.push(iglooStr.split("|").join("|"))
 
 			this.igloos = igloos
+		}).catch((err) => {
+			Logger.error(err)
 		})
 	}
 
@@ -127,17 +130,32 @@ class Penguin {
 			result.length != 0 ? this.database.updateQuantity(this.id) : this.database.insertFurniture(this.id, furnitureid)
 
 			this.sendXt("af", -1, furnitureid, this.coins)
+		}).catch((err) => {
+			Logger.error(err)
 		})
 	}
 	addIgloo(igloo) {
-		this.database.addIgloo(this.id, igloo)
+		this.database.alreadyOwnsIgloo(this.id).then((result) => {
+			let igloos = []
 
-		if (this.room.id == (this.id + 1000)) penguin.sendXt("au", -1, igloo, this.coins)
+			for (const i of result[0].igloos.split("|")) {
+				igloos.push(parseInt(i))
+			}
+
+			if (igloos.includes(igloo)) return this.sendError(500)
+
+			this.database.addIgloo(this.id, igloo)
+
+			if (this.room.id == (this.id + 1000)) this.sendXt("au", -1, igloo, this.coins)
+		}).catch((err) => {
+			Logger.error(err)
+		})
 	}
+
 	addFloor(floor) {
 		this.updateColumn("floor", floor, "igloo")
 
-		penguin.sendXt("ag", -1, floor, this.coins)
+		this.sendXt("ag", -1, floor, this.coins)
 	}
 
 	addCoins(coins) {

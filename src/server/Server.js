@@ -15,6 +15,7 @@ class Server {
 	constructor(type) {
 		this.type = type
 		this.port = type == "login" ? 6112 : 6113
+		this.maxPenguins = 150
 
 		this.penguins = []
 
@@ -41,7 +42,7 @@ class Server {
 
 			const penguin = new Penguin(socket, this)
 
-			if (this.penguins.length >= 100) return penguin.sendError(103, true)
+			if (this.penguins.length >= this.maxPenguins) return penguin.sendError(103, true)
 
 			this.penguins.push(penguin)
 
@@ -60,7 +61,49 @@ class Server {
 			})
 		}).listen(this.port, () => {
 			Logger.info(`Waddler {${this.type}} listening on port ${this.port}`)
+			if (this.type == "login") {
+				if (this.calculateValidMaxPenguins(this.maxPenguins)) {
+					Logger.info(`Max amount of penguins: ${this.maxPenguins}`)
+				} else {
+					throw new Error(`${this.maxPenguins} cannot be divided over 6 server bars`)
+					process.exit(1)
+				}
+			}
+			if (this.type == "game") this.fetchPluginStats()
 		})
+	}
+
+	fetchPluginStats() {
+		Logger.info(`Loaded ${this.roomManager.rooms.length} room(s)`)
+		Logger.info(`Loaded ${require("./core/plugins/Censor/dictionary").length} swear word(s)`)
+		Logger.info(`Loaded ${require("./core/plugins/PatchedItems/items").length} patched item(s)`)
+		Logger.info(`Loaded ${require("fs").readdirSync(`${__dirname}\\core\\handlers\\games`).length} minigame(s)`)
+	}
+
+	calculateValidMaxPenguins() {
+		const playersPerBar = this.maxPenguins / 6
+
+		if (playersPerBar.toString().indexOf(".") == -1) return true
+
+		return false
+	}
+
+	getServerBars() {
+		const population = this.penguins.length
+
+		if (population <= 25) {
+			return 1
+		} else if (population > 25 && population <= 50) {
+			return 2
+		} else if (population > 50 && population <= 75) {
+			return 3
+		} else if (population > 75 && population <= 100) {
+			return 4
+		} else if (population > 100 && population <= 125) {
+			return 5
+		} else if (population > 125 && population <= 150) {
+			return 6
+		}
 	}
 
 	getPenguinById(id) {
