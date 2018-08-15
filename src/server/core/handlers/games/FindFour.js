@@ -183,9 +183,7 @@ class FindFour {
 	}
 
 	handleGetGame(data, penguin) {
-		if (penguin.room.id == 802) {
-			penguin.sendXt("gz", -1, "0%0%0%0%")
-		} else if (penguin.tableId) {
+		if (penguin.tableId) {
 			const tableId = penguin.tableId
 			const players = Object.keys(this.tablePopulation[tableId])
 			const board = this.tableGames[tableId].toString()

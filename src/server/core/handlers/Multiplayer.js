@@ -55,6 +55,10 @@ class Multiplayer {
 			penguin.server.gameManager.gameType = "F"
 		}
 
+		if (penguin.room.id == 802) {
+			penguin.sendXt("gz", -1, "0%0%0%0%")
+		}
+
 		const method = gameHandlers[type][handler]
 		const func = method["func"]
 

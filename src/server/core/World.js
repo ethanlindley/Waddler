@@ -13,6 +13,8 @@ const Moderation = require("./handlers/Moderation")
 
 const Pet = require("./handlers/Pet")
 const Ignore = require("./handlers/Ignore")
+const Buddy = require("./handlers/Buddy")
+
 const Multiplayer = require("./handlers/Multiplayer")
 
 const xtHandlers = {
@@ -230,6 +232,10 @@ const xtHandlers = {
 		"n#rn": {
 			func: "handleRemoveIgnore",
 			file: Ignore
+		},
+		"b#gb": {
+			func: "handleGetBuddies",
+			file: Buddy
 		},
 		"a#gt": {
 			func: "handleMultiplayerData",

@@ -43,6 +43,17 @@ CREATE TABLE `ignored` (
     `ignoredUsername` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `buddies`;
+CREATE TABLE `buddies` (
+    `ID` int(10) UNSIGNED NOT NULL,
+    `buddyID` int(10) UNSIGNED NOT NULL,
+    `buddyUsername` varchar(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `buddies` WRITE;
+INSERT INTO `buddies` VALUES (100, 101, 'Daan');
+UNLOCK TABLES;
+
 DROP TABLE IF EXISTS `penguins`;
 CREATE TABLE `penguins` (
     `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,

@@ -85,7 +85,7 @@ class Penguin {
 			if (result.length <= 0) return this.sendXt("gi", -1, "")
 
 			result.forEach(row => {
-				inventory.push(row.itemid)
+				inventory.push(row.itemID)
 			})
 
 			this.inventory = inventory
@@ -103,7 +103,7 @@ class Penguin {
 			if (result.length <= 0) return this.sendXt("gf", -1, "")
 
 			result.forEach(row => {
-				this.sendXt("gf", -1, [row.furnitureid, row.quantity].join("|") + "|")
+				this.sendXt("gf", -1, [row.furnitureID, row.quantity].join("|") + "|")
 			})
 		}).catch((err) => {
 			Logger.error(err)
@@ -124,11 +124,11 @@ class Penguin {
 			Logger.error(err)
 		})
 	}
-	addFurniture(furnitureid) {
+	addFurniture(furnitureID) {
 		this.getColumn("furnitureID", "furniture").then((result) => {
-			result.length != 0 ? this.database.updateQuantity(this.id) : this.database.insertFurniture(this.id, furnitureid)
+			result.length != 0 ? this.database.updateQuantity(this.id) : this.database.insertFurniture(this.id, furnitureID)
 
-			this.sendXt("af", -1, furnitureid, this.coins)
+			this.sendXt("af", -1, furnitureID, this.coins)
 		}).catch((err) => {
 			Logger.error(err)
 		})

@@ -2,18 +2,18 @@
 
 class Igloo {
 	static handleIglooFurniture(data, penguin) {
-		const furnitureid = parseInt(data[4])
+		const furnitureID = parseInt(data[4])
 
 		const furniture = require("../../crumbs/furniture")
 
-		if (!furniture[furnitureid]) return penguin.sendError(402)
+		if (!furniture[furnitureID]) return penguin.sendError(402)
 
-		const cost = furniture[furnitureid].cost
+		const cost = furniture[furnitureID].cost
 
 		if (penguin.coins < cost) return penguin.sendError(401)
 
 		penguin.removeCoins(cost)
-		penguin.addFurniture(furnitureid)
+		penguin.addFurniture(furnitureID)
 	}
 
 	static handleGetFurniture(data, penguin) {

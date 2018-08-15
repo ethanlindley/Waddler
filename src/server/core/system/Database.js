@@ -116,6 +116,12 @@ class Database {
 			username
 		})
 	}
+
+	getBuddies(ID) {
+		return this.knex("buddies").select("buddyID", "buddyUsername").where({
+			ID
+		})
+	}
 }
 
 module.exports = Database
