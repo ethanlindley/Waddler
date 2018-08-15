@@ -124,7 +124,6 @@ class Penguin {
 			Logger.error(err)
 		})
 	}
-
 	addFurniture(furnitureid) {
 		this.getColumn("furnitureID", "furniture").then((result) => {
 			result.length != 0 ? this.database.updateQuantity(this.id) : this.database.insertFurniture(this.id, furnitureid)
@@ -151,7 +150,6 @@ class Penguin {
 			Logger.error(err)
 		})
 	}
-
 	addFloor(floor) {
 		this.updateColumn("floor", floor, "igloo")
 

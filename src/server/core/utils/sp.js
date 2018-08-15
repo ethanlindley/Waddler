@@ -6,7 +6,7 @@ class sp {
 		return date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate()
 	}
 	static getTime() {
-		return Math.floor(new Date() / 1000)
+		return (Math.floor(new Date() / 1000))
 	}
 
 	static isNonDividableGame(gameId) {

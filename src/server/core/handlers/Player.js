@@ -91,7 +91,6 @@ class Player {
 		const id = parseInt(data[4])
 
 		if (isNaN(id)) return penguin.disconnect()
-		if (id != penguin.id) return
 
 		penguin.database.getPlayer(id).then((result) => {
 			const playerInfo = [
@@ -140,7 +139,9 @@ class Player {
 		} else {
 			if (message.startsWith("/") || message.startsWith("!")) {
 				const command = message.substr(1, message.length - 1)
-				return new(require("../plugins/Commands/Commands"))(penguin).handleCommand(command)
+				const argument = message.split(" ")
+
+				return new(require("../plugins/Commands/Commands"))(penguin).handleCommand(command.split(" "), argument)
 			} else {
 				penguin.room.sendXt("sm", -1, penguin.id, require("../plugins/Censor/Censor").censorCheck(message))
 			}

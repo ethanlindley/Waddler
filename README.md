@@ -12,6 +12,9 @@ An open source in-development Club Penguin emulator, written in Node.js.
 * Everything that is logged is stored in separate text files in a nice format
 * Comes with modified Club Penguin files to conform Waddler
 * Advanced multiplayer handler that allows you to add multiple minigames (supports Find Four by default)
+* Throttling system
+* Comes with a command system (default commands are already added)
+* Advanced censoring system
 
 # Setup
 

@@ -116,7 +116,8 @@ const xtHandlers = {
 		},
 		"u#gp": {
 			func: "handleGetPlayer",
-			file: Player
+			file: Player,
+			timeout: 0.3
 		},
 		"u#h": {
 			func: "handleHeartBeat",
@@ -133,7 +134,7 @@ const xtHandlers = {
 		"m#sm": {
 			func: "handleSendMessage",
 			file: Player,
-			timeout: 0.5
+			timeout: 0.3
 		},
 		"r#cdu": {
 			func: "handleMineCoins",
@@ -189,15 +190,18 @@ const xtHandlers = {
 		},
 		"g#au": {
 			func: "handleBuyIgloo",
-			file: Igloo
+			file: Igloo,
+			timeout: 0.5
 		},
 		"g#ao": {
 			func: "handleUpdateIgloo",
-			file: Igloo
+			file: Igloo,
+			timeout: 0.5
 		},
 		"g#ag": {
 			func: "handleUpdateIglooFloor",
-			file: Igloo
+			file: Igloo,
+			timeout: 0.5
 		},
 		"o#b": {
 			func: "handleBan",

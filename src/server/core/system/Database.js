@@ -105,6 +105,17 @@ class Database {
 			ignoredUsername: usernameToRemove
 		})
 	}
+
+	banByUsername(username) {
+		return this.knex("penguins").update("banned", 1).where({
+			username
+		})
+	}
+	unbanByUsername(username) {
+		return this.knex("penguins").update("banned", 0).where({
+			username
+		})
+	}
 }
 
 module.exports = Database
