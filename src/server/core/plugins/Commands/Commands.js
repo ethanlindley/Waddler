@@ -6,6 +6,9 @@ function Commands(penguin) {
 		"ping": "handlePing",
 		"date": "handleGetDate",
 		"online": "handleGetOnline",
+		"ai": "handleAddItem",
+		"ac": "handleAddCoins",
+		"rc": "handleRemoveCoins",
 		"ban": "handleBan",
 		"unban": "handleUnban",
 		"kick": "handleKick",
@@ -42,6 +45,27 @@ Commands.prototype.handleGetOnline = function() {
 	online == 1 ? msg += "You're the only one online" : `There are ${online} players online`
 
 	return this.penguin.sendLoadMovie(msg)
+}
+
+Commands.prototype.handleAddItem = function(item) {
+	if (!this.penguin.moderator) return this.penguin.sendLoadMovie("You must be a moderator to use this command")
+	if (isNaN(item)) return this.penguin.sendLoadMovie("Invalid item id")
+
+	this.penguin.addItem(parseInt(item))
+}
+
+Commands.prototype.handleAddCoins = function(coins) {
+	if (!this.penguin.moderator) return this.penguin.sendLoadMovie("You must be a moderator to use this command")
+	if (isNaN(coins)) return this.penguin.sendLoadMovie("Invalid amount of coins")
+
+	this.penguin.addCoins(parseInt(coins))
+}
+
+Commands.prototype.handleRemoveCoins = function(coins) {
+	if (!this.penguin.moderator) return this.penguin.sendLoadMovie("You must be a moderator to use this command")
+	if (isNaN(coins)) return this.penguin.sendLoadMovie("Invalid amount of coins")
+
+	this.penguin.removeCoins(parseInt(coins))
 }
 
 Commands.prototype.handleBan = function(player) {
