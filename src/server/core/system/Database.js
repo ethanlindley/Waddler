@@ -73,6 +73,7 @@ class Database {
 		})
 	}
 	addIgloo(ID, igloo) {
+		if (igloo.includes("'")) return
 		return this.knex.raw('UPDATE `penguins` SET `igloos` =' + `concat(igloos, "|", ${igloo})` + 'WHERE `ID` = ?', [ID]).then(() => {}).catch((err) => {
 			Logger.error(err)
 		})
@@ -87,9 +88,6 @@ class Database {
 		return this.knex("ignored").select("ignoredID", "ignoredUsername").where({
 			ID
 		})
-	}
-	alreadyIgnored(toIgnore) {
-		return this.knex("ignored").select("*").where("ignoredID", toIgnore)
 	}
 	addIgnore(ID, toIgnore, usernameToIgnore) {
 		return this.knex("ignored").insert({

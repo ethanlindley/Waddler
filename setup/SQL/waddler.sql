@@ -52,6 +52,7 @@ CREATE TABLE `buddies` (
 
 LOCK TABLES `buddies` WRITE;
 INSERT INTO `buddies` VALUES (100, 101, 'Daan');
+INSERT INTO `buddies` VALUES (101, 100, 'Zaseth');
 UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `penguins`;

@@ -158,15 +158,13 @@ class Server {
 			if (penguin.tableId) this.gameManager.leaveTable(penguin)
 
 			if (this.type == "game" && penguin.id != undefined) {
-				penguin.database.getBuddies(penguin.id).then((result) => {
-					if (result.length > 0) {
-						result.forEach(row => {
-							if (this.isPenguinOnline(row.buddyID)) {
-								this.getPenguinById(row.buddyID).sendXt("bof", -1, penguin.id)
-							}
-						})
-					}
-				})
+				if (penguin.buddies.length != 0) {
+					penguin.buddies.forEach(buddy => {
+						buddy = buddy.split("|")
+						const buddyID = Number(buddy[0])
+						if (this.isPenguinOnline(buddyID)) this.getPenguinById(buddyID).sendXt("bof", -1, penguin.id)
+					})
+				}
 			}
 
 			if (this.roomManager) {
