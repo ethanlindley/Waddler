@@ -122,6 +122,20 @@ class Database {
 			ID
 		})
 	}
+	addBuddy(ID, toAccept, usernameToAccept) {
+		return this.knex("buddies").insert({
+			ID: ID,
+			buddyID: toAccept,
+			buddyUsername: usernameToAccept
+		})
+	}
+	removeBuddy(ID, toRemove, usernameToRemove) {
+		return this.knex("buddies").del().where({
+			ID: ID,
+			buddyID: toRemove,
+			buddyUsername: usernameToRemove
+		})
+	}
 }
 
 module.exports = Database

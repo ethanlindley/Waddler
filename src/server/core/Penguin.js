@@ -41,6 +41,7 @@ class Penguin {
 		this.coinDig = 0
 
 		this.openIgloos = []
+		this.requests = []
 
 		this.getInventory()
 	}

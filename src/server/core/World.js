@@ -237,6 +237,22 @@ const xtHandlers = {
 			func: "handleGetBuddies",
 			file: Buddy
 		},
+		"b#ba": {
+			func: "handleBuddyAccept",
+			file: Buddy
+		},
+		"b#br": {
+			func: "handleBuddyRequest",
+			file: Buddy
+		},
+		"b#rb": {
+			func: "handleBuddyRemove",
+			file: Buddy
+		},
+		"b#bf": {
+			func: "handleBuddyFind",
+			file: Buddy
+		},
 		"a#gt": {
 			func: "handleMultiplayerData",
 			file: Multiplayer
