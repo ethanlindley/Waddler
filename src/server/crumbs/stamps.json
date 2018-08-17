@@ -1,0 +1,1058 @@
+{
+	"7": {
+		"name": "Rockhopper "
+	},
+	"8": {
+		"name": "Gary"
+	},
+	"9": {
+		"name": "Stage Crew"
+	},
+	"10": {
+		"name": "Underground"
+	},
+	"11": {
+		"name": "Snapshot"
+	},
+	"12": {
+		"name": "Go Swimming"
+	},
+	"13": {
+		"name": "Clock Target"
+	},
+	"14": {
+		"name": "183 days! "
+	},
+	"15": {
+		"name": "Going Places"
+	},
+	"16": {
+		"name": "Dance Party"
+	},
+	"17": {
+		"name": "Igloo Party"
+	},
+	"18": {
+		"name": "Coffee Server"
+	},
+	"19": {
+		"name": "Pizza Waiter"
+	},
+	"20": {
+		"name": "365 days!"
+	},
+	"21": {
+		"name": "Puffle Owner"
+	},
+	"22": {
+		"name": "Floor Filler"
+	},
+	"23": {
+		"name": "Full House"
+	},
+	"24": {
+		"name": "Play It Loud! "
+	},
+	"25": {
+		"name": "Soccer Team "
+	},
+	"26": {
+		"name": "Berg Drill!"
+	},
+	"27": {
+		"name": "Fort Battle"
+	},
+	"28": {
+		"name": "Party Host "
+	},
+	"29": {
+		"name": "Hockey Team"
+	},
+	"30": {
+		"name": "Ninja Meeting"
+	},
+	"31": {
+		"name": "Cadence "
+	},
+	"32": {
+		"name": "Franky"
+	},
+	"33": {
+		"name": "Aunt Arctic"
+	},
+	"34": {
+		"name": "G Billy"
+	},
+	"35": {
+		"name": "Petey K"
+	},
+	"36": {
+		"name": "Stompin' Bob"
+	},
+	"37": {
+		"name": "Lift Off!"
+	},
+	"38": {
+		"name": "Fuel Rank 1"
+	},
+	"39": {
+		"name": "Jet Pack 5"
+	},
+	"40": {
+		"name": "Crash!"
+	},
+	"41": {
+		"name": "Fuel Rank 2"
+	},
+	"42": {
+		"name": "Fuel Rank 3"
+	},
+	"43": {
+		"name": "Fuel Rank 4"
+	},
+	"44": {
+		"name": "Fuel Rank 5"
+	},
+	"45": {
+		"name": "1-up Leader"
+	},
+	"46": {
+		"name": "Kerching!"
+	},
+	"47": {
+		"name": "Fuel Command"
+	},
+	"48": {
+		"name": "Fuel Wings"
+	},
+	"49": {
+		"name": "1-up Captain"
+	},
+	"50": {
+		"name": "Ace Pilot "
+	},
+	"51": {
+		"name": "Astro5"
+	},
+	"52": {
+		"name": "Astro5 Max"
+	},
+	"53": {
+		"name": "Astro40"
+	},
+	"54": {
+		"name": "Ship Blast"
+	},
+	"55": {
+		"name": "1-up Blast"
+	},
+	"56": {
+		"name": "Astro Secret"
+	},
+	"57": {
+		"name": "Astro10 Max"
+	},
+	"58": {
+		"name": "Astro20 Max"
+	},
+	"59": {
+		"name": "Astro Expert"
+	},
+	"60": {
+		"name": "Astro30 Max"
+	},
+	"61": {
+		"name": "Astro 1-up"
+	},
+	"62": {
+		"name": "Astro Master"
+	},
+	"63": {
+		"name": "1 Coin Bag"
+	},
+	"64": {
+		"name": "3 Coin Bags"
+	},
+	"65": {
+		"name": "6 Coin Bags"
+	},
+	"66": {
+		"name": "Iced Treasure"
+	},
+	"67": {
+		"name": "10 Coin Bags"
+	},
+	"68": {
+		"name": "Ice Bonus"
+	},
+	"69": {
+		"name": "Ice Trekker"
+	},
+	"70": {
+		"name": "All Coin Bags"
+	},
+	"71": {
+		"name": "Ice Master"
+	},
+	"72": {
+		"name": "Squid Spotter"
+	},
+	"73": {
+		"name": "Aqua Puffle"
+	},
+	"74": {
+		"name": "Soda Success"
+	},
+	"75": {
+		"name": "Clam Success"
+	},
+	"76": {
+		"name": "Soda Master"
+	},
+	"77": {
+		"name": "Clam Master"
+	},
+	"78": {
+		"name": "Get Fluffy"
+	},
+	"79": {
+		"name": "Get the Worm"
+	},
+	"80": {
+		"name": "Bubble Catch"
+	},
+	"81": {
+		"name": "Pearl Capture"
+	},
+	"82": {
+		"name": "Clam Treasure"
+	},
+	"83": {
+		"name": "Soda Treasure"
+	},
+	"84": {
+		"name": "Clam Compress"
+	},
+	"85": {
+		"name": "Soda Compress"
+	},
+	"86": {
+		"name": "Clam Pressure"
+	},
+	"87": {
+		"name": "Soda Pressure"
+	},
+	"88": {
+		"name": "Clam Timer"
+	},
+	"89": {
+		"name": "Soda Timer"
+	},
+	"91": {
+		"name": "Crab's Treasure"
+	},
+	"92": {
+		"name": "Mullet Capture"
+	},
+	"93": {
+		"name": "First Trick"
+	},
+	"94": {
+		"name": "Puffle Surfin'"
+	},
+	"95": {
+		"name": "Easy Flip"
+	},
+	"96": {
+		"name": "Easy Tube"
+	},
+	"97": {
+		"name": "Easy Grind"
+	},
+	"98": {
+		"name": "Graduate"
+	},
+	"99": {
+		"name": "Trick Star"
+	},
+	"100": {
+		"name": "Podium Puffle"
+	},
+	"101": {
+		"name": "Flip Star"
+	},
+	"102": {
+		"name": "Easy Jump"
+	},
+	"103": {
+		"name": "Super Tube"
+	},
+	"104": {
+		"name": "Easy Spin"
+	},
+	"105": {
+		"name": "Super Spin"
+	},
+	"106": {
+		"name": "Super Grind"
+	},
+	"107": {
+		"name": "Max Grind"
+	},
+	"108": {
+		"name": "First Place"
+	},
+	"109": {
+		"name": "Max Flips"
+	},
+	"110": {
+		"name": "High Jump"
+	},
+	"111": {
+		"name": "Max Tube"
+	},
+	"112": {
+		"name": "Max Spin"
+	},
+	"113": {
+		"name": "Shark!"
+	},
+	"114": {
+		"name": "Survivor"
+	},
+	"115": {
+		"name": "Red Win"
+	},
+	"116": {
+		"name": "Blue Win"
+	},
+	"117": {
+		"name": "Green Win"
+	},
+	"118": {
+		"name": "Yellow Win"
+	},
+	"119": {
+		"name": "Conquer the Island"
+	},
+	"120": {
+		"name": "Collector"
+	},
+	"121": {
+		"name": "Remote Upload"
+	},
+	"122": {
+		"name": "Sumo Smash"
+	},
+	"123": {
+		"name": "Puffle Paddle"
+	},
+	"124": {
+		"name": "Bean Balance"
+	},
+	"125": {
+		"name": "2 Vs. 2"
+	},
+	"126": {
+		"name": "2 Vs. 2 Max"
+	},
+	"127": {
+		"name": "White Puffle"
+	},
+	"128": {
+		"name": "Goalie"
+	},
+	"130": {
+		"name": "SOS 30"
+	},
+	"131": {
+		"name": "SOS 60"
+	},
+	"132": {
+		"name": "1 Coin Bag"
+	},
+	"133": {
+		"name": "2 Coin Bags "
+	},
+	"134": {
+		"name": "3 Coin Bags"
+	},
+	"135": {
+		"name": "Snow Student"
+	},
+	"136": {
+		"name": "Snow Master"
+	},
+	"137": {
+		"name": "Snow Hero"
+	},
+	"138": {
+		"name": "Cave Coins"
+	},
+	"139": {
+		"name": "Cave Coins Plus"
+	},
+	"140": {
+		"name": "Cave Coins Max"
+	},
+	"141": {
+		"name": "Quick Catch"
+	},
+	"142": {
+		"name": "Super Catch"
+	},
+	"144": {
+		"name": "Expert Catch"
+	},
+	"145": {
+		"name": "Easy Cannon"
+	},
+	"146": {
+		"name": "Super Cannon"
+	},
+	"147": {
+		"name": "Extreme Cannon"
+	},
+	"148": {
+		"name": "Close Call"
+	},
+	"149": {
+		"name": "Rapid Rescue"
+	},
+	"150": {
+		"name": "Express Rescue"
+	},
+	"151": {
+		"name": "Extreme Rescue"
+	},
+	"152": {
+		"name": "10 Sea Levels"
+	},
+	"153": {
+		"name": "20 Sea Levels"
+	},
+	"154": {
+		"name": "30 Sea Levels"
+	},
+	"155": {
+		"name": "1 Coin Bubble"
+	},
+	"156": {
+		"name": "2 Coin Bubbles"
+	},
+	"157": {
+		"name": "3 Coin Bubbles"
+	},
+	"159": {
+		"name": "Mission 1 Medal"
+	},
+	"160": {
+		"name": "Aunt Arctic Letter"
+	},
+	"161": {
+		"name": "Mission 2 Medal"
+	},
+	"162": {
+		"name": "G's Letter"
+	},
+	"163": {
+		"name": "Mission 3 Medal"
+	},
+	"164": {
+		"name": "Thank You Card"
+	},
+	"165": {
+		"name": "Mission 4 Medal"
+	},
+	"166": {
+		"name": "Handy Award"
+	},
+	"167": {
+		"name": "Mission 5 Medal"
+	},
+	"168": {
+		"name": "Pizza Box"
+	},
+	"169": {
+		"name": "Mission 6 Medal"
+	},
+	"170": {
+		"name": "Blueprint"
+	},
+	"171": {
+		"name": "Mission 7 Medal"
+	},
+	"172": {
+		"name": "Pennant"
+	},
+	"173": {
+		"name": "Mission 8 Medal"
+	},
+	"174": {
+		"name": "Cool Gift"
+	},
+	"175": {
+		"name": "Mission 9 Medal"
+	},
+	"176": {
+		"name": "Chocolate Box"
+	},
+	"177": {
+		"name": "Mission 10 Medal"
+	},
+	"178": {
+		"name": "Employee Award"
+	},
+	"179": {
+		"name": "Mission 11 Medal"
+	},
+	"180": {
+		"name": "Snow Globe"
+	},
+	"182": {
+		"name": "Happy Room"
+	},
+	"183": {
+		"name": "Party Puzzle"
+	},
+	"184": {
+		"name": "Snack Shack"
+	},
+	"185": {
+		"name": "Target Champion"
+	},
+	"186": {
+		"name": "Celebration"
+	},
+	"187": {
+		"name": "Monster Mash"
+	},
+	"188": {
+		"name": "Scavenger Hunt"
+	},
+	"189": {
+		"name": "Construction"
+	},
+	"190": {
+		"name": "Explorer"
+	},
+	"191": {
+		"name": "Volunteer"
+	},
+	"193": {
+		"name": "Path Finder"
+	},
+	"197": {
+		"name": "Field Agent"
+	},
+	"198": {
+		"name": "Special Agent"
+	},
+	"199": {
+		"name": "Special Forces"
+	},
+	"200": {
+		"name": "Elite Protector"
+	},
+	"201": {
+		"name": "Island Guardian"
+	},
+	"202": {
+		"name": "Puffle Pilot "
+	},
+	"203": {
+		"name": "Puffle Bonus "
+	},
+	"204": {
+		"name": "Puffle Plus "
+	},
+	"205": {
+		"name": "Puffle Boost"
+	},
+	"206": {
+		"name": "Cart Pro"
+	},
+	"208": {
+		"name": "Cart Expert"
+	},
+	"210": {
+		"name": "Cart Master"
+	},
+	"212": {
+		"name": "Great Balance"
+	},
+	"214": {
+		"name": "Mine Marvel"
+	},
+	"216": {
+		"name": "Mine Mission"
+	},
+	"218": {
+		"name": "Trick Master"
+	},
+	"220": {
+		"name": "Mine Grind"
+	},
+	"222": {
+		"name": "Surf's Up"
+	},
+	"224": {
+		"name": "Flip Mania"
+	},
+	"226": {
+		"name": "Ultimate Duo"
+	},
+	"228": {
+		"name": "Puffle Power"
+	},
+	"230": {
+		"name": "Grasshopper"
+	},
+	"232": {
+		"name": "Fine Student "
+	},
+	"234": {
+		"name": "True Ninja "
+	},
+	"236": {
+		"name": "Ninja Master "
+	},
+	"238": {
+		"name": "Flawless Victory "
+	},
+	"240": {
+		"name": "Match Master"
+	},
+	"242": {
+		"name": "Elemental Win"
+	},
+	"244": {
+		"name": "One Element "
+	},
+	"246": {
+		"name": "Sensei Card"
+	},
+	"248": {
+		"name": "Full Dojo"
+	},
+	"252": {
+		"name": "Warm Up"
+	},
+	"254": {
+		"name": "Score Fire "
+	},
+	"256": {
+		"name": "Fire Midway"
+	},
+	"260": {
+		"name": "Strong Defence"
+	},
+	"262": {
+		"name": "Fire Suit"
+	},
+	"264": {
+		"name": "Fire Ninja"
+	},
+	"266": {
+		"name": "Max Energy"
+	},
+	"268": {
+		"name": "Fire Expert "
+	},
+	"270": {
+		"name": "Gong!"
+	},
+	"274": {
+		"name": "Watery Fall"
+	},
+	"276": {
+		"name": "Water Expert"
+	},
+	"278": {
+		"name": "Water Midway"
+	},
+	"282": {
+		"name": "Water Suit"
+	},
+	"284": {
+		"name": "Water Ninja"
+	},
+	"286": {
+		"name": "Two Close"
+	},
+	"288": {
+		"name": "Skipping Stones"
+	},
+	"290": {
+		"name": "Sensei"
+	},
+	"292": {
+		"name": "Out At Sea"
+	},
+	"294": {
+		"name": "Top Volunteer"
+	},
+	"296": {
+		"name": "Epic Volunteer"
+	},
+	"298": {
+		"name": "Ready For Duty"
+	},
+	"300": {
+		"name": "Garbage Disposal"
+	},
+	"302": {
+		"name": "Strategic Success"
+	},
+	"304": {
+		"name": "Mono Mechanic"
+	},
+	"306": {
+		"name": "Tactical Pro"
+	},
+	"308": {
+		"name": "Master Mechanic"
+	},
+	"310": {
+		"name": "Strategic Master"
+	},
+	"312": {
+		"name": "Tactical Ace"
+	},
+	"320": {
+		"name": "Bug Overload"
+	},
+	"322": {
+		"name": "Herbert Attacks"
+	},
+	"324": {
+		"name": "Klutzy Attack"
+	},
+	"326": {
+		"name": "Test Bot Trio"
+	},
+	"328": {
+		"name": "Protobot Attack"
+	},
+	"330": {
+		"name": "Party Puffle"
+	},
+	"332": {
+		"name": "Food Fight"
+	},
+	"334": {
+		"name": "Begin Build"
+	},
+	"336": {
+		"name": "Launch Ready"
+	},
+	"338": {
+		"name": "Epic Cannon "
+	},
+	"340": {
+		"name": "Crab Attack"
+	},
+	"342": {
+		"name": "Crab Crash"
+	},
+	"344": {
+		"name": "Crab Battle"
+	},
+	"346": {
+		"name": "Quick Launch"
+	},
+	"348": {
+		"name": "Supersonic Launch"
+	},
+	"350": {
+		"name": "Light Speed Launch"
+	},
+	"352": {
+		"name": "Turbo Time"
+	},
+	"354": {
+		"name": "Turbo Battle"
+	},
+	"356": {
+		"name": "Turbo Master"
+	},
+	"358": {
+		"name": "Rookie"
+	},
+	"360": {
+		"name": "Noble Knight"
+	},
+	"362": {
+		"name": "Go Green"
+	},
+	"364": {
+		"name": "Tree Mob"
+	},
+	"372": {
+		"name": "Snack Attack"
+	},
+	"374": {
+		"name": "Shock King"
+	},
+	"376": {
+		"name": "Fishtastic"
+	},
+	"378": {
+		"name": "Worm Win"
+	},
+	"380": {
+		"name": "Crab Cuts"
+	},
+	"382": {
+		"name": "Afishionado"
+	},
+	"384": {
+		"name": "Gray Goodies"
+	},
+	"386": {
+		"name": "Prize Mullet"
+	},
+	"388": {
+		"name": "Fly Fisher"
+	},
+	"390": {
+		"name": "Ace Angler"
+	},
+	"392": {
+		"name": "Food Fiasco"
+	},
+	"394": {
+		"name": "Just Dessert"
+	},
+	"396": {
+		"name": "Chef's Hat"
+	},
+	"398": {
+		"name": "Spice Sea"
+	},
+	"400": {
+		"name": "Cocoa Beans"
+	},
+	"402": {
+		"name": "Fiery Squids"
+	},
+	"404": {
+		"name": "Candy Land"
+	},
+	"406": {
+		"name": "Pizza Chef"
+	},
+	"408": {
+		"name": "Pizza Master"
+	},
+	"410": {
+		"name": "Dessert Chef"
+	},
+	"414": {
+		"name": "Gem Skills"
+	},
+	"416": {
+		"name": "Collector"
+	},
+	"418": {
+		"name": "In the Rough"
+	},
+	"420": {
+		"name": "Gem Expert"
+	},
+	"422": {
+		"name": "Gem Pro"
+	},
+	"426": {
+		"name": "Music Maestro "
+	},
+	"427": {
+		"name": "Bonus Snack"
+	},
+	"428": {
+		"name": "Puffle O Feast"
+	},
+	"429": {
+		"name": "Bite in Time"
+	},
+	"430": {
+		"name": "Quick Snack"
+	},
+	"431": {
+		"name": "Fast Food"
+	},
+	"432": {
+		"name": "On a Roll"
+	},
+	"433": {
+		"name": "Puzzle Pro"
+	},
+	"434": {
+		"name": "Extreme Puzzler"
+	},
+	"435": {
+		"name": "Master Roller"
+	},
+	"436": {
+		"name": "Epic Roller"
+	},
+	"437": {
+		"name": "Ice Master"
+	},
+	"438": {
+		"name": "Stunt Penguin"
+	},
+	"439": {
+		"name": "Mountaineer"
+	},
+	"440": {
+		"name": "Snowboarder"
+	},
+	"443": {
+		"name": "Track Herbert "
+	},
+	"444": {
+		"name": "Trick-or-treat"
+	},
+	"448": {
+		"name": "PH"
+	},
+	"450": {
+		"name": "Fruit Squeeze"
+	},
+	"451": {
+		"name": "Shipshake"
+	},
+	"452": {
+		"name": "Berry Smart"
+	},
+	"453": {
+		"name": "Beary Berry"
+	},
+	"454": {
+		"name": "Tasty Treat"
+	},
+	"455": {
+		"name": "Fruit Splatter"
+	},
+	"456": {
+		"name": "Fruit Power"
+	},
+	"457": {
+		"name": "Deflector"
+	},
+	"458": {
+		"name": "Energizer"
+	},
+	"459": {
+		"name": "Fruit Stomper"
+	},
+	"460": {
+		"name": "Smoothie Warrior"
+	},
+	"461": {
+		"name": "Smoothie Survivor "
+	},
+	"462": {
+		"name": "Smoothie Zing"
+	},
+	"463": {
+		"name": "Fruit Smasher"
+	},
+	"464": {
+		"name": "Smoothie Master"
+	},
+	"465": {
+		"name": "Smoothie Hero"
+	},
+	"466": {
+		"name": "Herbert"
+	},
+	"467": {
+		"name": "3 Ninja Combo"
+	},
+	"468": {
+		"name": "4 Ninja Combo"
+	},
+	"469": {
+		"name": "Snow Ninja"
+	},
+	"470": {
+		"name": "Fire Ninja"
+	},
+	"471": {
+		"name": "Water Ninja"
+	},
+	"472": {
+		"name": "Full Health"
+	},
+	"473": {
+		"name": "Bonus Win"
+	},
+	"474": {
+		"name": "Revive"
+	},
+	"475": {
+		"name": "Up and at 'em"
+	},
+	"476": {
+		"name": "Team Revival"
+	},
+	"477": {
+		"name": "Heal 15"
+	},
+	"478": {
+		"name": "Huge Heal"
+	},
+	"479": {
+		"name": "Snow Shield"
+	},
+	"480": {
+		"name": "Tidal Wave"
+	},
+	"481": {
+		"name": "Wave Boost"
+	},
+	"482": {
+		"name": "Fire Blast"
+	},
+	"483": {
+		"name": "Fire Blast Combo"
+	},
+	"484": {
+		"name": "Power Card Pro"
+	},
+	"485": {
+		"name": "3 Combos"
+	},
+	"486": {
+		"name": "Final Battle"
+	},
+	"487": {
+		"name": "Snow Pro"
+	},
+	"488": {
+		"name": "3 Gems"
+	},
+	"489": {
+		"name": "Puffle Dig"
+	},
+	"490": {
+		"name": "First Dig"
+	},
+	"491": {
+		"name": "Every Color"
+	},
+	"492": {
+		"name": "Dig All Day"
+	},
+	"493": {
+		"name": "Big Dig"
+	},
+	"494": {
+		"name": "Treasure Box"
+	},
+	"495": {
+		"name": "Tasty Treasure"
+	}
+}

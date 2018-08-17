@@ -16,7 +16,6 @@ const Ignore = require("./handlers/Ignore")
 const Buddy = require("./handlers/Buddy")
 
 const Stamps = require("./handlers/Stamps")
-
 const Multiplayer = require("./handlers/Multiplayer")
 
 const xtHandlers = {
@@ -146,6 +145,10 @@ const xtHandlers = {
 		},
 		"e#dc": {
 			func: "handleDonateCoins",
+			file: Player
+		},
+		"u#sq": {
+			func: "handleSendQuickMessage",
 			file: Player
 		},
 		"t#at": {

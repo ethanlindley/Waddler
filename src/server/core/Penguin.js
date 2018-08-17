@@ -4,9 +4,11 @@ const Logger = require("../Logger")
 
 const sp = require("./utils/sp")
 
-class Penguin {
+const Socket = require("./Socket")
+
+class Penguin extends Socket {
 	constructor(socket, server) {
-		this.socket = socket
+		super(socket)
 		this.server = server
 		this.ipAddr = socket.remoteAddress.split(":").pop()
 		this.database = server.database
@@ -171,28 +173,6 @@ class Penguin {
 	removeCoins(coins) {
 		this.coins -= coins
 		this.updateColumn("coins", this.coins)
-	}
-
-	sendRaw(data) {
-		if (this.socket && this.socket.writable) {
-			Logger.outgoing(data)
-			this.socket.write(data + "\0")
-		}
-	}
-	sendXt() {
-		this.sendRaw(`%xt%${Array.prototype.join.call(arguments, "%")}%`)
-	}
-	sendError(err, disconnect) {
-		this.sendXt("e", -1, err)
-
-		if (disconnect) this.disconnect()
-	}
-	sendLoadMovie(message) {
-		this.sendXt("lm", -1, `${require("../../config").loadMovieURL}${message}`)
-	}
-
-	disconnect() {
-		this.server.removePenguin(this)
 	}
 
 	updateColumn(column, value, table = null) {

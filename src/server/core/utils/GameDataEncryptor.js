@@ -4,9 +4,11 @@ class GameDataEncryptor {
 	static hashPassword(pass) {
 		return require("keccak")("keccak256").update(pass).digest("hex")
 	}
+
 	static generateRandomKey(len) {
 		return require("crypto").randomBytes(len / 2).toString("hex")
 	}
+
 	static decryptZaseth(str, key) {
 		let keyIndex = 0x00,
 			res = ""

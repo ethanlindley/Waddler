@@ -8,7 +8,6 @@ class DataHandler {
 	constructor(server) {
 		this.server = server
 		this.database = server.database
-
 		this.failedLogins = {}
 	}
 

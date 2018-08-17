@@ -3,6 +3,7 @@
 /*
  * Converts icer.ink's crumbs to be used with Waddler.
  * Fully written by Zaseth.
+ * Stamp converter made by Unspirited.
  */
 
 const request = require("request-promise")
@@ -166,7 +167,7 @@ class convertCrumbs {
 		})
 	}
 
-	static convertPin() {
+	static convertPins() {
 		let obj = {}
 
 		fs.readFile("./pins.json", (error, data) => {
@@ -191,6 +192,33 @@ class convertCrumbs {
 
 				console.log("Converted and saved pins with UNIX timestamp")
 			})
+		})
+	}
+
+	static convertStamps() { // By Unspirited
+		let obj = {}
+
+		request(this.getOptions("stamps")).then((result) => {
+			let stampid = 0
+
+			console.log("Downloaded stamps from icer.ink")
+
+			JSON.parse(result, (key, value) => {
+				if (key == "stamp_id") stampid = value
+				if (stampid != 0 && key == "name") {
+					obj[stampid] = {
+						"name": value
+					}
+					stampid = 0
+				}
+			})
+			fs.appendFile("stamps.json", JSON.stringify(obj), (error) => {
+				if (error) console.error(error)
+
+				console.log("Converted and saved stamps")
+			})
+		}).catch((error) => {
+			console.error(error)
 		})
 	}
 }

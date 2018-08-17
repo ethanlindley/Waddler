@@ -24,13 +24,13 @@ class Stamps {
 		const items = require("../../crumbs/items")
 		const pins = require("../../crumbs/pins")
 
-		penguin.database.getPlayerPins(penguin.id).then((result) => {
+		penguin.database.getInventoryByID(penguin.id).then((result) => {
 			result.forEach(row => {
 				if (items[row.itemID].type == "pin") {
 					if (pins[row.itemID] != undefined) {
-						pinStr += `${parseInt(row.itemID)}|${parseInt(pins[row.itemID].unix)}|`
+						pinStr += `${row.itemID}|${pins[row.itemID].unix}|1%`
 					} else {
-						pinStr += `${parseInt(row.itemID)}|${sp.getTime()}|`
+						pinStr += `${row.itemID}|${sp.getTime()}|1%`
 					}
 				}
 			})
@@ -42,7 +42,21 @@ class Stamps {
 	}
 
 	static handleQueryPlayerAwards(data, penguin) {
+		let awardStr = ""
 
+		const awards = require("../../crumbs/awards")
+
+		penguin.database.getInventoryByID(penguin.id).then((result) => {
+			result.forEach(row => {
+				if (awards[row.itemID]) {
+					awardStr += `${row.itemID}|${awards[row.itemID].unix}|1%`
+				}
+			})
+
+			if (awardStr.length == 0) return penguin.sendXt("qpa", -1, penguin.id, "")
+
+			penguin.sendXt("qpa", -1, penguin.id, `|${awardStr.slice(0, -1)}`)
+		})
 	}
 }
 

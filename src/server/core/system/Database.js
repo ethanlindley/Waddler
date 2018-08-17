@@ -21,13 +21,16 @@ class Database {
 
 		return this.knex("penguins").first("*").where(type, player)
 	}
-
 	getUsernameById(ID) {
 		return this.knex("penguins").select("username").where({
 			ID
 		})
 	}
-
+	getInventoryByID(ID) {
+		return this.knex("inventory").select("itemID").where({
+			ID
+		})
+	}
 	updateColumn(player, column, value, table) {
 		const type = isNaN(player) ? "username" : "ID"
 
@@ -137,12 +140,6 @@ class Database {
 
 	getStamps(ID) {
 		return this.knex("stamps").select("stampID").where({
-			ID
-		})
-	}
-
-	getPlayerPins(ID) {
-		return this.knex("inventory").select("itemID").where({
 			ID
 		})
 	}

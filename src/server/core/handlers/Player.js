@@ -108,8 +108,7 @@ class Player {
 				result.photo
 			]
 			penguin.sendXt("gp", -1, playerInfo.join("|") + "|")
-		}).catch((err) => {
-			console.error(err)
+		}).catch(() => {
 			return penguin.disconnect()
 		})
 	}
@@ -127,7 +126,7 @@ class Player {
 
 		if (isNaN(lineId)) return penguin.disconnect()
 
-		penguin.sendXt("sl", -1, penguin.id, lineId)
+		penguin.room.sendXt("sl", -1, penguin.id, lineId)
 	}
 
 	static handleSendMessage(data, penguin) {
@@ -162,10 +161,19 @@ class Player {
 	static handleDonateCoins(data, penguin) {
 		const amount = parseInt(data[4])
 
+		if (isNaN(amount)) return penguin.disconnect()
 		if (penguin.coins < amount) return penguin.sendError(401)
 
 		penguin.removeCoins(amount)
 		penguin.sendXt("dc", -1, penguin.id, penguin.coins)
+	}
+
+	static handleSendQuickMessage(data, penguin) {
+		const quickMessageId = parseInt(data[4])
+
+		if (isNaN(quickMessageId)) return penguin.disconnect()
+
+		penguin.room.sendXt("sq", -1, penguin.id, quickMessageId)
 	}
 }
 
