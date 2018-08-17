@@ -45,6 +45,7 @@ class Penguin {
 		this.buddies = []
 		this.ignored = []
 		this.requests = []
+		this.stamps = []
 
 		this.getInventory()
 	}

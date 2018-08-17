@@ -9,7 +9,7 @@ class Navigation {
 		const y = sp.getRandomPosition()
 
 		penguin.sendXt("js", -1, 1, 0, Number(penguin.moderator), 1)
-		penguin.sendXt("gps", -1, "")
+		require("./Stamps").handleGetStamps(data, penguin)
 		penguin.sendXt("lp", -1, penguin.buildPlayerString(), penguin.coins, 0, 1440, sp.getTime(), penguin.age, 4, 1)
 
 		this.handleJoinRoom({

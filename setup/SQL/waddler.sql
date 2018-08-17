@@ -50,9 +50,15 @@ CREATE TABLE `buddies` (
     `buddyUsername` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-LOCK TABLES `buddies` WRITE;
-INSERT INTO `buddies` VALUES (100, 101, 'Daan');
-INSERT INTO `buddies` VALUES (101, 100, 'Zaseth');
+DROP TABLE IF EXISTS `stamps`;
+CREATE TABLE `stamps` (
+    `ID` int(10) UNSIGNED NOT NULL,
+    `stampID` smallint(5) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `stamps` WRITE;
+INSERT INTO `stamps` VALUES (100, 7);
+INSERT INTO `stamps` VALUES (100, 8);
 UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `penguins`;

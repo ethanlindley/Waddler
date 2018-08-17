@@ -134,6 +134,12 @@ class Database {
 			buddyUsername: usernameToRemove
 		})
 	}
+
+	getStamps(ID) {
+		return this.knex("stamps").select("stampID").where({
+			ID
+		})
+	}
 }
 
 module.exports = Database

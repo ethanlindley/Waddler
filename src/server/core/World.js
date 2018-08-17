@@ -15,6 +15,8 @@ const Pet = require("./handlers/Pet")
 const Ignore = require("./handlers/Ignore")
 const Buddy = require("./handlers/Buddy")
 
+const Stamps = require("./handlers/Stamps")
+
 const Multiplayer = require("./handlers/Multiplayer")
 
 const xtHandlers = {
@@ -252,6 +254,10 @@ const xtHandlers = {
 		"b#bf": {
 			func: "handleBuddyFind",
 			file: Buddy
+		},
+		"st#gps": {
+			func: "handleGetStamps",
+			file: Stamps
 		},
 		"a#gt": {
 			func: "handleMultiplayerData",
