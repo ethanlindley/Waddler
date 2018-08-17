@@ -259,6 +259,14 @@ const xtHandlers = {
 			func: "handleGetStamps",
 			file: Stamps
 		},
+		"i#qpp": {
+			func: "handleQueryPlayerPins",
+			file: Stamps
+		},
+		"i#qpa": {
+			func: "handleQueryPlayerAwards",
+			file: Stamps
+		},
 		"a#gt": {
 			func: "handleMultiplayerData",
 			file: Multiplayer

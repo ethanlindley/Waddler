@@ -75,9 +75,9 @@ class Server {
 	}
 
 	fetchPluginStats() {
-		Logger.info(`Loaded ${this.roomManager.rooms.length} room(s)`)
-		Logger.info(`Loaded ${require("./core/plugins/Censor/dictionary").length} swear word(s)`)
-		Logger.info(`Loaded ${require("./core/plugins/PatchedItems/items").length} patched item(s)`)
+		Logger.info(`Loaded ${this.roomManager.rooms.length} rooms`)
+		Logger.info(`Loaded ${require("./core/plugins/Censor/dictionary").length} swear words`)
+		Logger.info(`Loaded ${require("./core/plugins/PatchedItems/items").length} patched items`)
 	}
 
 	calculateValidMaxPenguins() {

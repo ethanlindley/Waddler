@@ -165,6 +165,34 @@ class convertCrumbs {
 			console.error(error)
 		})
 	}
+
+	static convertPin() {
+		let obj = {}
+
+		fs.readFile("./pins.json", (error, data) => {
+			if (error) console.error(error)
+
+			data = JSON.parse(data)
+
+			console.log("Pins have been read")
+
+			for (const i in data) {
+				const pinid = data[i]["paper_item_id"]
+				const name = data[i]["label"]
+				const unix = data[i]["unix"]
+
+				obj[pinid] = {
+					"name": name,
+					"unix": parseInt(unix)
+				}
+			}
+			fs.appendFile("convertedPins.json", JSON.stringify(obj), (error) => {
+				if (error) console.error(error)
+
+				console.log("Converted and saved pins with UNIX timestamp")
+			})
+		})
+	}
 }
 
 module.exports = convertCrumbs

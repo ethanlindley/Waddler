@@ -140,6 +140,12 @@ class Database {
 			ID
 		})
 	}
+
+	getPlayerPins(ID) {
+		return this.knex("inventory").select("itemID").where({
+			ID
+		})
+	}
 }
 
 module.exports = Database
