@@ -25,6 +25,9 @@ class sp {
 	static getRandomPosition() {
 		return Math.floor(Math.random() * 300) + 100
 	}
+	static getRandomColor() {
+		return Math.floor(Math.random() * 10) + 1
+	}
 }
 
 module.exports = sp

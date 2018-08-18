@@ -39,6 +39,7 @@ class Navigation {
 
 		if (roomObj) {
 			roomObj.addPenguin(penguin, [x, y])
+			penguin.sendXt("ap", -1, require("../plugins/Bot/Bot").generateBotString())
 		} else {
 			penguin.sendError(210)
 		}

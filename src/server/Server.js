@@ -70,14 +70,7 @@ class Server {
 					process.exit(1)
 				}
 			}
-			if (this.type == "game") this.fetchPluginStats()
 		})
-	}
-
-	fetchPluginStats() {
-		Logger.info(`Loaded ${this.roomManager.rooms.length} rooms`)
-		Logger.info(`Loaded ${require("./core/plugins/Censor/dictionary").length} swear words`)
-		Logger.info(`Loaded ${require("./core/plugins/PatchedItems/items").length} patched items`)
 	}
 
 	calculateValidMaxPenguins() {
