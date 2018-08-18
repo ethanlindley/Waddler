@@ -270,6 +270,10 @@ const xtHandlers = {
 			func: "handleQueryPlayerAwards",
 			file: Stamps
 		},
+		"st#gsbcd": {
+			func: "handleGetStampBookCoverDetails",
+			file: Stamps
+		},
 		"a#gt": {
 			func: "handleMultiplayerData",
 			file: Multiplayer

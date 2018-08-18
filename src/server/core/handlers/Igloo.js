@@ -4,6 +4,8 @@ class Igloo {
 	static handleIglooFurniture(data, penguin) {
 		const furnitureID = parseInt(data[4])
 
+		if (isNaN(furnitureID)) return penguin.disconnect()
+
 		const furniture = require("../../crumbs/furniture")
 
 		if (!furniture[furnitureID]) return penguin.sendError(402)
@@ -21,7 +23,13 @@ class Igloo {
 	}
 
 	static handleGetActiveIgloo(data, penguin) {
-		if (penguin.id != parseInt(data[4])) return penguin.disconnect()
+		const penguinID = parseInt(data[4])
+
+		if (isNaN(penguinID)) return penguin.disconnect()
+		penguin.doesIDExist(penguinID).then((exists) => {
+			if (!exists) return
+		})
+		if (penguin.id != penguinID) return penguin.disconnect()
 
 		penguin.database.getActiveIgloo(penguin.id).then((result) => {
 			const iglooStr = `${result[0].type}%${result[0].music}%${result[0].floor}%${result[0].furniture}%${result[0].locked}`
@@ -54,7 +62,6 @@ class Igloo {
 		let furniture = data.join(",").substr(13)
 
 		if (furniture.length < 1) return penguin.updateColumn("furnitureID", "[]", "furniture")
-
 		if (furniture.length > 99) return penguin.sendError(10006)
 
 		penguin.updateColumn("furniture", furniture, "igloo")
@@ -69,13 +76,25 @@ class Igloo {
 	}
 
 	static handleOpenIgloo(data, penguin) {
-		if (penguin.id != parseInt(data[4])) return penguin.disconnect()
+		const penguinID = parseInt(data[4])
+
+		if (isNaN(penguinID)) return penguin.disconnect()
+		penguin.doesIDExist(penguinID).then((exists) => {
+			if (!exists) return
+		})
+		if (penguin.id != penguinID) return penguin.disconnect()
 
 		penguin.openIgloos[penguin.id] = penguin.username
 	}
 
 	static handleCloseIgloo(data, penguin) {
-		if (penguin.id != parseInt(data[4])) return penguin.disconnect()
+		const penguinID = parseInt(data[4])
+
+		if (isNaN(penguinID)) return penguin.disconnect()
+		penguin.doesIDExist(penguinID).then((exists) => {
+			if (!exists) return
+		})
+		if (penguin.id != penguinID) return penguin.disconnect()
 
 		delete penguin.openIgloos[penguin.id]
 	}

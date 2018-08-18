@@ -183,6 +183,11 @@ class Penguin extends Socket {
 	getColumn(column, table = null) {
 		return this.database.getColumn(this.id, column, table)
 	}
+	doesIDExist(ID) {
+		return this.database.doesIDExist(ID).then((result) => {
+			return result[0]["count(*)"] >= 1
+		})
+	}
 }
 
 module.exports = Penguin

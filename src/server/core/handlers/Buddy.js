@@ -27,6 +27,9 @@ class Buddy {
 		const toAccept = parseInt(data[4])
 
 		if (isNaN(toAccept)) return penguin.disconnect()
+		penguin.doesIDExist(toAccept).then((exists) => {
+			if (!exists) return
+		})
 		if (penguin.buddies.length >= 500) return penguin.sendError(901)
 
 		if (penguin.buddies.length != 0) {
@@ -59,6 +62,9 @@ class Buddy {
 		const toRequest = parseInt(data[4])
 
 		if (isNaN(toRequest)) return penguin.disconnect()
+		penguin.doesIDExist(toRequest).then((exists) => {
+			if (!exists) return
+		})
 		if (toRequest == penguin.id) return
 		if (penguin.buddies.length >= 500) return penguin.sendError(901)
 
@@ -89,6 +95,9 @@ class Buddy {
 		const toRemove = parseInt(data[4])
 
 		if (isNaN(toRemove)) return penguin.disconnect()
+		penguin.doesIDExist(toRemove).then((exists) => {
+			if (!exists) return
+		})
 		if (penguin.buddies.length == 0) return
 
 		penguin.database.getUsernameById(toRemove).then((result) => {
@@ -112,6 +121,9 @@ class Buddy {
 		const toFind = parseInt(data[4])
 
 		if (isNaN(toFind)) return penguin.disconnect()
+		penguin.doesIDExist(toFind).then((exists) => {
+			if (!exists) return
+		})
 
 		const findObj = penguin.server.getPenguinById(toFind)
 

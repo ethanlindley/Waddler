@@ -19,23 +19,23 @@ class Player {
 	}
 
 	static handleSendFrame(data, penguin) {
-		const frameId = parseInt(data[4])
+		const frameID = parseInt(data[4])
 
-		if (isNaN(frameId)) return penguin.disconnect()
+		if (isNaN(frameID)) return penguin.disconnect()
 
-		penguin.frame = frameId
+		penguin.frame = frameID
 
-		penguin.room.sendXt("sf", -1, penguin.id, frameId)
+		penguin.room.sendXt("sf", -1, penguin.id, frameID)
 	}
 
 	static handleSendAction(data, penguin) {
-		const actionId = parseInt(data[4])
+		const actionID = parseInt(data[4])
 
-		if (isNaN(actionId)) return penguin.disconnect()
+		if (isNaN(actionID)) return penguin.disconnect()
 
 		penguin.frame = 1
 
-		penguin.room.sendXt("sa", -1, penguin.id, actionId)
+		penguin.room.sendXt("sa", -1, penguin.id, actionID)
 	}
 
 	static handleSendSnowball(data, penguin) {
@@ -48,53 +48,56 @@ class Player {
 	}
 
 	static handleSendEmote(data, penguin) {
-		const emoteId = parseInt(data[4])
+		const emoteID = parseInt(data[4])
 
-		if (isNaN(emoteId)) return penguin.disconnect()
+		if (isNaN(emoteID)) return penguin.disconnect()
 
-		penguin.room.sendXt("se", -1, penguin.id, emoteId)
+		penguin.room.sendXt("se", -1, penguin.id, emoteID)
 	}
 
 	static handleSendJoke(data, penguin) {
-		const jokeId = parseInt(data[4])
+		const jokeID = parseInt(data[4])
 
-		if (isNaN(jokeId)) return penguin.disconnect()
+		if (isNaN(jokeID)) return penguin.disconnect()
 
-		penguin.room.sendXt("sj", -1, penguin.id, jokeId)
+		penguin.room.sendXt("sj", -1, penguin.id, jokeID)
 	}
 
 	static handleSendSafeMessage(data, penguin) {
-		const safeMessageId = parseInt(data[4])
+		const safeMessageID = parseInt(data[4])
 
-		if (isNaN(safeMessageId)) return penguin.disconnect()
+		if (isNaN(safeMessageID)) return penguin.disconnect()
 
-		penguin.room.sendXt("ss", -1, penguin.id, safeMessageId)
+		penguin.room.sendXt("ss", -1, penguin.id, safeMessageID)
 	}
 
 	static handleSendTourGuide(data, penguin) {
-		const tourGuideId = parseInt(data[4])
+		const tourGuideID = parseInt(data[4])
 
-		if (isNaN(tourGuideId)) return penguin.disconnect()
+		if (isNaN(tourGuideID)) return penguin.disconnect()
 
-		penguin.room.sendXt("sg", -1, penguin.id, tourGuideId)
+		penguin.room.sendXt("sg", -1, penguin.id, tourGuideID)
 	}
 
 	static handleSendMascotMessage(data, penguin) {
-		const mascotMessageId = parseInt(data[4])
+		const mascotMessageID = parseInt(data[4])
 
-		if (isNaN(mascotMessageId)) return penguin.disconnect()
+		if (isNaN(mascotMessageID)) return penguin.disconnect()
 
-		penguin.room.sendXt("sma", -1, penguin.id, mascotMessageId)
+		penguin.room.sendXt("sma", -1, penguin.id, mascotMessageID)
 	}
 
 	static handleGetPlayer(data, penguin) {
-		const id = parseInt(data[4])
+		const penguinID = parseInt(data[4])
 
-		if (isNaN(id)) return penguin.disconnect()
+		if (isNaN(penguinID)) return penguin.disconnect()
+		penguin.doesIDExist(penguinID).then((exists) => {
+			if (!exists) return
+		})
 
-		penguin.database.getPlayer(id).then((result) => {
+		penguin.database.getPlayer(penguinID).then((result) => {
 			const playerInfo = [
-				result.id,
+				result.ID,
 				result.username,
 				1,
 				result.color,
@@ -122,11 +125,11 @@ class Player {
 	}
 
 	static handleSendLine(data, penguin) {
-		const lineId = parseInt(data[4])
+		const lineID = parseInt(data[4])
 
-		if (isNaN(lineId)) return penguin.disconnect()
+		if (isNaN(lineID)) return penguin.disconnect()
 
-		penguin.room.sendXt("sl", -1, penguin.id, lineId)
+		penguin.room.sendXt("sl", -1, penguin.id, lineID)
 	}
 
 	static handleSendMessage(data, penguin) {
@@ -169,11 +172,11 @@ class Player {
 	}
 
 	static handleSendQuickMessage(data, penguin) {
-		const quickMessageId = parseInt(data[4])
+		const quickMessageID = parseInt(data[4])
 
-		if (isNaN(quickMessageId)) return penguin.disconnect()
+		if (isNaN(quickMessageID)) return penguin.disconnect()
 
-		penguin.room.sendXt("sq", -1, penguin.id, quickMessageId)
+		penguin.room.sendXt("sq", -1, penguin.id, quickMessageID)
 	}
 }
 

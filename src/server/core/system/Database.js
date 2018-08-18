@@ -16,6 +16,12 @@ class Database {
 		})
 	}
 
+	doesIDExist(ID) {
+		return this.knex("penguins").count().where({
+			ID
+		})
+	}
+
 	getPlayer(player) {
 		const type = isNaN(player) ? "username" : "ID"
 

@@ -20,6 +20,9 @@ class Ignore {
 		const toIgnore = parseInt(data[4])
 
 		if (isNaN(toIgnore)) return penguin.disconnect()
+		penguin.doesIDExist(toIgnore).then((exists) => {
+			if (!exists) return
+		})
 
 		if (penguin.buddies.length != 0) {
 			penguin.buddies.forEach(buddy => {
@@ -48,6 +51,9 @@ class Ignore {
 		const toRemove = parseInt(data[4])
 
 		if (isNaN(toRemove)) return penguin.disconnect()
+		penguin.doesIDExist(toRemove).then((exists) => {
+			if (!exists) return
+		})
 		if (penguin.ignored.length <= 0) return
 
 		penguin.ignored.forEach(ignore => {

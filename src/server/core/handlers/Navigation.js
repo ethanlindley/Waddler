@@ -28,6 +28,7 @@ class Navigation {
 
 		if (!x || isNaN(x)) x = sp.getRandomPosition()
 		if (!y || isNaN(y)) y = sp.getRandomPosition()
+		if (!room || isNaN(room)) room = sp.getRandomRoom()
 
 		if (penguin.room) penguin.room.removePenguin(penguin)
 		if (room > 900) {
@@ -53,6 +54,7 @@ class Navigation {
 
 		if (!x || isNaN(x)) x = 0
 		if (!y || isNaN(y)) y = 0
+		if (!room || isNaN(room)) room = sp.getRandomRoom()
 
 		if (penguin.room) penguin.room.removePenguin(penguin)
 		if (room < 1000) room += 1000
