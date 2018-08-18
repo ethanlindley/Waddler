@@ -274,6 +274,10 @@ const xtHandlers = {
 			func: "handleGetStampBookCoverDetails",
 			file: Stamps
 		},
+		"st#gmres": {
+			func: "handleGetMyRecentlyEarnedStamps",
+			file: Stamps
+		},
 		"a#gt": {
 			func: "handleMultiplayerData",
 			file: Multiplayer

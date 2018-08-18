@@ -37,7 +37,9 @@ class Server {
 	startServer() {
 		require("net").createServer(socket => {
 			socket.setEncoding("utf8")
-			socket.setTimeout(600000)
+			socket.setTimeout(600000, () => {
+				socket.end("Disconnected inactive socket")
+			})
 			socket.setNoDelay(true)
 
 			const penguin = new Penguin(socket, this)

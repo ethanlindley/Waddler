@@ -42,9 +42,9 @@ class Stamps {
 				}
 			})
 
-			if (pinStr.length == 0) return penguin.sendXt("qpp", -1, penguinID, "")
+			if (pinStr.length == 0) return penguin.sendXt("qpp", -1, "")
 
-			penguin.sendXt("qpp", -1, penguinID, `|${pinStr.slice(0, -1)}`)
+			penguin.sendXt("qpp", -1, `|${pinStr.slice(0, -1)}`)
 		})
 	}
 
@@ -67,14 +67,27 @@ class Stamps {
 				}
 			})
 
-			if (awardStr.length == 0) return penguin.sendXt("qpa", -1, penguinID, "")
+			if (awardStr.length == 0) return penguin.sendXt("qpa", -1, "")
 
-			penguin.sendXt("qpa", -1, penguinID, `|${awardStr.slice(0, -1)}`)
+			penguin.sendXt("qpa", -1, `|${awardStr.slice(0, -1)}`)
 		})
 	}
 
 	static handleGetStampBookCoverDetails(data, penguin) {
+		const penguinID = parseInt(data[4])
 
+		if (isNaN(penguinID)) return
+		penguin.doesIDExist(penguinID).then((exists) => {
+			if (!exists) return
+		})
+
+		penguin.getColumnByID(penguinID, "cover").then((result) => {
+			penguin.sendXt("gsbcd", -1, result[0].cover)
+		})
+	}
+
+	static handleGetMyRecentlyEarnedStamps(data, penguin) {
+		penguin.sendXt("gmres", -1, "")
 	}
 }
 

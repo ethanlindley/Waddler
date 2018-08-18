@@ -41,7 +41,7 @@ class Penguin extends Socket {
 		this.frame = 1
 		this.gameRoomId = 0
 		this.coinDig = 0
-
+		this.loggedIn = true
 		this.openIgloos = []
 
 		this.buddies = []
@@ -182,6 +182,9 @@ class Penguin extends Socket {
 	}
 	getColumn(column, table = null) {
 		return this.database.getColumn(this.id, column, table)
+	}
+	getColumnByID(ID, column) {
+		return this.database.getColumnByID(ID, column, "penguins")
 	}
 	doesIDExist(ID) {
 		return this.database.doesIDExist(ID).then((result) => {

@@ -49,6 +49,11 @@ class Database {
 
 		return this.knex(table == null ? "penguins" : table).select(column).where(type, player)
 	}
+	getColumnByID(ID, column) {
+		return this.knex("penguins").select(column).where({
+			ID
+		})
+	}
 
 	insertItem(ID, item) {
 		return this.knex("inventory").insert({

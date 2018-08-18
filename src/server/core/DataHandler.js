@@ -29,7 +29,7 @@ class DataHandler {
 					penguin.loginKey = GameDataEncryptor.generateRandomKey(12)
 					this.database.updateColumn(username, "loginKey", penguin.loginKey)
 
-					penguin.sendXt("sd", -1, "100|Snowy Lands|127.0.0.1|6113")
+					penguin.sendXt("sd", -1, require("../../config").worldStr)
 					penguin.sendXt("l", -1, penguin.id, penguin.loginKey, "", `100,${this.server.getServerBars()}`)
 				} else {
 					this.failedLogins[penguin.ipAddr].push(1)
