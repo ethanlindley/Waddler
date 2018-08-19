@@ -14,7 +14,6 @@ An open source in-development Club Penguin emulator, written in Node.js.
 * Throttling system
 * Comes with a command system (default commands are already added)
 * Advanced censoring system
-* API example included
 * Multiple plugins
 
 # Setup
@@ -49,6 +48,3 @@ An open source in-development Club Penguin emulator, written in Node.js.
 * In the same folder where `package.json` is located, enter on Command Prompt `node runLogin.js`
 * Open another Command Prompt and browse to the folder where `package.json` is located using CD and enter on Command Prompt: `node runGame.js`
 * Make sure MySQL, the register and your webserver are running
-
-## API
-<b>If you want to use the API, I'm assuming that you have some knowledge.</b>

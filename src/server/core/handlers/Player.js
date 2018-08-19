@@ -136,7 +136,7 @@ class Player {
 	static handleSendMessage(data, penguin) {
 		const message = String(data[5])
 
-		if (message.length <= 0 || message.length > 48) return penguin.sendError(5, true)
+		if (message.length <= 0 || message.length > 48 && parseInt(data[4]) != 0 && !penguin.moderator) return penguin.sendError(5, true)
 		if (penguin.muted) {
 			penguin.room.sendXt("mm", -1, penguin.id, message)
 		} else {

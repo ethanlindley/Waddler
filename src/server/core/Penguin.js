@@ -48,6 +48,7 @@ class Penguin extends Socket {
 		this.ignored = []
 		this.requests = []
 		this.stamps = []
+		this.throttle = {}
 
 		this.getInventory()
 	}

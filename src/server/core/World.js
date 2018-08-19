@@ -22,303 +22,370 @@ const xtHandlers = {
 	"s": {
 		"s#upc": {
 			func: "handleUpdateClothing",
-			file: Clothing
+			file: Clothing,
+			throttle: true
 		},
 		"s#uph": {
 			func: "handleUpdateClothing",
-			file: Clothing
+			file: Clothing,
+			throttle: false
 		},
 		"s#upf": {
 			func: "handleUpdateClothing",
-			file: Clothing
+			file: Clothing,
+			throttle: false
 		},
 		"s#upn": {
 			func: "handleUpdateClothing",
-			file: Clothing
+			file: Clothing,
+			throttle: false
 		},
 		"s#upb": {
 			func: "handleUpdateClothing",
-			file: Clothing
+			file: Clothing,
+			throttle: false
 		},
 		"s#upa": {
 			func: "handleUpdateClothing",
-			file: Clothing
+			file: Clothing,
+			throttle: false
 		},
 		"s#upe": {
 			func: "handleUpdateClothing",
-			file: Clothing
+			file: Clothing,
+			throttle: false
 		},
 		"s#upl": {
 			func: "handleUpdateClothing",
-			file: Clothing
+			file: Clothing,
+			throttle: false
 		},
 		"s#upp": {
 			func: "handleUpdateClothing",
-			file: Clothing
+			file: Clothing,
+			throttle: false
 		},
 		"i#ai": {
 			func: "handleAddItem",
 			file: Clothing,
-			timeout: 1
+			throttle: true
 		},
 		"i#gi": {
 			func: "handleGetInventory",
-			file: Clothing
+			file: Clothing,
+			throttle: true
 		},
 		"j#js": {
 			func: "handleJoinServer",
-			file: Navigation
+			file: Navigation,
+			throttle: false
 		},
 		"j#jr": {
 			func: "handleJoinRoom",
-			file: Navigation
+			file: Navigation,
+			throttle: true
 		},
 		"j#jp": {
 			func: "handleJoinPlayer",
-			file: Navigation
+			file: Navigation,
+			throttle: true
 		},
 		"j#grs": {
 			func: "handleRefreshRoom",
-			file: Navigation
+			file: Navigation,
+			throttle: true
 		},
 		"u#sp": {
 			func: "handleSendPosition",
-			file: Player
+			file: Player,
+			throttle: false
 		},
 		"u#sf": {
 			func: "handleSendFrame",
-			file: Player
+			file: Player,
+			throttle: false
 		},
 		"u#sa": {
 			func: "handleSendAction",
-			file: Player
+			file: Player,
+			throttle: true
 		},
 		"u#sb": {
 			func: "handleSendSnowball",
-			file: Player
+			file: Player,
+			throttle: true
 		},
 		"u#se": {
 			func: "handleSendEmote",
-			file: Player
+			file: Player,
+			throttle: true
 		},
 		"u#sj": {
 			func: "handleSendJoke",
-			file: Player
+			file: Player,
+			throttle: true
 		},
 		"u#ss": {
 			func: "handleSendSafeMessage",
-			file: Player
+			file: Player,
+			throttle: true
 		},
 		"u#sg": {
 			func: "handleSendTourGuide",
-			file: Player
+			file: Player,
+			throttle: true
 		},
 		"u#sma": {
 			func: "handleSendMascotMessage",
-			file: Player
+			file: Player,
+			throttle: false
 		},
 		"u#gp": {
 			func: "handleGetPlayer",
 			file: Player,
-			timeout: 0.3
+			throttle: true
 		},
 		"u#h": {
 			func: "handleHeartBeat",
-			file: Player
+			file: Player,
+			throttle: false
 		},
 		"u#glr": {
 			func: "handleLastRevision",
-			file: Player
+			file: Player,
+			throttle: false
 		},
 		"u#sl": {
 			func: "handleSendLine",
-			file: Player
+			file: Player,
+			throttle: true
 		},
 		"m#sm": {
 			func: "handleSendMessage",
 			file: Player,
-			timeout: 0.3
+			throttle: true
 		},
 		"r#cdu": {
 			func: "handleMineCoins",
-			file: Player
+			file: Player,
+			throttle: false
 		},
 		"e#dc": {
 			func: "handleDonateCoins",
-			file: Player
+			file: Player,
+			throttle: false
 		},
 		"u#sq": {
 			func: "handleSendQuickMessage",
-			file: Player
+			file: Player,
+			throttle: true
 		},
 		"t#at": {
 			func: "handleOpenPlayerBook",
-			file: Toy
+			file: Toy,
+			throttle: true
 		},
 		"t#rt": {
 			func: "handleClosePlayerBook",
-			file: Toy
+			file: Toy,
+			throttle: true
 		},
 		"g#af": {
 			func: "handleIglooFurniture",
-			file: Igloo
+			file: Igloo,
+			throttle: true
 		},
 		"g#gf": {
 			func: "handleGetFurniture",
-			file: Igloo
+			file: Igloo,
+			throttle: true
 		},
 		"g#gm": {
 			func: "handleGetActiveIgloo",
-			file: Igloo
+			file: Igloo,
+			throttle: true
 		},
 		"g#gr": {
 			func: "handleLoadPlayerIglooList",
-			file: Igloo
+			file: Igloo,
+			throttle: true
 		},
 		"g#go": {
 			func: "handleGetIgloos",
-			file: Igloo
+			file: Igloo,
+			throttle: true
 		},
 		"g#ur": {
 			func: "handleSaveFurniture",
-			file: Igloo
+			file: Igloo,
+			throttle: true
 		},
 		"g#um": {
 			func: "handleUpdateMusic",
-			file: Igloo
+			file: Igloo,
+			throttle: false
 		},
 		"g#or": {
 			func: "handleOpenIgloo",
-			file: Igloo
+			file: Igloo,
+			throttle: false
 		},
 		"g#cr": {
 			func: "handleCloseIgloo",
-			file: Igloo
+			file: Igloo,
+			throttle: false
 		},
 		"g#au": {
 			func: "handleBuyIgloo",
 			file: Igloo,
-			timeout: 0.5
+			throttle: true
 		},
 		"g#ao": {
 			func: "handleUpdateIgloo",
 			file: Igloo,
-			timeout: 0.5
+			throttle: true
 		},
 		"g#ag": {
 			func: "handleUpdateIglooFloor",
 			file: Igloo,
-			timeout: 0.5
+			throttle: true
 		},
 		"o#b": {
 			func: "handleBan",
-			file: Moderation
+			file: Moderation,
+			throttle: false
 		},
 		"o#k": {
 			func: "handleKick",
-			file: Moderation
+			file: Moderation,
+			throttle: false
 		},
 		"o#m": {
 			func: "handleMute",
-			file: Moderation
+			file: Moderation,
+			throttle: false
 		},
 		"p#pg": {
 			func: "handleGetPufflesByPlayerId",
-			file: Pet
+			file: Pet,
+			throttle: true
 		},
 		"n#gn": {
 			func: "handleGetIgnored",
-			file: Ignore
+			file: Ignore,
+			throttle: true
 		},
 		"n#an": {
 			func: "handleAddIgnore",
-			file: Ignore
+			file: Ignore,
+			throttle: true
 		},
 		"n#rn": {
 			func: "handleRemoveIgnore",
-			file: Ignore
+			file: Ignore,
+			throttle: false
 		},
 		"b#gb": {
 			func: "handleGetBuddies",
-			file: Buddy
+			file: Buddy,
+			throttle: true
 		},
 		"b#ba": {
 			func: "handleBuddyAccept",
-			file: Buddy
+			file: Buddy,
+			throttle: false
 		},
 		"b#br": {
 			func: "handleBuddyRequest",
-			file: Buddy
+			file: Buddy,
+			throttle: true
 		},
 		"b#rb": {
 			func: "handleBuddyRemove",
-			file: Buddy
+			file: Buddy,
+			throttle: false
 		},
 		"b#bf": {
 			func: "handleBuddyFind",
-			file: Buddy
+			file: Buddy,
+			throttle: true
 		},
 		"st#gps": {
 			func: "handleGetStamps",
-			file: Stamps
+			file: Stamps,
+			throttle: true
 		},
 		"i#qpp": {
 			func: "handleQueryPlayerPins",
-			file: Stamps
+			file: Stamps,
+			throttle: true
 		},
 		"i#qpa": {
 			func: "handleQueryPlayerAwards",
-			file: Stamps
+			file: Stamps,
+			throttle: true
 		},
 		"st#gsbcd": {
 			func: "handleGetStampBookCoverDetails",
-			file: Stamps
+			file: Stamps,
+			throttle: false
 		},
 		"st#ssbcd": {
 			func: "handleSetStampBookCoverDetails",
-			file: Stamps
+			file: Stamps,
+			throttle: true
 		},
 		"st#gmres": {
 			func: "handleGetMyRecentlyEarnedStamps",
-			file: Stamps
+			file: Stamps,
+			throttle: false
 		},
 		"st#sse": {
 			func: "handleAddStamp",
-			file: Stamps
+			file: Stamps,
+			throttle: true
 		},
 		"a#gt": {
 			func: "handleMultiplayerData",
-			file: Multiplayer
+			file: Multiplayer,
+			throttle: false
 		},
 		"a#jt": {
 			func: "handleMultiplayerData",
-			file: Multiplayer
+			file: Multiplayer,
+			throttle: false
 		},
 		"a#lt": {
 			func: "handleMultiplayerData",
-			file: Multiplayer
+			file: Multiplayer,
+			throttle: false
 		}
 	},
 	"z": {
 		"m": {
 			func: "handleMovePuck",
-			file: Multiplayer
+			file: Multiplayer,
+			throttle: false
 		},
 		"gz": {
 			func: "handleMultiplayerData",
-			file: Multiplayer
+			file: Multiplayer,
+			throttle: false
 		},
 		"zo": {
 			func: "handleGameOver",
-			file: Multiplayer
+			file: Multiplayer,
+			throttle: true
 		},
 		"jz": {
 			func: "handleMultiplayerData",
-			file: Multiplayer
+			file: Multiplayer,
+			throttle: true
 		},
 		"zm": {
 			func: "handleMultiplayerData",
-			file: Multiplayer
+			file: Multiplayer,
+			throttle: true
 		}
 	}
 }
@@ -346,22 +413,29 @@ class World {
 
 		const func = method["func"],
 			file = method["file"],
-			timeout = method["timeout"]
-
-		if (!file) return
+			throttle = method["throttle"]
 
 		if (typeof file[func] == "function") {
 			Logger.incoming(packet)
 
-			if (timeout != undefined) {
-				if (!penguin.throttled) penguin.throttled = {}
+			let now = new Date()
+			let timestamp = (now.getTime() / 1000)
 
-				if (penguin.throttled[handler] && (sp.getTime() < penguin.throttled[handler])) {
-					delete penguin.throttled
-					return penguin.sendError(1, true)
+			if (throttle) {
+				if (penguin.throttle[handler] == undefined || !penguin.throttle[handler]) {
+					penguin.throttle[handler] = [0, timestamp]
+				} else {
+					penguin.throttle[handler][0]++;
+					now.setMinutes(now.getMinutes() - 1)
+					if (Math.round(now.getTime() / 1000) < Math.round(penguin.throttle[handler][1])) {
+						if (penguin.throttle[handler][0] >= 150) {
+							return penguin.sendError(800, true)
+						}
+					} else {
+						delete penguin.throttle[handler]
+					}
+					if (penguin.throttle[handler] !== undefined) penguin.throttle[handler][1] = timestamp
 				}
-
-				penguin.throttled[handler] = (sp.getTime() + timeout)
 			}
 
 			file[func](data, penguin)
@@ -370,5 +444,6 @@ class World {
 		}
 	}
 }
+
 
 module.exports = World

@@ -21,7 +21,6 @@ class Database {
 			ID
 		})
 	}
-
 	getPlayer(player) {
 		const type = isNaN(player) ? "username" : "ID"
 
