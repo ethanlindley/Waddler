@@ -24,6 +24,15 @@ class Socket {
 		if (disconnect) this.disconnect()
 	}
 
+	sendArray(arr) {
+		if (arr.constructor.name == "Array" && this.socket && this.socket.writable) {
+			Logger.outgoing(arr)
+			for (const i in arr) {
+				this.socket.write(arr[i].toString() + "\0")
+			}
+		}
+	}
+
 	disconnect() {
 		this.server.removePenguin(this)
 	}

@@ -1,8 +1,23 @@
 {
 	"worldStr": "100|Snowy Island|127.0.0.1|6113",
+
 	"client": "mysql2",
 	"host": "localhost",
 	"user": "root",
 	"pass": "",
-	"database": "waddler"
+	"database": "waddler",
+
+	"Plugins": [{
+		"name": "Bot",
+		"enabled": true
+	}, {
+		"name": "Commands",
+		"enabled": true
+	}, {
+		"name": "Censor",
+		"enabled": true
+	}, {
+		"name": "PatchedItems",
+		"enabled": true
+	}]
 }

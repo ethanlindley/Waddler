@@ -10,6 +10,7 @@ const World = require("./core/World")
 
 const roomManager = require("./core/system/roomManager")
 const gameManager = require("./core/system/gameManager")
+const pluginLoader = require("./core/system/pluginLoader")
 
 class Server {
 	constructor(type) {
@@ -26,6 +27,7 @@ class Server {
 		if (this.type == "game") {
 			this.roomManager = new roomManager(this)
 			this.gameManager = new gameManager(this)
+			this.pluginLoader = new pluginLoader()
 		}
 
 		this.startServer()

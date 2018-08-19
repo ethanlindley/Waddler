@@ -1,171 +1,182 @@
 "use strict"
 
-const Bot = require("../Bot/Bot")
-
-function Commands(penguin) {
-	this.penguin = penguin
-	this.commands = {
-		"ping": "handlePing",
-		"date": "handleGetDate",
-		"online": "handleGetOnline",
-		"ai": "handleAddItem",
-		"ac": "handleAddCoins",
-		"rc": "handleRemoveCoins",
-		"uc": "handleUpdateColor",
-		"ban": "handleBan",
-		"unban": "handleUnban",
-		"kick": "handleKick",
-		"mute": "handleMute",
-		"unmute": "handleUnmute",
-		"as": "handleAddStamp"
-	}
+const commands = {
+	"ping": "handlePing",
+	"date": "handleGetDate",
+	"online": "handleGetOnline",
+	"ai": "handleAddItem",
+	"ac": "handleAddCoins",
+	"rc": "handleRemoveCoins",
+	"ban": "handleBan",
+	"unban": "handleUnban",
+	"kick": "handleKick",
+	"mute": "handleMute",
+	"unmute": "handleUnmute",
+	"as": "handleAddStamp",
+	"jr": "handleJoinRoom",
+	"tp": "handleGotoPlayer"
 }
 
-Commands.prototype.handleCommand = function(command, argument) {
-	command = command[0]
-	argument = argument[1]
-	if (this.commands[command]) {
-		const method = this.commands[command]
-		if (this[method] && typeof this[method] == "function") {
-			this[method](argument)
-		}
-	} else {
-		return Bot.sendMessage(`${command} is not a valid command`, this.penguin)
-	}
-}
+class Commands {
+	static handleCommand(command, argument, penguin) {
+		if (!penguin.server.pluginLoader.getPlugin("Bot")) throw new Error("Bot plugin must be enabled to use commands")
 
-Commands.prototype.handlePing = function() {
-	return Bot.sendMessage("Pong!", this.penguin)
-}
+		command = command[0]
+		argument = argument[1]
+		const Bot = penguin.server.pluginLoader.getPlugin("Bot")
 
-Commands.prototype.handleGetDate = function() {
-	return Bot.sendMessage(`The date is: ${require("../../utils/sp").dateToInt()}`, this.penguin)
-}
-
-Commands.prototype.handleGetOnline = function() {
-	let online = this.penguin.server.penguins.length,
-		msg = ""
-
-	online == 1 ? msg += "You're the only one online" : `There are ${online} players online`
-
-	return Bot.sendMessage(msg, this.penguin)
-}
-
-Commands.prototype.handleAddItem = function(item) {
-	if (!this.penguin.moderator) return
-
-	this.penguin.addItem(parseInt(item))
-
-	Bot.sendMessage(`Added item ${item}`, this.penguin)
-}
-
-Commands.prototype.handleAddCoins = function(coins) {
-	if (!this.penguin.moderator) return
-
-	this.penguin.addCoins(parseInt(coins))
-
-	Bot.sendMessage(`Added ${coins} coins`, this.penguin)
-}
-
-Commands.prototype.handleRemoveCoins = function(coins) {
-	if (!this.penguin.moderator) return
-
-	this.penguin.removeCoins(parseInt(coins))
-
-	Bot.sendMessage(`Removed ${coins} coins`, this.penguin)
-}
-
-Commands.prototype.handleUpdateColor = function(color) {
-	if (!this.penguin.moderator) return
-
-	if (!color || isNaN(color)) return
-
-	this.penguin.updateColumn("color", color)
-	this.penguin.color = color
-
-	Bot.sendMessage(`Updated your color. Rejoin the room`, this.penguin)
-}
-
-Commands.prototype.handleBan = function(player) {
-	if (!this.penguin.moderator) return
-	if (!player) return
-
-	this.penguin.database.banByUsername(player.toString()).then(() => {
-		const bannedPlayer = this.penguin.server.getPenguinByUsername(player)
-
-		if (bannedPlayer) {
-			bannedPlayer.sendXt("b", -1)
-			bannedPlayer.disconnect()
-
-			Bot.sendMessage(`${player.toString()} has been banned`, this.penguin)
+		if (commands[command]) {
+			const method = commands[command]
+			if (this[method] && typeof this[method] == "function") {
+				this[method](argument, penguin, Bot)
+			}
 		} else {
-			Bot.sendMessage(`${player.toString()} is not online`, this.penguin)
+			return Bot.sendMessage(`${command} is not a valid command`, penguin)
 		}
-	}).catch(() => {
-		Bot.sendMessage(`${player.toString()} doesn't exist`, this.penguin)
-	})
-}
-
-Commands.prototype.handleUnban = function(player) {
-	if (!this.penguin.moderator) return
-	if (!player) return
-
-	this.penguin.database.unbanByUsername(player.toString()).then(() => {
-		Bot.sendMessage(`${player.toString()} has been unbanned`, this.penguin)
-	}).catch(() => {
-		Bot.sendMessage(`${player.toString()} doesn't exist`, this.penguin)
-	})
-}
-
-Commands.prototype.handleKick = function(player) {
-	if (!this.penguin.moderator) return
-	if (!player) return
-
-	const kickedPlayer = this.penguin.server.getPenguinByUsername(player)
-
-	if (kickedPlayer) {
-		kickedPlayer.sendError(5, true)
-
-		Bot.sendMessage(`${player.toString()} has been kicked`, this.penguin)
-	} else {
-		Bot.sendMessage(`${player.toString()} is not online`, this.penguin)
 	}
-}
 
-Commands.prototype.handleMute = function(player) {
-	if (!this.penguin.moderator) return
-	if (!player) return
-
-	const mutedPlayer = this.penguin.server.getPenguinByUsername(player)
-
-	if (mutedPlayer) {
-		mutedPlayer.muted = !mutedPlayer.muted
-
-		Bot.sendMessage(`${player.toString()} has been muted`, this.penguin)
-	} else {
-		Bot.sendMessage(`${player.toString()} is not online`, this.penguin)
+	static handlePing(argument, penguin, Bot) {
+		return Bot.sendMessage("Pong!", penguin)
 	}
-}
 
-Commands.prototype.handleUnmute = function(player) {
-	if (!this.penguin.moderator) return
-	if (!player) return
-
-	const unmutedPlayer = this.penguin.server.getPenguinByUsername(player)
-
-	if (unmutedPlayer) {
-		unmutedPlayer.muted = false
-
-		Bot.sendMessage(`${player.toString()} has been unmuted`, this.penguin)
-	} else {
-		Bot.sendMessage(`${player.toString()} is not online`, this.penguin)
+	static handleGetDate(argument, penguin, Bot) {
+		return Bot.sendMessage(`The date is: ${require("../../utils/sp").dateToInt()}`, penguin)
 	}
-}
 
-Commands.prototype.handleAddStamp = function(stampID) {
-	if (!this.penguin.moderator) return
+	static handleGetOnline(argument, penguin, Bot) {
+		let online = penguin.server.penguins.length,
+			msg = ""
 
-	this.penguin.addStamp(stampID)
+		online == 1 ? msg += "You're the only one online" : `There are ${online} players online`
+
+		return Bot.sendMessage(msg, penguin)
+	}
+
+	static handleAddItem(argument, penguin, Bot) {
+		if (!penguin.moderator) return
+
+		penguin.addItem(parseInt(argument))
+
+		return Bot.sendMessage(`Added item ${argument}`, penguin)
+	}
+
+	static handleAddCoins(argument, penguin, Bot) {
+		if (!penguin.moderator) return
+
+		penguin.addCoins(parseInt(argument))
+
+		return Bot.sendMessage(`Added ${argument} coins`, penguin)
+	}
+
+	static handleRemoveCoins(argument, penguin, Bot) {
+		if (!penguin.moderator) return
+
+		penguin.removeCoins(parseInt(argument))
+
+		return Bot.sendMessage(`Removed ${argument} coins`, penguin)
+	}
+
+	static handleBan(argument, penguin, Bot) {
+		if (!penguin.moderator) return
+
+		penguin.database.banByUsername(argument).then(() => {
+			const bannedPlayer = penguin.server.getPenguinByUsername(argument)
+
+			if (bannedPlayer) {
+				bannedPlayer.sendXt("b", -1)
+				bannedPlayer.disconnect()
+
+				Bot.sendMessage(`${argument} has been banned`, penguin)
+			} else {
+				Bot.sendMessage(`${argument} is not online`, penguin)
+			}
+		}).catch(() => {
+			Bot.sendMessage(`${argument} doesn't exist`, penguin)
+		})
+	}
+
+	static handleUnban(argument, penguin, Bot) {
+		if (!penguin.moderator) return
+
+		penguin.database.unbanByUsername(argument).then(() => {
+			Bot.sendMessage(`${argument} has been unbanned`, penguin)
+		}).catch(() => {
+			Bot.sendMessage(`${argument} doesn't exist`, penguin)
+		})
+	}
+
+	static handleKick(argument, penguin, Bot) {
+		if (!penguin.moderator) return
+
+		const kickedPlayer = penguin.server.getPenguinByUsername(argument)
+
+		if (kickedPlayer) {
+			kickedPlayer.sendError(5, true)
+
+			Bot.sendMessage(`${argument} has been kicked`, penguin)
+		} else {
+			Bot.sendMessage(`${argument} is not online`, penguin)
+		}
+	}
+
+	static handleMute(argument, penguin, Bot) {
+		if (!penguin.moderator) return
+
+		const mutedPlayer = penguin.server.getPenguinByUsername(argument)
+
+		if (mutedPlayer) {
+			mutedPlayer.muted = !mutedPlayer.muted
+
+			Bot.sendMessage(`${argument} has been muted`, penguin)
+		} else {
+			Bot.sendMessage(`${argument} is not online`, penguin)
+		}
+	}
+
+	static handleUnmute(argument, penguin, Bot) {
+		if (!penguin.moderator) return
+
+		const unmutedPlayer = penguin.server.getPenguinByUsername(argument)
+
+		if (unmutedPlayer) {
+			unmutedPlayer.muted = false
+
+			Bot.sendMessage(`${argument} has been unmuted`, penguin)
+		} else {
+			Bot.sendMessage(`${argument} is not online`, penguin)
+		}
+	}
+
+	static handleAddStamp(argument, penguin, Bot) {
+		if (!penguin.moderator) return
+
+		penguin.addStamp(parseInt(argument))
+
+		return Bot.sendMessage(`Added stamp ${argument}`, penguin)
+	}
+
+	static handleJoinRoom(argument, penguin, Bot) {
+		if (!penguin.moderator) return
+
+		require("../../handlers/Navigation").handleJoinRoom({
+			4: parseInt(argument),
+			5: 100,
+			6: 100
+		}, penguin)
+	}
+
+	static handleGotoPlayer(argument, penguin, Bot) {
+		if (!penguin.moderator) return
+
+		const findPlayer = penguin.server.getPenguinByUsername(argument)
+
+		if (findPlayer) {
+			if (findPlayer.room.id == penguin.room.id) return Bot.sendMessage(`You're in the same room as ${argument}`, penguin)
+			this.handleJoinRoom(findPlayer.room.id, penguin, Bot)
+		} else {
+			Bot.sendMessage(`${argument} is not online`, penguin)
+		}
+	}
 }
 
 module.exports = Commands

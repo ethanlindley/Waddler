@@ -79,7 +79,9 @@ class Penguin extends Socket {
 	}
 
 	addItem(item) {
-		if (require("./plugins/PatchedItems/items").includes(item) && !this.moderator) return this.sendError(410)
+		if (this.server.pluginLoader.getPlugin("PatchedItems")) {
+			if (this.server.pluginLoader.getPlugin("PatchedItems").containsBaitItem(item) && !this.moderator) return this.sendError(410)
+		}
 		if (this.inventory.includes(item)) return this.sendError(400)
 
 		const items = require("../crumbs/items")

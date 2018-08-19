@@ -141,12 +141,17 @@ class Player {
 			penguin.room.sendXt("mm", -1, penguin.id, message)
 		} else {
 			if (message.startsWith("/") || message.startsWith("!")) {
-				const command = message.substr(1, message.length - 1)
-				const argument = message.split(" ")
+				if (penguin.server.pluginLoader.getPlugin("Commands")) {
+					const command = message.substr(1, message.length - 1)
+					const argument = message.split(" ")
 
-				return new(require("../plugins/Commands/Commands"))(penguin).handleCommand(command.split(" "), argument)
+					return penguin.server.pluginLoader.getPlugin("Commands").handleCommand(command.split(" "), argument, penguin)
+				}
 			} else {
-				penguin.room.sendXt("sm", -1, penguin.id, require("../plugins/Censor/Censor").censorCheck(message))
+				if (penguin.server.pluginLoader.getPlugin("Censor")) {
+					return penguin.room.sendXt("sm", -1, penguin.id, penguin.server.pluginLoader.getPlugin("Censor").censorCheck(message))
+				}
+				penguin.room.sendXt("sm", -1, penguin.id, message)
 			}
 		}
 	}
