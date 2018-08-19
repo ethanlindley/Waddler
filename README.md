@@ -8,12 +8,14 @@ An open source in-development Club Penguin emulator, written in Node.js.
 * The first CP emulator to use Keccak256 for it's password hashing
 * Stable and well written
 * Uses the latest, fastest and securest modules
-* Contains a script to converts icer.ink's crumbs to be used with Waddler, allowing Waddler to use the latest crumbs
+* Uses the latest crumbs
 * Everything that is logged is stored in separate text files in a nice format
 * Advanced multiplayer handler that allows you to add multiple minigames (supports Find Four by default)
 * Throttling system
 * Comes with a command system (default commands are already added)
 * Advanced censoring system
+* API example included
+* Multiple plugins
 
 # Setup
 
@@ -47,3 +49,6 @@ An open source in-development Club Penguin emulator, written in Node.js.
 * In the same folder where `package.json` is located, enter on Command Prompt `node runLogin.js`
 * Open another Command Prompt and browse to the folder where `package.json` is located using CD and enter on Command Prompt: `node runGame.js`
 * Make sure MySQL, the register and your webserver are running
+
+## API
+<b>If you want to use the API, I'm assuming that you have some knowledge.</b>

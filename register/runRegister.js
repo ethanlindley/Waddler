@@ -17,5 +17,5 @@ fastify
 	.listen(6969, (err, address) => {
 		if (err) throw err
 
-		console.log(`Listening on ${address}`)
+		console.log(`Register listening on ${address}`)
 	})

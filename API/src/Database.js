@@ -15,32 +15,6 @@ class Database {
 		})
 	}
 
-	usernameExists(username) {
-		return this.knex("penguins").count().first().where({
-			username
-		})
-	}
-
-	insertPenguin(username, hash, color) {
-		const date = new Date()
-
-		return this.knex("penguins").insert({
-			username: username,
-			password: hash,
-			registrationdate: date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate(),
-			color: color,
-			igloos: "1",
-			cover: "1%1%1%1%"
-		})
-	}
-
-	addColor(id, color) {
-		return this.knex("inventory").insert({
-			id: id,
-			itemid: color
-		})
-	}
-
 	APICount() {
 		return this.knex("penguins").count("ID as CNT")
 	}

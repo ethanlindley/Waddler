@@ -1,0 +1,7 @@
+{
+	"client": "mysql2",
+	"host": "localhost",
+	"user": "root",
+	"pass": "",
+	"database": "waddler"
+}

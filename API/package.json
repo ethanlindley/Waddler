@@ -1,7 +1,7 @@
 {
-	"name": "waddler",
-	"version": "1.4.0",
-	"description": "An open source in-development Club Penguin emulator, written in Node.js.",
+	"name": "waddler-api",
+	"version": "1.0.0",
+	"description": "API for Waddler.",
 	"keywords": [
 		"club",
 		"penguin",
@@ -10,9 +10,9 @@
 		"clubpenguinprivateserver"
 	],
 	"dependencies": {
+		"fastify": "^1.9.0",
 		"knex": "^0.15.2",
-		"mysql2": "^1.6.1",
-		"keccak": "^1.4.0"
+		"mysql2": "^1.6.1"
 	},
 	"author": "Zaseth",
 	"license": "MIT"
