@@ -2,7 +2,7 @@
 
 const Logger = require("../../Logger")
 
-const Room = require("../system/Room")
+const Room = require("./Room")
 
 const Rooms = require("../../crumbs/rooms")
 
