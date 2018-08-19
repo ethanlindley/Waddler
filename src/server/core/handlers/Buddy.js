@@ -27,32 +27,34 @@ class Buddy {
 		const toAccept = parseInt(data[4])
 
 		if (isNaN(toAccept)) return penguin.disconnect()
+
 		penguin.doesIDExist(toAccept).then((exists) => {
 			if (!exists) return
-		})
-		if (penguin.buddies.length >= 500) return penguin.sendError(901)
 
-		if (penguin.buddies.length != 0) {
-			penguin.buddies.forEach(buddy => {
-				buddy = buddy.split("|")
-				if (Number(buddy[0]) == toAccept) return
-			})
-		}
+			if (penguin.buddies.length >= 500) return penguin.sendError(901)
 
-		if (!penguin.requests.includes(toAccept)) return
+			if (penguin.buddies.length != 0) {
+				penguin.buddies.forEach(buddy => {
+					buddy = buddy.split("|")
+					if (Number(buddy[0]) == toAccept) return
+				})
+			}
 
-		penguin.database.getUsernameById(toAccept).then((result) => {
-			let usernameToAccept = result[0].username
+			if (!penguin.requests.includes(toAccept)) return
 
-			penguin.database.addBuddy(penguin.id, toAccept, usernameToAccept).then(() => {
-				penguin.database.addBuddy(toAccept, penguin.id, penguin.username).then(() => {
-					const acceptObj = penguin.server.getPenguinById(toAccept)
+			penguin.database.getUsernameById(toAccept).then((result) => {
+				let usernameToAccept = result[0].username
 
-					if (acceptObj) acceptObj.sendXt("ba", -1, penguin.id, penguin.username)
+				penguin.database.addBuddy(penguin.id, toAccept, usernameToAccept).then(() => {
+					penguin.database.addBuddy(toAccept, penguin.id, penguin.username).then(() => {
+						const acceptObj = penguin.server.getPenguinById(toAccept)
 
-					penguin.sendXt("ba", -1, toAccept, usernameToAccept)
+						if (acceptObj) acceptObj.sendXt("ba", -1, penguin.id, penguin.username)
 
-					penguin.requests.splice(penguin.requests.indexOf(toAccept), 1)
+						penguin.sendXt("ba", -1, toAccept, usernameToAccept)
+
+						penguin.requests.splice(penguin.requests.indexOf(toAccept), 1)
+					})
 				})
 			})
 		})
@@ -62,57 +64,61 @@ class Buddy {
 		const toRequest = parseInt(data[4])
 
 		if (isNaN(toRequest)) return penguin.disconnect()
+
 		penguin.doesIDExist(toRequest).then((exists) => {
 			if (!exists) return
-		})
-		if (toRequest == penguin.id) return
-		if (penguin.buddies.length >= 500) return penguin.sendError(901)
 
-		if (penguin.buddies.length != 0) {
-			penguin.buddies.forEach(buddy => {
-				buddy = buddy.split("|")
-				if (Number(buddy[0]) == toRequest) return
-			})
-		}
+			if (toRequest == penguin.id) return
+			if (penguin.buddies.length >= 500) return penguin.sendError(901)
 
-		const requestObj = penguin.server.getPenguinById(toRequest)
-
-		if (requestObj) {
-			if (requestObj.buddies.length >= 500) return requestObj.sendError(901)
-			if (requestObj.buddies.length != 0) {
-				requestObj.buddies.forEach(buddy => {
+			if (penguin.buddies.length != 0) {
+				penguin.buddies.forEach(buddy => {
 					buddy = buddy.split("|")
-					if (Number(buddy[0]) == penguin.id) return
+					if (Number(buddy[0]) == toRequest) return
 				})
 			}
 
-			requestObj.requests.push(penguin.id)
-			requestObj.sendXt("br", -1, penguin.id, penguin.username)
-		}
+			const requestObj = penguin.server.getPenguinById(toRequest)
+
+			if (requestObj) {
+				if (requestObj.buddies.length >= 500) return requestObj.sendError(901)
+				if (requestObj.buddies.length != 0) {
+					requestObj.buddies.forEach(buddy => {
+						buddy = buddy.split("|")
+						if (Number(buddy[0]) == penguin.id) return
+					})
+				}
+
+				requestObj.requests.push(penguin.id)
+				requestObj.sendXt("br", -1, penguin.id, penguin.username)
+			}
+		})
 	}
 
 	static handleBuddyRemove(data, penguin) {
 		const toRemove = parseInt(data[4])
 
 		if (isNaN(toRemove)) return penguin.disconnect()
+
 		penguin.doesIDExist(toRemove).then((exists) => {
 			if (!exists) return
-		})
-		if (penguin.buddies.length == 0) return
 
-		penguin.database.getUsernameById(toRemove).then((result) => {
-			const usernameToRemove = result[0].username
+			if (penguin.buddies.length == 0) return
 
-			penguin.database.removeBuddy(penguin.id, toRemove, usernameToRemove).then(() => {
-				penguin.database.removeBuddy(toRemove, penguin.id, penguin.username).then(() => {
-					const removeObj = penguin.server.getPenguinById(toRemove)
+			penguin.database.getUsernameById(toRemove).then((result) => {
+				const usernameToRemove = result[0].username
 
-					if (removeObj) removeObj.sendXt("rb", -1, penguin.id, penguin.username)
+				penguin.database.removeBuddy(penguin.id, toRemove, usernameToRemove).then(() => {
+					penguin.database.removeBuddy(toRemove, penguin.id, penguin.username).then(() => {
+						const removeObj = penguin.server.getPenguinById(toRemove)
 
-					penguin.sendXt("rb", -1, toRemove, usernameToRemove)
+						if (removeObj) removeObj.sendXt("rb", -1, penguin.id, penguin.username)
+
+						penguin.sendXt("rb", -1, toRemove, usernameToRemove)
+					})
+				}).catch(() => {
+					penguin.disconnect()
 				})
-			}).catch(() => {
-				penguin.disconnect()
 			})
 		})
 	}
@@ -121,13 +127,14 @@ class Buddy {
 		const toFind = parseInt(data[4])
 
 		if (isNaN(toFind)) return penguin.disconnect()
+
 		penguin.doesIDExist(toFind).then((exists) => {
 			if (!exists) return
+
+			const findObj = penguin.server.getPenguinById(toFind)
+
+			if (findObj) penguin.sendXt("bf", -1, findObj.room.id)
 		})
-
-		const findObj = penguin.server.getPenguinById(toFind)
-
-		if (findObj) penguin.sendXt("bf", -1, findObj.room.id)
 	}
 }
 

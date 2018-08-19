@@ -29,7 +29,8 @@ class Database {
 			password: hash,
 			registrationdate: date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate(),
 			color: color,
-			igloos: "1"
+			igloos: "1",
+			cover: "1%1%1%1%"
 		})
 	}
 

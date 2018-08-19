@@ -16,7 +16,8 @@ function Commands(penguin) {
 		"unban": "handleUnban",
 		"kick": "handleKick",
 		"mute": "handleMute",
-		"unmute": "handleUnmute"
+		"unmute": "handleUnmute",
+		"as": "handleAddStamp"
 	}
 }
 
@@ -159,6 +160,12 @@ Commands.prototype.handleUnmute = function(player) {
 	} else {
 		Bot.sendMessage(`${player.toString()} is not online`, this.penguin)
 	}
+}
+
+Commands.prototype.handleAddStamp = function(stampID) {
+	if (!this.penguin.moderator) return
+
+	this.penguin.addStamp(stampID)
 }
 
 module.exports = Commands

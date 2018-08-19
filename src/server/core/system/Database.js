@@ -154,6 +154,12 @@ class Database {
 			ID
 		})
 	}
+	insertStamp(ID, stampID) {
+		return this.knex("stamps").insert({
+			ID: ID,
+			stampID: stampID
+		})
+	}
 }
 
 module.exports = Database

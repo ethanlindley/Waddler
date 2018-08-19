@@ -30,16 +30,6 @@ class Clothing {
 
 		if (isNaN(item)) return penguin.disconnect()
 
-		const items = require("../../crumbs/items")
-
-		if (!items[item]) return penguin.sendError(402)
-
-		const cost = items[item].cost
-
-		if (penguin.inventory.includes(item)) return penguin.sendError(400)
-		if (penguin.coins < cost) return penguin.sendError(401)
-
-		penguin.removeCoins(cost)
 		penguin.addItem(item)
 	}
 

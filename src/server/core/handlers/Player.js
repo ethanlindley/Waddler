@@ -91,28 +91,29 @@ class Player {
 		const penguinID = parseInt(data[4])
 
 		if (isNaN(penguinID)) return penguin.disconnect()
+
 		penguin.doesIDExist(penguinID).then((exists) => {
 			if (!exists) return
-		})
 
-		penguin.database.getPlayer(penguinID).then((result) => {
-			const playerInfo = [
-				result.ID,
-				result.username,
-				1,
-				result.color,
-				result.head,
-				result.face,
-				result.neck,
-				result.body,
-				result.hand,
-				result.feet,
-				result.pin,
-				result.photo
-			]
-			penguin.sendXt("gp", -1, playerInfo.join("|") + "|")
-		}).catch(() => {
-			return penguin.disconnect()
+			penguin.database.getPlayer(penguinID).then((result) => {
+				const playerInfo = [
+					result.ID,
+					result.username,
+					1,
+					result.color,
+					result.head,
+					result.face,
+					result.neck,
+					result.body,
+					result.hand,
+					result.feet,
+					result.pin,
+					result.photo
+				]
+				penguin.sendXt("gp", -1, playerInfo.join("|") + "|")
+			}).catch(() => {
+				return penguin.disconnect()
+			})
 		})
 	}
 

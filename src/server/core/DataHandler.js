@@ -37,7 +37,7 @@ class DataHandler {
 					return penguin.sendError(101, true)
 				}
 			} else {
-				const penguinObj = this.server.getPenguinById(result.ID)
+				const penguinObj = this.server.isPenguinOnline(result.ID)
 
 				if (penguinObj) return penguinObj.disconnect()
 

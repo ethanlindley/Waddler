@@ -81,6 +81,15 @@ class Penguin extends Socket {
 		if (require("./plugins/PatchedItems/items").includes(item) && !this.moderator) return this.sendError(410)
 		if (this.inventory.includes(item)) return this.sendError(400)
 
+		const items = require("../crumbs/items")
+
+		if (!items[item]) return this.sendError(402)
+
+		const cost = items[item].cost
+
+		if (this.coins < cost) return this.sendError(401)
+
+		this.removeCoins(cost)
 		this.inventory.push(item)
 		this.database.insertItem(this.id, item)
 		this.sendXt("ai", -1, item, this.coins)
@@ -132,6 +141,15 @@ class Penguin extends Socket {
 		})
 	}
 	addFurniture(furnitureID) {
+		const furniture = require("../crumbs/furniture")
+
+		if (!furniture[furnitureID]) return this.sendError(402)
+
+		const cost = furniture[furnitureID].cost
+
+		if (this.coins < cost) return this.sendError(401)
+
+		this.removeCoins(cost)
 		this.getColumn("furnitureID", "furniture").then((result) => {
 			result.length != 0 ? this.database.updateQuantity(this.id) : this.database.insertFurniture(this.id, furnitureID)
 
@@ -141,6 +159,15 @@ class Penguin extends Socket {
 		})
 	}
 	addIgloo(igloo) {
+		const igloos = require("../crumbs/igloos")
+
+		if (!igloos[igloo]) return this.sendError(402)
+
+		const cost = igloos[igloo].cost
+
+		if (this.coins < cost) return this.sendError(401)
+
+		this.removeCoins(cost)
 		this.database.alreadyOwnsIgloo(this.id).then((result) => {
 			let igloos = []
 
@@ -158,8 +185,16 @@ class Penguin extends Socket {
 		})
 	}
 	addFloor(floor) {
-		this.updateColumn("floor", floor, "igloo")
+		const floors = require("../crumbs/floors")
 
+		if (!floors[floor]) return this.sendError(402)
+
+		const cost = floors[floor].cost
+
+		if (this.coins < cost) return this.sendError(401)
+
+		this.removeCoins(cost)
+		this.updateColumn("floor", floor, "igloo")
 		this.sendXt("ag", -1, floor, this.coins)
 	}
 
@@ -173,6 +208,26 @@ class Penguin extends Socket {
 	removeCoins(coins) {
 		this.coins -= coins
 		this.updateColumn("coins", this.coins)
+	}
+
+	addStamp(stampID) {
+		if (Number(stampID) == 14 && this.age != 183) return
+		if (Number(stampID) == 20 && this.age != 365) return
+
+		const stamps = require("../crumbs/stamps")
+
+		if (!stamps[stampID]) return
+
+		if (this.stamps.length != 0) {
+			this.stamps.forEach(stamp => {
+				stamp = stamp.split("|")
+				if (Number(stamp[0]) == stampID) return
+			})
+		}
+
+		this.database.insertStamp(this.id, stampID).then(() => {
+			this.sendXt("aabs", -1, stampID)
+		})
 	}
 
 	updateColumn(column, value, table = null) {

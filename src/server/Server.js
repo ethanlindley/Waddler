@@ -156,7 +156,9 @@ class Server {
 					penguin.buddies.forEach(buddy => {
 						buddy = buddy.split("|")
 						const buddyID = Number(buddy[0])
-						if (this.isPenguinOnline(buddyID)) this.getPenguinById(buddyID).sendXt("bof", -1, penguin.id)
+						if (this.isPenguinOnline(buddyID)) {
+							this.getPenguinById(buddyID).sendXt("bof", -1, penguin.id)
+						}
 					})
 				}
 			}

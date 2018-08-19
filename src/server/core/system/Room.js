@@ -23,7 +23,21 @@ class Room {
 		this.penguins.push(penguin)
 		this.sendXt("ap", -1, penguin.buildPlayerString())
 
-		if (this.id > 1000) penguin.sendXt("jp", -1, this.id)
+		if (this.id > 1000) {
+			let addStamp = true
+
+			if (penguin.stamps.length != 0) {
+				penguin.stamps.forEach(stamp => {
+					stamp = stamp.split("|")
+					if (Number(stamp[0]) == 17 || Number(stamp[0]) == 28) addStamp = false
+				})
+			}
+
+			if (this.penguins.length >= 10 && addStamp) penguin.addStamp(17)
+			if (this.penguins.length >= 30 && addStamp) penguin.addStamp(28)
+
+			penguin.sendXt("jp", -1, this.id)
+		}
 
 		if (this.penguins.length > 0) {
 			penguin.sendXt("jr", -1, this.id, this.buildRoomString())

@@ -82,12 +82,12 @@ CREATE TABLE `penguins` (
     `pin` smallint(5) UNSIGNED NOT NULL DEFAULT 0,
     `photo` smallint(5) UNSIGNED NOT NULL DEFAULT 0,
     `igloos` longtext NOT NULL,
-    `cover` varchar(12) NOT NULL DEFAULT '1%1%1%1%',
+    `cover` longtext NOT NULL,
     PRIMARY KEY (`ID`),
     UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `penguins` WRITE;
-INSERT INTO `penguins` (`ID`, `username`, `password`, `loginKey`, `registrationDate`, `coins`, `moderator`, `igloos`) VALUES (100, 'Zaseth', '43244635c14605fdbe23fa89b5cf12bd14a14bfb9420f66788dd6914a31d8c7b', '', '20180808', 99999, 1, '1|22|23');
-INSERT INTO `penguins` (`ID`, `username`, `password`, `loginKey`, `registrationDate`, `coins`, `moderator`, `igloos`) VALUES (101, 'Daan', '43244635c14605fdbe23fa89b5cf12bd14a14bfb9420f66788dd6914a31d8c7b', '', '20180808', 99999, 1, '1');
+INSERT INTO `penguins` (`ID`, `username`, `password`, `loginKey`, `registrationDate`, `coins`, `moderator`, `igloos`, `cover`) VALUES (100, 'Zaseth', '43244635c14605fdbe23fa89b5cf12bd14a14bfb9420f66788dd6914a31d8c7b', '', '20180808', 99999, 1, '1|22|23', '1%1%1%1%');
+INSERT INTO `penguins` (`ID`, `username`, `password`, `loginKey`, `registrationDate`, `coins`, `moderator`, `igloos`, `cover`) VALUES (101, 'Daan', '43244635c14605fdbe23fa89b5cf12bd14a14bfb9420f66788dd6914a31d8c7b', '', '20180808', 99999, 1, '1', '1%1%1%1%');
 UNLOCK TABLES;

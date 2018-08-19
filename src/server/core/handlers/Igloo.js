@@ -6,15 +6,6 @@ class Igloo {
 
 		if (isNaN(furnitureID)) return penguin.disconnect()
 
-		const furniture = require("../../crumbs/furniture")
-
-		if (!furniture[furnitureID]) return penguin.sendError(402)
-
-		const cost = furniture[furnitureID].cost
-
-		if (penguin.coins < cost) return penguin.sendError(401)
-
-		penguin.removeCoins(cost)
 		penguin.addFurniture(furnitureID)
 	}
 
@@ -26,15 +17,17 @@ class Igloo {
 		const penguinID = parseInt(data[4])
 
 		if (isNaN(penguinID)) return penguin.disconnect()
+
 		penguin.doesIDExist(penguinID).then((exists) => {
 			if (!exists) return
-		})
-		if (penguin.id != penguinID) return penguin.disconnect()
 
-		penguin.database.getActiveIgloo(penguin.id).then((result) => {
-			const iglooStr = `${result[0].type}%${result[0].music}%${result[0].floor}%${result[0].furniture}%${result[0].locked}`
+			if (penguin.id != penguinID) return penguin.disconnect()
 
-			penguin.sendXt("gm", -1, penguin.id, iglooStr)
+			penguin.database.getActiveIgloo(penguin.id).then((result) => {
+				const iglooStr = `${result[0].type}%${result[0].music}%${result[0].floor}%${result[0].furniture}%${result[0].locked}`
+
+				penguin.sendXt("gm", -1, penguin.id, iglooStr)
+			})
 		})
 	}
 
@@ -62,7 +55,20 @@ class Igloo {
 		let furniture = data.join(",").substr(13)
 
 		if (furniture.length < 1) return penguin.updateColumn("furnitureID", "[]", "furniture")
-		if (furniture.length > 99) return penguin.sendError(10006)
+		if (furniture.length > 99) {
+			let addStamp = true
+
+			if (penguin.stamps.length != 0) {
+				penguin.stamps.forEach(stamp => {
+					stamp = stamp.split("|")
+					if (Number(stamp[0]) == 23) addStamp = false
+				})
+			}
+
+			if (addStamp) penguin.addStamp(23)
+
+			return penguin.sendError(10006)
+		}
 
 		penguin.updateColumn("furniture", furniture, "igloo")
 	}
@@ -79,24 +85,28 @@ class Igloo {
 		const penguinID = parseInt(data[4])
 
 		if (isNaN(penguinID)) return penguin.disconnect()
+
 		penguin.doesIDExist(penguinID).then((exists) => {
 			if (!exists) return
-		})
-		if (penguin.id != penguinID) return penguin.disconnect()
 
-		penguin.openIgloos[penguin.id] = penguin.username
+			if (penguin.id != penguinID) return penguin.disconnect()
+
+			penguin.openIgloos[penguin.id] = penguin.username
+		})
 	}
 
 	static handleCloseIgloo(data, penguin) {
 		const penguinID = parseInt(data[4])
 
 		if (isNaN(penguinID)) return penguin.disconnect()
+
 		penguin.doesIDExist(penguinID).then((exists) => {
 			if (!exists) return
-		})
-		if (penguin.id != penguinID) return penguin.disconnect()
 
-		delete penguin.openIgloos[penguin.id]
+			if (penguin.id != penguinID) return penguin.disconnect()
+
+			delete penguin.openIgloos[penguin.id]
+		})
 	}
 
 	static handleBuyIgloo(data, penguin) {
@@ -104,15 +114,6 @@ class Igloo {
 
 		if (isNaN(igloo)) return penguin.disconnect()
 
-		const igloos = require("../../crumbs/igloos")
-
-		if (!igloos[igloo]) return penguin.sendError(402)
-
-		const cost = igloos[igloo].cost
-
-		if (penguin.coins < cost) return penguin.sendError(401)
-
-		penguin.removeCoins(cost)
 		penguin.addIgloo(igloo)
 	}
 
@@ -131,15 +132,6 @@ class Igloo {
 
 		if (isNaN(floor)) return penguin.disconnect()
 
-		const floors = require("../../crumbs/floors")
-
-		if (!floors[floor]) return penguin.sendError(402)
-
-		const cost = floors[floor].cost
-
-		if (penguin.coins < cost) return penguin.sendError(401)
-
-		penguin.removeCoins(cost)
 		penguin.addFloor(floor)
 	}
 }

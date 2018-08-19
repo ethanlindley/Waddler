@@ -7,18 +7,19 @@ class Moderation {
 		const toBan = parseInt(data[4])
 
 		if (isNaN(toBan)) return penguin.disconnect()
+
 		penguin.doesIDExist(toBan).then((exists) => {
 			if (!exists) return
+
+			penguin.database.updateColumn(toBan, "banned", 1)
+
+			const player = penguin.server.getPenguinById(toBan)
+
+			if (player) {
+				player.sendXt("b", -1)
+				player.disconnect()
+			}
 		})
-
-		penguin.database.updateColumn(toBan, "banned", 1)
-
-		const player = penguin.server.getPenguinById(toBan)
-
-		if (player) {
-			player.sendXt("b", -1)
-			player.disconnect()
-		}
 	}
 
 	static handleKick(data, penguin) {
@@ -27,13 +28,14 @@ class Moderation {
 		const toKick = parseInt(data[4])
 
 		if (isNaN(toKick)) return penguin.disconnect()
+
 		penguin.doesIDExist(toKick).then((exists) => {
 			if (!exists) return
+
+			const player = penguin.server.getPenguinById(toKick)
+
+			if (player) player.sendError(5, true)
 		})
-
-		const player = penguin.server.getPenguinById(toKick)
-
-		if (player) player.sendError(5, true)
 	}
 
 	static handleMute(data, penguin) {
@@ -42,13 +44,14 @@ class Moderation {
 		const toMute = parseInt(data[4])
 
 		if (isNaN(toMute)) return penguin.disconnect()
+
 		penguin.doesIDExist(toMute).then((exists) => {
 			if (!exists) return
+
+			let player = penguin.server.getPenguinById(toMute)
+
+			if (player) player.muted = !player.muted
 		})
-
-		let player = penguin.server.getPenguinById(toMute)
-
-		if (player) player.muted = !player.muted
 	}
 }
 

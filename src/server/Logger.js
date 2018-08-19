@@ -1,23 +1,15 @@
 "use strict"
 
 const fs = require("fs")
-const momentjs = require("moment")
-const moment = momentjs.utc().local()
 
 class Logger {
 	static saveLog(lvl, msg) {
-		fs.appendFile(`${__dirname}\\logs\\${lvl}.log`, `{${this.getCustomDate()}} - ${msg}\r\n`, (err) => {
+		fs.appendFile(`${__dirname}\\logs\\${lvl}.log`, `{${this.getLogTime(new Date())}} - ${msg}\r\n`, (err) => {
 			if (err) throw err
 		})
 	}
-	static getCustomDate() {
-		const second = moment.seconds()
-		const minute = moment.minutes()
-		const hour = moment.hours()
-
-		const serverDate = momentjs(`${hour} ${minute} ${second}`, "HH mm ss")
-
-		return serverDate.format("h:mm:ss a")
+	static getLogTime(date) {
+		return `${date.getUTCHours()}:${date.getUTCMinutes()}:${date.getUTCSeconds()} ${date.getUTCHours() >= 12 ? "pm" : "am"}`
 	}
 	static info(msg) {
 		const x = `[INFO] > ${msg}`

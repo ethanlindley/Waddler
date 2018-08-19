@@ -274,8 +274,16 @@ const xtHandlers = {
 			func: "handleGetStampBookCoverDetails",
 			file: Stamps
 		},
+		"st#ssbcd": {
+			func: "handleSetStampBookCoverDetails",
+			file: Stamps
+		},
 		"st#gmres": {
 			func: "handleGetMyRecentlyEarnedStamps",
+			file: Stamps
+		},
+		"st#sse": {
+			func: "handleAddStamp",
 			file: Stamps
 		},
 		"a#gt": {
@@ -339,6 +347,8 @@ class World {
 		const func = method["func"],
 			file = method["file"],
 			timeout = method["timeout"]
+
+		if (!file) return
 
 		if (typeof file[func] == "function") {
 			Logger.incoming(packet)
