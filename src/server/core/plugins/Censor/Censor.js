@@ -3,9 +3,8 @@
 class Censor {
 	static censorCheck(str) {
 		const regexp = new RegExp(require("./dictionary").join("|"), "gi")
-		const containsSwear = str.match(regexp) == null ? false : true
 
-		if (containsSwear) {
+		if (this.containsSwear(str, regexp)) {
 			return str.replace(regexp, (s) => {
 				let i = 0,
 					asterisks = ""
@@ -20,6 +19,13 @@ class Censor {
 		} else {
 			return str
 		}
+	}
+
+	static containsSwear(str, regexp) {
+		if (!regexp) {
+			const regexp = new RegExp(require("./dictionary").join("|"), "gi")
+		}
+		return str.match(regexp) == null ? false : true
 	}
 }
 

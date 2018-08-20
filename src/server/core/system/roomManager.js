@@ -3,7 +3,6 @@
 const Logger = require("../../Logger")
 
 const Room = require("./Room")
-
 const Rooms = require("../../crumbs/rooms")
 
 class roomManager {
@@ -16,6 +15,8 @@ class roomManager {
 				this.createRoom(id)
 			}
 		}
+
+		Logger.info(`Loaded ${this.rooms.length} rooms`)
 	}
 
 	createRoom(id) {

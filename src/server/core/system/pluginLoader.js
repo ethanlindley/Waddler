@@ -6,7 +6,6 @@ const Plugins = require("../../../config").Plugins
 class pluginLoader {
 	constructor() {
 		this.plugins = {}
-
 		this.loadPlugins()
 	}
 
@@ -16,6 +15,7 @@ class pluginLoader {
 				this.plugins[Plugins[plugin].name] = require(`../plugins/${Plugins[plugin].name}/${Plugins[plugin].name}`)
 			}
 		}
+
 		Logger.info(`Loaded ${Object.keys(this.plugins).length} plugins`)
 	}
 

@@ -122,7 +122,7 @@ class Player {
 	}
 
 	static handleLastRevision(data, penguin) {
-		penguin.sendXt("glr", -1, "Waddler")
+		penguin.sendXt("glr", -1, 1337)
 	}
 
 	static handleSendLine(data, penguin) {
@@ -137,22 +137,20 @@ class Player {
 		const message = String(data[5])
 
 		if (message.length <= 0 || message.length > 48 && parseInt(data[4]) != 0 && !penguin.moderator) return penguin.sendError(5, true)
-		if (penguin.muted) {
-			penguin.room.sendXt("mm", -1, penguin.id, message)
-		} else {
-			if (message.startsWith("/") || message.startsWith("!")) {
-				if (penguin.server.pluginLoader.getPlugin("Commands")) {
-					const command = message.substr(1, message.length - 1)
-					const argument = message.split(" ")
+		if (penguin.muted) return
 
-					return penguin.server.pluginLoader.getPlugin("Commands").handleCommand(command.split(" "), argument, penguin)
-				}
-			} else {
-				if (penguin.server.pluginLoader.getPlugin("Censor")) {
-					return penguin.room.sendXt("sm", -1, penguin.id, penguin.server.pluginLoader.getPlugin("Censor").censorCheck(message))
-				}
-				penguin.room.sendXt("sm", -1, penguin.id, message)
+		if (message.startsWith("/") || message.startsWith("!")) {
+			if (penguin.server.pluginLoader.getPlugin("Commands")) {
+				const command = message.substr(1, message.length - 1)
+				const argument = message.split(" ")
+
+				return penguin.server.pluginLoader.getPlugin("Commands").handleCommand(command.split(" "), argument, penguin)
 			}
+		} else {
+			if (penguin.server.pluginLoader.getPlugin("Censor")) {
+				return penguin.room.sendXt("sm", -1, penguin.id, penguin.server.pluginLoader.getPlugin("Censor").censorCheck(message))
+			}
+			penguin.room.sendXt("sm", -1, penguin.id, message)
 		}
 	}
 

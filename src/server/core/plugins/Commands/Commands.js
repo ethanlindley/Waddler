@@ -190,6 +190,8 @@ class Commands {
 
 		penguin.database.updateColumn(argument, "moderator", 1)
 
+		Bot.sendMessage(`${argument} has been promoted`)
+
 		const promotedPlayer = isNaN(argument) ? penguin.server.getPenguinByUsername(argument) : penguin.server.getPenguinById(argument)
 
 		if (promotedPlayer) Bot.sendMessage(`You have been promoted by ${penguin.username}`, promotedPlayer)
@@ -199,6 +201,8 @@ class Commands {
 		if (!penguin.moderator) return
 
 		penguin.database.updateColumn(argument, "moderator", 0)
+
+		Bot.sendMessage(`${argument} has been demoted`, penguin)
 
 		const demotedPlayer = isNaN(argument) ? penguin.server.getPenguinByUsername(argument) : penguin.server.getPenguinById(argument)
 

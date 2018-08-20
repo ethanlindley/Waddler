@@ -13,17 +13,30 @@ class Pet {
 		})
 	}
 
+	static getStats(puffleType) {
+		const puffleCrumbs = require("../../crumbs/puffles")
+
+		puffleType = Number(puffleType)
+
+		if (!puffleCrumbs[puffleType]) return 800
+
+		return [puffleCrumbs[puffleType].max_health, puffleCrumbs[puffleType].max_hunger, puffleCrumbs[puffleType].max_rest]
+	}
+
 	static joinPuffleData(puffleData, iglooAppend = false) {
 		let puffleArray = []
 
 		for (const i in puffleData) {
 			let puffle = puffleData[i]
 			let puffleID = puffle["puffleID"]
-			let puffleDetails = [puffle["puffleID"], puffle["puffleName"], puffle["puffleType"], puffle["puffleFood"], puffle["pufflePlay"], puffle["puffleRest"]]
+			let puffleDetails = [puffleID, puffle["puffleName"], puffle["puffleType"], puffle["puffleFood"], puffle["pufflePlay"], puffle["puffleRest"]]
 
 			if (iglooAppend) {
 				if (puffles[puffleID] == undefined) {
-					puffles[puffleID] = [100, 100, 100, 0, 0, 0, 0]
+					const stats = this.getStats(puffle["puffleType"])
+					if (stats.constructor.name != "Array") return penguin.sendError(stats, true)
+
+					puffles[puffleID] = [stats[0], stats[1], stats[2], 0, 0, 0, 0]
 				}
 				puffleDetails = puffleDetails.concat(puffles[puffleID])
 			}
@@ -265,7 +278,10 @@ class Pet {
 
 			if (puffles[puffleID] == undefined) return
 
-			puffles[puffleID] = [100, 100, 100, puffleX, puffleY, 0, 0]
+			const stats = this.getStats(result[0].puffleType)
+			if (stats.constructor.name != "Array") return penguin.sendError(stats, true)
+
+			puffles[puffleID] = [stats[0], stats[1], stats[2], puffleX, puffleY, 0, 0]
 
 			puffle = this.joinPuffleData(result, true)
 
@@ -308,7 +324,10 @@ class Pet {
 				walking = 0
 			}
 
-			puffles[puffleID] = [100, 100, 100, 0, 0, 0, walking]
+			const stats = this.getStats(puffleType)
+			if (stats.constructor.name != "Array") return penguin.sendError(stats, true)
+
+			puffles[puffleID] = [stats[0], stats[1], stats[2], 0, 0, 0, walking]
 
 			this.handleUpdatePuffle("puffleWalk", walking, puffleID, penguin)
 
@@ -331,7 +350,9 @@ class Pet {
 			puffleName = String(puffleName).replace(/\W/g, "")
 
 			if (penguin.server.pluginLoader.getPlugin("Censor")) {
-				puffleName = penguin.server.pluginLoader.getPlugin("Censor").censorCheck(puffleName)
+				if (penguin.server.pluginLoader.getPlugin("Censor").containsSwear(puffleName)) {
+					return penguin.sendError(441)
+				}
 			}
 
 			penguin.database.adoptPuffle(penguin.id, puffleName, puffleType).then(() => {

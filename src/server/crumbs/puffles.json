@@ -1,0 +1,52 @@
+{
+	"0": {
+		"max_health": 100,
+		"max_hunger": 100,
+		"max_rest": 100
+	},
+	"1": {
+		"max_health": 100,
+		"max_hunger": 120,
+		"max_rest": 80
+	},
+	"2": {
+		"max_health": 120,
+		"max_hunger": 80,
+		"max_rest": 100
+	},
+	"3": {
+		"max_health": 80,
+		"max_hunger": 100,
+		"max_rest": 120
+	},
+	"4": {
+		"max_health": 80,
+		"max_hunger": 120,
+		"max_rest": 80
+	},
+	"5": {
+		"max_health": 100,
+		"max_hunger": 80,
+		"max_rest": 120
+	},
+	"6": {
+		"max_health": 100,
+		"max_hunger": 100,
+		"max_rest": 100
+	},
+	"7": {
+		"max_health": 120,
+		"max_hunger": 80,
+		"max_rest": 100
+	},
+	"8": {
+		"max_health": 100,
+		"max_hunger": 80,
+		"max_rest": 120
+	},
+	"9": {
+		"max_health": 100,
+		"max_hunger": 80,
+		"max_rest": 120
+	}
+}
