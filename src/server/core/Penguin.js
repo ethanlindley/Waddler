@@ -43,6 +43,7 @@ class Penguin extends Socket {
 		this.coinDig = 0
 		this.loggedIn = true
 		this.openIgloos = []
+		this.walkingPuffle
 
 		this.buddies = []
 		this.ignored = []

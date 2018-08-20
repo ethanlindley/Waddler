@@ -61,6 +61,23 @@ INSERT INTO `stamps` VALUES (100, 7);
 INSERT INTO `stamps` VALUES (100, 8);
 UNLOCK TABLES;
 
+DROP TABLE IF EXISTS `puffles`;
+CREATE TABLE `puffles` (
+    `ID` int(10) UNSIGNED NOT NULL,
+    `puffleID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `puffleName` varchar(16) NOT NULL,
+    `puffleType` tinyint(3) UNSIGNED NOT NULL,
+    `puffleFood` tinyint(3) UNSIGNED NOT NULL,
+    `pufflePlay` tinyint(3) UNSIGNED NOT NULL,
+    `puffleRest` tinyint(3) UNSIGNED NOT NULL,
+    `puffleWalk` tinyint(4) UNSIGNED NOT NULL DEFAULT 0,
+    PRIMARY KEY (`puffleID`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+LOCK TABLES `puffles` WRITE;
+INSERT INTO `puffles` VALUES (100, 10, 'Slave', 1, 100, 100, 100, 0);
+UNLOCK TABLES;
+
 DROP TABLE IF EXISTS `penguins`;
 CREATE TABLE `penguins` (
     `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,

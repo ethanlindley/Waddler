@@ -270,6 +270,81 @@ const xtHandlers = {
 			file: Pet,
 			throttle: true
 		},
+		"p#pgu": {
+			func: "handleGetPuffles",
+			file: Pet,
+			throttle: true
+		},
+		"p#pr": {
+			func: "handlePuffleRest",
+			file: Pet,
+			throttle: false
+		},
+		"p#pp": {
+			func: "handlePufflePlay",
+			file: Pet,
+			throttle: false
+		},
+		"p#pt": {
+			func: "handlePuffleTreat",
+			file: Pet,
+			throttle: false
+		},
+		"p#pf": {
+			func: "handlePuffleFeed",
+			file: Pet,
+			throttle: false
+		},
+		"p#pb": {
+			func: "handlePuffleBath",
+			file: Pet,
+			throttle: false
+		},
+		"p#ir": {
+			func: "handlePuffleInteractionRest",
+			file: Pet,
+			throttle: false
+		},
+		"p#ip": {
+			func: "handlePuffleInteractionPlay",
+			file: Pet,
+			throttle: false
+		},
+		"p#if": {
+			func: "handlePuffleInteractionFeed",
+			file: Pet,
+			throttle: false
+		},
+		"p#pir": {
+			func: "handlePuffleInitInteractionRest",
+			file: Pet,
+			throttle: false
+		},
+		"p#pip": {
+			func: "handlePuffleInitInteractionPlay",
+			file: Pet,
+			throttle: false
+		},
+		"p#pm": {
+			func: "handlePuffleMove",
+			file: Pet,
+			throttle: false
+		},
+		"p#ps": {
+			func: "handlePuffleFrame",
+			file: Pet,
+			throttle: false
+		},
+		"p#pw": {
+			func: "handlePuffleWalk",
+			file: Pet,
+			throttle: false
+		},
+		"p#pn": {
+			func: "handleAdoptPuffle",
+			file: Pet,
+			throttle: true
+		},
 		"n#gn": {
 			func: "handleGetIgnored",
 			file: Ignore,

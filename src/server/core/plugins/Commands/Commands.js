@@ -14,7 +14,9 @@ const commands = {
 	"unmute": "handleUnmute",
 	"as": "handleAddStamp",
 	"jr": "handleJoinRoom",
-	"tp": "handleGotoPlayer"
+	"tp": "handleGotoPlayer",
+	"pr": "handlePromote",
+	"dm": "handleDemote"
 }
 
 class Commands {
@@ -83,6 +85,8 @@ class Commands {
 			const bannedPlayer = penguin.server.getPenguinByUsername(argument)
 
 			if (bannedPlayer) {
+				if (bannedPlayer.moderator) return Bot.sendMessage(`You can't ban ${argument} as he/she is a moderator`, this.penguin)
+
 				bannedPlayer.sendXt("b", -1)
 				bannedPlayer.disconnect()
 
@@ -128,6 +132,7 @@ class Commands {
 			mutedPlayer.muted = !mutedPlayer.muted
 
 			Bot.sendMessage(`${argument} has been muted`, penguin)
+			Bot.sendMessage(`You have been muted by ${penguin.username}`, mutedPlayer)
 		} else {
 			Bot.sendMessage(`${argument} is not online`, penguin)
 		}
@@ -142,6 +147,7 @@ class Commands {
 			unmutedPlayer.muted = false
 
 			Bot.sendMessage(`${argument} has been unmuted`, penguin)
+			Bot.sendMessage(`You have been unmuted by ${penguin.username}`, unmutedPlayer)
 		} else {
 			Bot.sendMessage(`${argument} is not online`, penguin)
 		}
@@ -173,9 +179,30 @@ class Commands {
 		if (findPlayer) {
 			if (findPlayer.room.id == penguin.room.id) return Bot.sendMessage(`You're in the same room as ${argument}`, penguin)
 			this.handleJoinRoom(findPlayer.room.id, penguin, Bot)
+			Bot.sendMessage(`${penguin.username} teleported to you`, findPlayer)
 		} else {
 			Bot.sendMessage(`${argument} is not online`, penguin)
 		}
+	}
+
+	static handlePromote(argument, penguin, Bot) {
+		if (!penguin.moderator) return
+
+		penguin.database.updateColumn(argument, "moderator", 1)
+
+		const promotedPlayer = isNaN(argument) ? penguin.server.getPenguinByUsername(argument) : penguin.server.getPenguinById(argument)
+
+		if (promotedPlayer) Bot.sendMessage(`You have been promoted by ${penguin.username}`, promotedPlayer)
+	}
+
+	static handleDemote(argument, penguin, Bot) {
+		if (!penguin.moderator) return
+
+		penguin.database.updateColumn(argument, "moderator", 0)
+
+		const demotedPlayer = isNaN(argument) ? penguin.server.getPenguinByUsername(argument) : penguin.server.getPenguinById(argument)
+
+		if (demotedPlayer) Bot.sendMessage(`You have been demoted by ${penguin.username}`, demotedPlayer)
 	}
 }
 

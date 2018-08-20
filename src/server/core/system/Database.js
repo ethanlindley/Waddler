@@ -159,6 +159,35 @@ class Database {
 			stampID: stampID
 		})
 	}
+
+	getPuffle(ID, puffleID) {
+		return this.knex("puffles").select("*").where({
+			ID: ID,
+			puffleID: puffleID
+		})
+	}
+	getPuffleByName(ID, puffleName) {
+		return this.knex("puffles").select("*").where({
+			ID: ID,
+			puffleName: puffleName
+		})
+	}
+	getPuffles(ID) {
+		return this.knex("puffles").select("*").where({
+			ID
+		})
+	}
+	adoptPuffle(ID, puffleName, puffleType) {
+		return this.knex("puffles").insert({
+			ID: ID,
+			puffleName: puffleName,
+			puffleType: puffleType,
+			puffleFood: 100,
+			pufflePlay: 100,
+			puffleRest: 100,
+			puffleWalk: 0
+		})
+	}
 }
 
 module.exports = Database
