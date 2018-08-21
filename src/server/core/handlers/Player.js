@@ -165,16 +165,6 @@ class Player {
 		penguin.coinDig++
 	}
 
-	static handleDonateCoins(data, penguin) {
-		const amount = parseInt(data[4])
-
-		if (isNaN(amount)) return penguin.disconnect()
-		if (penguin.coins < amount) return penguin.sendError(401)
-
-		penguin.removeCoins(amount)
-		penguin.sendXt("dc", -1, penguin.id, penguin.coins)
-	}
-
 	static handleSendQuickMessage(data, penguin) {
 		const quickMessageID = parseInt(data[4])
 

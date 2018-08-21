@@ -37,7 +37,7 @@ class Ignore {
 				})
 			}
 
-			penguin.database.getUsernameById(toIgnore).then((result) => {
+			penguin.database.getUsernameByID(toIgnore).then((result) => {
 				let usernameToIgnore = result[0].username
 
 				penguin.database.addIgnore(penguin.id, toIgnore, usernameToIgnore).then((result) => {
@@ -63,7 +63,7 @@ class Ignore {
 				if (Number(ignore[0]) != toRemove) return
 			})
 
-			penguin.database.getUsernameById(toRemove).then((result) => {
+			penguin.database.getUsernameByID(toRemove).then((result) => {
 				let usernameToRemove = result[0].username
 
 				penguin.database.removeIgnore(penguin.id, toRemove, usernameToRemove).then((result) => {

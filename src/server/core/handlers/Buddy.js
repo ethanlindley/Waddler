@@ -42,7 +42,7 @@ class Buddy {
 
 			if (!penguin.requests.includes(toAccept)) return
 
-			penguin.database.getUsernameById(toAccept).then((result) => {
+			penguin.database.getUsernameByID(toAccept).then((result) => {
 				let usernameToAccept = result[0].username
 
 				penguin.database.addBuddy(penguin.id, toAccept, usernameToAccept).then(() => {
@@ -105,7 +105,7 @@ class Buddy {
 
 			if (penguin.buddies.length == 0) return
 
-			penguin.database.getUsernameById(toRemove).then((result) => {
+			penguin.database.getUsernameByID(toRemove).then((result) => {
 				const usernameToRemove = result[0].username
 
 				penguin.database.removeBuddy(penguin.id, toRemove, usernameToRemove).then(() => {

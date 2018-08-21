@@ -26,7 +26,7 @@ class Database {
 
 		return this.knex("penguins").first("*").where(type, player)
 	}
-	getUsernameById(ID) {
+	getUsernameByID(ID) {
 		return this.knex("penguins").select("username").where({
 			ID
 		})

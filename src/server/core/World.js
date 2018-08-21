@@ -170,11 +170,6 @@ const xtHandlers = {
 			file: Player,
 			throttle: false
 		},
-		"e#dc": {
-			func: "handleDonateCoins",
-			file: Player,
-			throttle: false
-		},
 		"u#sq": {
 			func: "handleSendQuickMessage",
 			file: Player,
