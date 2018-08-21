@@ -148,9 +148,18 @@ class Player {
 			}
 		} else {
 			if (penguin.server.pluginLoader.getPlugin("Censor")) {
-				return penguin.room.sendXt("sm", -1, penguin.id, penguin.server.pluginLoader.getPlugin("Censor").censorCheck(message))
+				if (penguin.moderator) {
+					return penguin.room.sendXt("mm", -1, penguin.server.pluginLoader.getPlugin("Censor").censorCheck(message), penguin.id)
+				} else {
+					return penguin.room.sendXt("sm", -1, penguin.id, penguin.server.pluginLoader.getPlugin("Censor").censorCheck(message))
+				}
+			} else {
+				if (penguin.moderator) {
+					return penguin.room.sendXt("mm", -1, message, penguin.id)
+				} else {
+					return penguin.room.sendXt("sm", -1, penguin.id, message)
+				}
 			}
-			penguin.room.sendXt("sm", -1, penguin.id, message)
 		}
 	}
 

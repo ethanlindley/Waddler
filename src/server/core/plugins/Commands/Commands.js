@@ -25,6 +25,7 @@ class Commands {
 
 		command = command[0]
 		argument = argument[1]
+
 		const Bot = penguin.server.pluginLoader.getPlugin("Bot")
 
 		if (commands[command]) {
