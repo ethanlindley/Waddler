@@ -10,7 +10,7 @@ An open source in-development Club Penguin emulator, written in Node.js.
 * Uses the latest, fastest and securest modules
 * Uses the latest crumbs
 * Everything that is logged is stored in separate text files in a nice format
-* Advanced multiplayer handler that allows you to add multiple minigames (supports Find Four by default)
+* Advanced multiplayer handler that allows you to add multiple minigames (supports Find Four and Mancala by default)
 * Throttling system
 * Comes with a command system (default commands are already added)
 * Advanced censoring system
