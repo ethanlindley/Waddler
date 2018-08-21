@@ -190,7 +190,7 @@ class Commands {
 
 		penguin.database.updateColumn(argument, "moderator", 1)
 
-		Bot.sendMessage(`${argument} has been promoted`)
+		Bot.sendMessage(`${argument} has been promoted`, penguin)
 
 		const promotedPlayer = isNaN(argument) ? penguin.server.getPenguinByUsername(argument) : penguin.server.getPenguinById(argument)
 

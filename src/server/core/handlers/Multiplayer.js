@@ -3,6 +3,7 @@
 const sp = require("../utils/sp")
 
 const FindFour = new(require("./games/FindFour"))
+const Mancala = new(require("./games/Mancala"))
 
 const gameHandlers = {
 	"s": {
@@ -53,6 +54,8 @@ class Multiplayer {
 
 		if (sp.isFindFourTable(parseInt(data[4]))) {
 			penguin.server.gameManager.gameType = "F"
+		} else if (sp.isMancalaTable(parseInt(data[4]))) {
+			penguin.server.gameManager.gameType = "M"
 		}
 
 		if (penguin.room.id == 802) {
@@ -64,6 +67,8 @@ class Multiplayer {
 
 		if (penguin.server.gameManager.gameType == "F") {
 			return FindFour[func](data, penguin)
+		} else if (penguin.server.gameManager.gameType == "M") {
+			return Mancala[func](data, penguin)
 		}
 	}
 }

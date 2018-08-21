@@ -15,6 +15,9 @@ class sp {
 	static isFindFourTable(tableId) {
 		return [200, 201, 202, 203, 204, 205, 206, 207].includes(tableId)
 	}
+	static isMancalaTable(tableId) {
+		return [100, 101, 102, 103, 104].includes(tableId)
+	}
 
 	static getRandomCoins() {
 		return [1, 2, 5, 10, 20, 50, 100][Math.floor(Math.random() * 7)]

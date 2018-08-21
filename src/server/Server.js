@@ -151,7 +151,13 @@ class Server {
 			Logger.info("Removing client")
 
 			if (penguin.room) penguin.room.removePenguin(penguin)
-			if (penguin.tableId) this.gameManager.leaveTable(penguin)
+			if (penguin.tableId) {
+				if (this.gameManager.gameType == "M") {
+					this.gameManager.leaveMancalaTable(penguin)
+				} else {
+					this.gameManager.leaveTable(penguin)
+				}
+			}
 
 			if (this.type == "game" && penguin.id != undefined) {
 				if (penguin.buddies.length != 0) {
