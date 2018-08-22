@@ -15,6 +15,7 @@ const Pet = require("./handlers/Pet")
 const Ignore = require("./handlers/Ignore")
 const Buddy = require("./handlers/Buddy")
 
+const Mail = require("./handlers/Mail")
 const Stamps = require("./handlers/Stamps")
 const Multiplayer = require("./handlers/Multiplayer")
 
@@ -428,6 +429,46 @@ const xtHandlers = {
 		"a#lt": {
 			func: "handleMultiplayerData",
 			file: Multiplayer,
+			throttle: false
+		},
+		"m#mst": {
+			func: "handleStartMailEngine",
+			file: Mail,
+			throttle: false
+		},
+		"m#mg": {
+			func: "handleGetMail",
+			file: Mail,
+			throttle: false
+		},
+		"m#ms": {
+			func: "handleSendMail",
+			file: Mail,
+			throttle: false
+		},
+		"m#mr": {
+			func: "handleReceiveMail",
+			file: Mail,
+			throttle: false
+		},
+		"m#md": {
+			func: "handleDeleteMail",
+			file: Mail,
+			throttle: false
+		},
+		"m#mdp": {
+			func: "handleDeleteMailFromPlayer",
+			file: Mail,
+			throttle: false
+		},
+		"m#mgd": {
+			func: "handleGetMailDetails",
+			file: Mail,
+			throttle: false
+		},
+		"m#mc": {
+			func: "handleCheckMail",
+			file: Mail,
 			throttle: false
 		}
 	},
